@@ -35,7 +35,7 @@ export default class QuestEssence extends Component {
     const cards = imgs.map((quest, i) => {
       return (
         <Card key={i}>
-          <CardItem cardBody>
+          <CardItem cardBody onPress={() => console.log(`${quest.title} pressed`)}>
             <View style={styles.cardImageContainer}>
               <Image
                 resizeMode='cover'
