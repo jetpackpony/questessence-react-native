@@ -12,6 +12,7 @@ import {
   Card, CardItem,
   H1
 } from 'native-base';
+import { StackNavigator } from 'react-navigation';
 
 const imgs = [{
   img: 'https://kudago.com/media/images/news/d3/2e/d32ecc1b3e4aa49f49c5f220a8dc88b8.jpg',
@@ -23,45 +24,6 @@ const imgs = [{
   img: 'http://estelhautecouture.ru/assets/i/upload/20150401/dfa173b463af881eade974a743ac8929.jpg',
   title: 'Легенды Петергофа'
 }];
-
-export default class QuestEssence extends Component {
-  render() {
-    const cards = imgs.map((quest, i) => {
-      return (
-        <Card key={i}>
-          <CardItem cardBody onPress={() => console.log(`${quest.title} pressed`)}>
-            <View style={styles.cardImageContainer}>
-              <Image
-                resizeMode='cover'
-                style={styles.cardImage}
-                source={{ uri: quest.img }}>
-                <View style={{ flex: 2 }}></View>
-                <View style={{ flex: 1 }}>
-                  <View style={styles.textUnderlay}></View>
-                  <View style={styles.textContainer}>
-                    <Text style={styles.cardHeader}>{quest.title}</Text>
-                  </View>
-                </View>
-              </Image>
-            </View>
-          </CardItem>
-        </Card>
-      );
-    });
-    return (
-      <Container>
-        <Header>
-          <Body>
-            <Title>Санкт-Петербург</Title>
-          </Body>
-        </Header>
-        <Content padder>
-          {cards}
-        </Content>
-      </Container>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   cardImageContainer: {
@@ -90,6 +52,64 @@ const styles = StyleSheet.create({
     color: 'white',
     textAlign: 'right'
   }
+});
+
+class HomeScreen extends Component {
+  static navigationOptions = {
+    title: 'Home'
+  };
+  render() {
+    const { navigate } = this.props.navigation;
+    const cards = imgs.map((quest, i) => {
+      return (
+        <Card key={i}>
+          <CardItem cardBody onPress={() => navigate('Quest', { quest })}>
+            <View style={styles.cardImageContainer}>
+              <Image
+                resizeMode='cover'
+                style={styles.cardImage}
+                source={{ uri: quest.img }}
+              >
+                <View style={{ flex: 2 }}></View>
+                <View style={{ flex: 1 }}>
+                  <View style={styles.textUnderlay}></View>
+                  <View style={styles.textContainer}>
+                    <Text style={styles.cardHeader}>{quest.title}</Text>
+                  </View>
+                </View>
+              </Image>
+            </View>
+          </CardItem>
+        </Card>
+      );
+    });
+    return (
+      <Container>
+        <Content padder>
+          {cards}
+        </Content>
+      </Container>
+    );
+  }
+}
+
+
+class QuestScreen extends Component {
+  static navigationOptions = {
+    title: ({ state }) => state.params.quest.title
+  };
+  render() {
+    const { params } = this.props.navigation.state;
+    return (
+      <View><Text>{params.quest.title}</Text></View>
+    );
+  }
+
+};
+
+const QuestEssence = StackNavigator({
+  Home: { screen: HomeScreen },
+  Quest: { screen: QuestScreen }
 });
 
 AppRegistry.registerComponent('QuestEssence', () => QuestEssence);
