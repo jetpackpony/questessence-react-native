@@ -11,43 +11,24 @@ import {
   Text,
   View
 } from 'react-native';
+import { Container, Header, Title, Content, Body, Left, Right } from 'native-base';
 
 export default class QuestEssence extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native Again!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
+      <Container>
+        <Header>
+          <Body>
+            <Title>Санкт-Петербург</Title>
+          </Body>
+        </Header>
+        <Content padder>
+          <Text>Content here</Text>
+        </Content>
+      </Container>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('QuestEssence', () => QuestEssence);
