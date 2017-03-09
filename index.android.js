@@ -41,12 +41,11 @@ export default class QuestEssence extends Component {
                 resizeMode='cover'
                 style={styles.cardImage}
                 source={{ uri: quest.img }}>
-                <View style={{ flex: 1 }}></View>
+                <View style={{ flex: 2 }}></View>
                 <View style={{ flex: 1 }}>
                   <View style={styles.textUnderlay}></View>
                   <View style={styles.textContainer}>
                     <Text style={styles.cardHeader}>{quest.title}</Text>
-                    <Text style={styles.cardDescription}>Это краткое описание всех приключений, которые ждут вас в этом квесте. Всё так классно и здорово, что хочется блевать радугой, вокруг бегают единороги и все такие счастливые, будто бы обожрались ЛСД. Отличный способ провести время с близкими и друзьями!</Text>
                   </View>
                 </View>
               </Image>
@@ -85,22 +84,18 @@ const styles = StyleSheet.create({
   textUnderlay: {
     flex: 1,
     backgroundColor: 'black',
-    opacity: 0.6
+    opacity: 0.7
   },
   textContainer: {
     position: 'absolute',
-    top: 0,
-    margin: 10,
-    overflow: 'hidden'
+    top: 10,
+    right: 15
   },
   cardHeader: {
-    fontSize: 18,
-    color: 'white'
-  },
-  cardDescription: {
-    color: 'white'
+    fontSize: 27,
+    color: 'white',
+    textAlign: 'right'
   }
-})
-
+});
 
 AppRegistry.registerComponent('QuestEssence', () => QuestEssence);
