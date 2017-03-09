@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { Container, Content } from 'native-base';
+import { Container, Content, Button } from 'native-base';
 import QuestImageWithTitle from './QuestImageWithTitle';
 
 export default class QuestScreen extends Component {
@@ -20,6 +20,9 @@ export default class QuestScreen extends Component {
           </View>
           <View style={styles.descriptionContainer}>
             <Text>{params.quest.desc}</Text>
+            <Button block success style={{ margin: 10 }}>
+              <Text>Начать</Text>
+            </Button>
           </View>
         </Content>
       </Container>
