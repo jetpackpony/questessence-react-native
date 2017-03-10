@@ -8,6 +8,7 @@ import {
 import {
   Card, CardItem
 } from 'native-base';
+
 import QuestImageWithTitle from './QuestImageWithTitle';
 
 export default class QuestCard extends Component {

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Container, Content, Footer,
   Button, Form, Label, Input, Item } from 'native-base';
-import QuestionMedia from './QuestionMedia';
+
+import QuestionMedia from '../components/QuestionMedia';
 
 export default class QuestProgressScreen extends Component {
   static navigationOptions = {

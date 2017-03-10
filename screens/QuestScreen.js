@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Container, Content, Button } from 'native-base';
-import QuestImageWithTitle from './QuestImageWithTitle';
+
+import QuestImageWithTitle from '../components/QuestImageWithTitle';
 
 export default class QuestScreen extends Component {
   static navigationOptions = {
