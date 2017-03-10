@@ -11,12 +11,16 @@ export default class Question extends Component {
       <View>
         <View style={styles.mediaContainer}>
           <QuestionMedia
-            question={this.props.question}
+            media={this.props.question.media}
           />
         </View>
         <View style={styles.questionContainer}>
-          <Text>На этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачемНа этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачемНа этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачемНа этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачемНа этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачем     На этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачем </Text>
-          <Text style={styles.questionText}>Сколько планет в солнечной системе?</Text>
+          <Text>
+            {this.props.question.desc}
+          </Text>
+          <Text style={styles.questionText}>
+            {this.props.question.questionText}
+          </Text>
           <Form>
             <Item floatingLabel >
               <Label>Ответ:</Label>

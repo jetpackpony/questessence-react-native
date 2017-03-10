@@ -12,7 +12,7 @@ export default class QuestionMedia extends Component {
       <Image
         resizeMode='cover'
         style={styles.image}
-        source={{ uri: this.props.question.imgUri }}
+        source={{ uri: this.props.media.uri }}
       />
     );
   }

@@ -16,7 +16,16 @@ const desc = 'Как всё хорошо и замечательно в этом
 const imgs = [{
   img: 'https://kudago.com/media/images/news/d3/2e/d32ecc1b3e4aa49f49c5f220a8dc88b8.jpg',
   title: 'Петропавловская Крепость и Окрестности',
-  desc
+  desc,
+  questions: [{
+    id: 0,
+    media: {
+      type: 'image',
+      uri: 'https://kudago.com/media/images/news/d3/2e/d32ecc1b3e4aa49f49c5f220a8dc88b8.jpg'
+    },
+    desc: 'На этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачемНа этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачем',
+    questionText: 'Сколько планет в солнечной системе?'
+  }]
 }, {
   img: 'https://d3hdm9bjz45yxn.cloudfront.net/userfiles/excursiongalleries/pictureshd/345/4129.jpeg',
   title: 'Русский Музей',

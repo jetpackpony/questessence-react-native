@@ -5,16 +5,21 @@ import { Container, Content, Footer,
 
 import Question from '../components/Question';
 
+const currentQuestionId = 0;
+
 export default class QuestProgressScreen extends Component {
   static navigationOptions = {
     title: ({ state }) => state.params.quest.title
   };
   render() {
     const { params } = this.props.navigation.state;
+    const currentQuestion = params.quest.questions.find((el) =>
+      (el.id === currentQuestionId)
+    );
     return (
       <Container>
         <Content>
-          <Question question={{ imgUri: params.quest.img }} />
+          <Question question={currentQuestion} />
         </Content>
         <View style={styles.progressBar}>
           <Text>1/12</Text>
