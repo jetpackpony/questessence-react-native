@@ -6,7 +6,7 @@ import {
   Image
 } from 'react-native';
 
-export default class QuestCard extends Component {
+export default class QuestImageWithTitle extends Component {
   render() {
     return (
       <Image
