@@ -9,6 +9,7 @@ export default class QuestScreen extends Component {
   };
   render() {
     const { params } = this.props.navigation.state;
+    const { navigate } = this.props.navigation;
     return (
       <Container>
         <Content>
@@ -20,7 +21,12 @@ export default class QuestScreen extends Component {
           </View>
           <View style={styles.descriptionContainer}>
             <Text>{params.quest.desc}</Text>
-            <Button block success style={{ margin: 10 }}>
+            <Button
+              block
+              success
+              style={{ margin: 10 }}
+              onPress={() => navigate('QuestProgress', { quest: params.quest })}
+            >
               <Text>Начать</Text>
             </Button>
           </View>
