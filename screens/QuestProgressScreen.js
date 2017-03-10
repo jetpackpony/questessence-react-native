@@ -17,7 +17,8 @@ export default class QuestProgressScreen extends Component {
       currentQuestionId: 0,
       questionStates: quest.questions.map((el) => ({
         id: el.id, state: QUESTION_STATE.UNANSWERED
-      }))
+      })),
+      completed: false
     };
 
     this.nextQuestion = this.nextQuestion.bind(this);
@@ -63,6 +64,7 @@ export default class QuestProgressScreen extends Component {
     if (id < quest.questions.length - 1) {
       this.setState({ currentQuestionId: id + 1 });
     } else {
+      this.setState({ completed: true });
       console.log("this is a last question");
     }
   }
@@ -78,13 +80,16 @@ export default class QuestProgressScreen extends Component {
     return (
       <Container>
         <Content>
-          <Question
-            question={currentQuestion}
-            questionState={currentQuestionState}
-            nextQuestion={this.nextQuestion}
-            actionShowAnswer={this.showAnswer}
-            actionSubmitAnswer={this.submitAnswer}
-          />
+          {(this.state.completed)
+              ? <View><Text>Ура! Вы прошли квест!</Text></View>
+              : <Question
+                question={currentQuestion}
+                questionState={currentQuestionState}
+                nextQuestion={this.nextQuestion}
+                actionShowAnswer={this.showAnswer}
+                actionSubmitAnswer={this.submitAnswer}
+              />
+          }
         </Content>
         <View style={styles.progressBar}>
           <Text>1/12</Text>
