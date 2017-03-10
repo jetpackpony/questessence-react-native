@@ -27,6 +27,26 @@ const imgs = [{
     questionText: 'Сколько планет в солнечной системе?',
     answer: '8',
     answerDesc: 'Потому что Плутон больше не планета'
+  },{
+    id: 1,
+    media: {
+      type: 'image',
+      uri: 'https://d3hdm9bjz45yxn.cloudfront.net/userfiles/excursiongalleries/pictureshd/345/4129.jpeg'
+    },
+    desc: 'На этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачемНа этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачем',
+    questionText: 'Сколько часов в сутках?',
+    answer: '24',
+    answerDesc: 'Хотелось бы больше, конечно'
+  },{
+    id: 2,
+    media: {
+      type: 'image',
+      uri: 'http://estelhautecouture.ru/assets/i/upload/20150401/dfa173b463af881eade974a743ac8929.jpg'
+    },
+    desc: 'На этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачемНа этом месте будет описание вопроса и рассказ о том, как это важно и как интересно и что и когда и кто и зачем',
+    questionText: 'Сколько дней в неделе?',
+    answer: '7',
+    answerDesc: 'Нужно больше дней в неделе'
   }]
 }, {
   img: 'https://d3hdm9bjz45yxn.cloudfront.net/userfiles/excursiongalleries/pictureshd/345/4129.jpeg',

@@ -10,34 +10,25 @@ const QUESTION_STATE = {
 export default class AnswerBlock extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      answer: undefined,
-      questionState: QUESTION_STATE.UNANSWERED
-    };
+    this.state = { answer: undefined };
 
     this.submitAnswer = this.submitAnswer.bind(this);
     this.showAnswer = this.showAnswer.bind(this);
   }
 
   submitAnswer() {
-    this.setState({
-      questionState: (
-        (this.state.answer === this.props.question.answer)
-          ? QUESTION_STATE.CORRECT
-          : QUESTION_STATE.INCORRECT
-      )
-    });
+    this.props.actionSubmitAnswer(this.state.answer);
   }
 
   showAnswer() {
-    this.setState({ questionState: QUESTION_STATE.SHOW_ANSWER });
+    this.props.actionShowAnswer();
   }
 
   render() {
-    const unanswered = this.state.questionState === QUESTION_STATE.UNANSWERED;
-    const correct = this.state.questionState === QUESTION_STATE.CORRECT;
-    const incorrect = this.state.questionState === QUESTION_STATE.INCORRECT;
-    const showAnswer = this.state.questionState === QUESTION_STATE.SHOW_ANSWER;
+    const unanswered = this.props.questionState === QUESTION_STATE.UNANSWERED;
+    const correct = this.props.questionState === QUESTION_STATE.CORRECT;
+    const incorrect = this.props.questionState === QUESTION_STATE.INCORRECT;
+    const showAnswer = this.props.questionState === QUESTION_STATE.SHOW_ANSWER;
 
     let elements = [];
 
@@ -88,7 +79,7 @@ export default class AnswerBlock extends Component {
     }
     if (correct || showAnswer) {
       elements.push(
-        <Button key='5'>
+        <Button key='5' onPress={this.props.nextQuestion}>
           <Text>Дальше</Text>
         </Button>
       );

@@ -22,7 +22,13 @@ export default class Question extends Component {
           <Text style={styles.questionText}>
             {this.props.question.questionText}
           </Text>
-          <AnswerBlock question={this.props.question} />
+          <AnswerBlock
+            question={this.props.question}
+            questionState={this.props.questionState}
+            nextQuestion={this.props.nextQuestion}
+            actionShowAnswer={this.props.actionShowAnswer}
+            actionSubmitAnswer={this.props.actionSubmitAnswer}
+          />
         </View>
       </View>
     );
