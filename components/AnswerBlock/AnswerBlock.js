@@ -11,17 +11,6 @@ export default class AnswerBlock extends Component {
   constructor(props) {
     super(props);
     this.state = { answer: undefined };
-
-    this.submitAnswer = this.submitAnswer.bind(this);
-    this.showAnswer = this.showAnswer.bind(this);
-  }
-
-  submitAnswer() {
-    this.props.actionSubmitAnswer(this.state.answer);
-  }
-
-  showAnswer() {
-    this.props.actionShowAnswer();
   }
 
   render() {
@@ -70,7 +59,7 @@ export default class AnswerBlock extends Component {
           <Button
             block
             style={{ margin: 10 }}
-            onPress={this.submitAnswer}
+            onPress={() => this.props.actionSubmitAnswer(this.state.answer)}
           >
             <Text>Готово</Text>
           </Button>
@@ -86,7 +75,7 @@ export default class AnswerBlock extends Component {
     }
     if (incorrect && !showAnswer) {
       elements.push(
-        <Button key='6' onPress={this.showAnswer}>
+        <Button key='6' onPress={this.props.actionShowAnswer}>
           <Text>Узнать ответ</Text>
         </Button>
       );

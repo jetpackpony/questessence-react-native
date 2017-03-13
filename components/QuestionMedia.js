@@ -6,17 +6,16 @@ import {
   Image
 } from 'react-native';
 
-export default class QuestionMedia extends Component {
-  render() {
-    return (
-      <Image
-        resizeMode='cover'
-        style={styles.image}
-        source={{ uri: this.props.media.uri }}
-      />
-    );
-  }
-}
+
+const QuestionMedia = ({ media }) => {
+  return (
+    <Image
+      resizeMode='cover'
+      style={styles.image}
+      source={{ uri: media.uri }}
+    />
+  );
+};
 
 const styles = StyleSheet.create({
   image: {
@@ -27,3 +26,5 @@ const styles = StyleSheet.create({
     right: 0
   }
 });
+
+export default QuestionMedia;

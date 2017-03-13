@@ -6,33 +6,37 @@ import { Container, Content, Footer,
 import QuestionMedia from './QuestionMedia';
 import AnswerBlock from './AnswerBlock/AnswerBlock';
 
-export default class Question extends Component {
-  render() {
-    return (
-      <View>
-        <View style={styles.mediaContainer}>
-          <QuestionMedia
-            media={this.props.question.media}
-          />
-        </View>
-        <View style={styles.questionContainer}>
-          <Text>
-            {this.props.question.desc}
-          </Text>
-          <Text style={styles.questionText}>
-            {this.props.question.questionText}
-          </Text>
-          <AnswerBlock
-            question={this.props.question}
-            questionState={this.props.questionState}
-            nextQuestion={this.props.nextQuestion}
-            actionShowAnswer={this.props.actionShowAnswer}
-            actionSubmitAnswer={this.props.actionSubmitAnswer}
-          />
-        </View>
+const Question = ({
+  question,
+  questionState,
+  nextQuestion,
+  actionShowAnswer,
+  actionSubmitAnswer
+}) => {
+  return (
+    <View>
+      <View style={styles.mediaContainer}>
+        <QuestionMedia
+          media={question.media}
+        />
       </View>
-    );
-  }
+      <View style={styles.questionContainer}>
+        <Text>
+          {question.desc}
+        </Text>
+        <Text style={styles.questionText}>
+          {question.questionText}
+        </Text>
+        <AnswerBlock
+          question={question}
+          questionState={questionState}
+          nextQuestion={nextQuestion}
+          actionShowAnswer={actionShowAnswer}
+          actionSubmitAnswer={actionSubmitAnswer}
+        />
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -48,3 +52,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   }
 });
+
+export default Question;
