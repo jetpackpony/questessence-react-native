@@ -1,5 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`jumps to the next question if there is one 1`] = `
+Object {
+  "questData": Object {
+    "questions": Object {
+      "quest0": Array [
+        Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "questionText": "Сколько часов в сутках?",
+        },
+      ],
+    },
+    "quests": Array [
+      Object {
+        "cover": "http://...",
+        "desc": "Description",
+        "id": 0,
+        "title": "Test",
+      },
+    ],
+  },
+  "questProgress": Object {
+    "quest0": Object {
+      "currentAnswer": "",
+      "currentQuestion": 1,
+      "currentQuestionState": "UNANSWERED",
+      "questState": "IN_PROGRESS",
+    },
+  },
+}
+`;
+
+exports[`sets the quest as complete if it is a last question 1`] = `
+Object {
+  "questData": Object {
+    "questions": Object {
+      "quest0": Array [
+        Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "questionText": "Сколько часов в сутках?",
+        },
+      ],
+    },
+    "quests": Array [
+      Object {
+        "cover": "http://...",
+        "desc": "Description",
+        "id": 0,
+        "title": "Test",
+      },
+    ],
+  },
+  "questProgress": Object {
+    "quest0": Object {
+      "currentAnswer": "",
+      "currentQuestion": 1,
+      "currentQuestionState": "UNANSWERED",
+      "questState": "COMPLETED",
+    },
+  },
+}
+`;
+
 exports[`sets the question state if the answer is correct 1`] = `
 Object {
   "questData": Object {
@@ -81,6 +175,47 @@ Object {
         "id": 0,
         "title": "Test",
       },
+    ],
+  },
+  "questProgress": Object {
+    "quest0": Object {
+      "currentAnswer": "15",
+      "currentQuestion": 0,
+      "currentQuestionState": "INCORRECT",
+      "questState": "IN_PROGRESS",
+    },
+  },
+}
+`;
+
+exports[`sets the question to show the correct answer 1`] = `
+Object {
+  "questData": Object {
+    "questions": Object {
+      "quest0": Array [
+        Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "questionText": "Сколько часов в сутках?",
+        },
+      ],
+    },
+    "quests": Array [
       Object {
         "cover": "http://...",
         "desc": "Description",
@@ -91,9 +226,9 @@ Object {
   },
   "questProgress": Object {
     "quest0": Object {
-      "currentAnswer": "15",
+      "currentAnswer": "",
       "currentQuestion": 0,
-      "currentQuestionState": "INCORRECT",
+      "currentQuestionState": "SHOW_ANSWER",
       "questState": "IN_PROGRESS",
     },
   },

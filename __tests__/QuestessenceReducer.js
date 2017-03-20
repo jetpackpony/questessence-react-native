@@ -77,3 +77,25 @@ it('sets the question state if the answer is incorrect', () => {
     QuestessenceReducer(state, answerQuestion(0, 1, '15'))
   ).toMatchSnapshot();
 });
+
+it('sets the question to show the correct answer', () => {
+  let state = addDummyQuest(initialState);
+  expect(
+    QuestessenceReducer(state, showCorrectAnswer(0))
+  ).toMatchSnapshot();
+});
+
+it('jumps to the next question if there is one', () => {
+  let state = addDummyQuest(initialState);
+  expect(
+    QuestessenceReducer(state, goToNextQuestion(0))
+  ).toMatchSnapshot();
+});
+
+it('sets the quest as complete if it is a last question', () => {
+  let state = addDummyQuest(initialState);
+  state.questProgress.quest0.currentQuestion = state.questData.questions.quest0.length - 1;
+  expect(
+    QuestessenceReducer(state, goToNextQuestion(0))
+  ).toMatchSnapshot();
+});

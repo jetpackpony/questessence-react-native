@@ -19,8 +19,8 @@ export function answerQuestion(questId, questionId, answer) {
   return { type: 'ANSWER_QUESTION', questId, questionId, answer };
 };
 
-export function showCorrectAnswer(questId, questionId) {
-  return { type: 'SHOW_CORRECT_ANSWER', questId, questionId };
+export function showCorrectAnswer(questId) {
+  return { type: 'SHOW_CORRECT_ANSWER', questId };
 };
 
 export function goToNextQuestion(questId) {
