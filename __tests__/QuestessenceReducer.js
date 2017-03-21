@@ -1,7 +1,4 @@
-import {
-  QuestessenceReducer,
-  initialState
-} from '../reducers/QuestessenceReducer';
+import { QuestessenceReducer } from '../reducers/QuestessenceReducer';
 import {
   startQuest,
   answerQuestion,

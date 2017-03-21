@@ -17,7 +17,7 @@ const QuestCard = ({ quest, onPress }) => {
       <CardItem cardBody onPress={onPress}>
         <View style={styles.cardImageContainer}>
           <QuestImageWithTitle
-            img={quest.img}
+            img={quest.cover}
             title={quest.title}
           />
         </View>
