@@ -1,134 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`jumps to the next question if there is one 1`] = `
-Object {
-  "entities": Object {
-    "questions": Object {
-      "allIds": Array [
-        "question0",
-        "question1",
-      ],
-      "byId": Object {
-        "question0": Object {
-          "answer": "8",
-          "answerDesc": "Потому что Плутон больше не планета",
-          "desc": "На этом месте будет описание ",
-          "id": "question0",
-          "media": Object {
-            "type": "image",
-            "uri": "https://",
-          },
-          "quest": "quest0",
-          "questionText": "Сколько планет в солнечной системе?",
-        },
-        "question1": Object {
-          "answer": "24",
-          "answerDesc": "Хотелось бы больше, конечно",
-          "desc": "На этом месте будет описание вопроса",
-          "id": "question1",
-          "media": Object {
-            "type": "image",
-            "uri": "https://",
-          },
-          "quest": "quest0",
-          "questionText": "Сколько часов в сутках?",
-        },
-      },
-    },
-    "quests": Object {
-      "allIds": Array [
-        "quest0",
-      ],
-      "byId": Object {
-        "quest0": Object {
-          "cover": "http://...",
-          "desc": "Description",
-          "id": "quest0",
-          "questionsInOrder": Array [
-            "question0",
-            "question1",
-          ],
-          "title": "Test",
-        },
-      },
-    },
-  },
-  "progress": Object {
-    "quest0": Object {
-      "currentAnswer": "",
-      "currentQuestion": "question1",
-      "currentQuestionState": "UNANSWERED",
-      "questState": "IN_PROGRESS",
-    },
-  },
-}
-`;
-
-exports[`sets the quest as complete if it is a last question 1`] = `
-Object {
-  "entities": Object {
-    "questions": Object {
-      "allIds": Array [
-        "question0",
-        "question1",
-      ],
-      "byId": Object {
-        "question0": Object {
-          "answer": "8",
-          "answerDesc": "Потому что Плутон больше не планета",
-          "desc": "На этом месте будет описание ",
-          "id": "question0",
-          "media": Object {
-            "type": "image",
-            "uri": "https://",
-          },
-          "quest": "quest0",
-          "questionText": "Сколько планет в солнечной системе?",
-        },
-        "question1": Object {
-          "answer": "24",
-          "answerDesc": "Хотелось бы больше, конечно",
-          "desc": "На этом месте будет описание вопроса",
-          "id": "question1",
-          "media": Object {
-            "type": "image",
-            "uri": "https://",
-          },
-          "quest": "quest0",
-          "questionText": "Сколько часов в сутках?",
-        },
-      },
-    },
-    "quests": Object {
-      "allIds": Array [
-        "quest0",
-      ],
-      "byId": Object {
-        "quest0": Object {
-          "cover": "http://...",
-          "desc": "Description",
-          "id": "quest0",
-          "questionsInOrder": Array [
-            "question0",
-            "question1",
-          ],
-          "title": "Test",
-        },
-      },
-    },
-  },
-  "progress": Object {
-    "quest0": Object {
-      "currentAnswer": "",
-      "currentQuestion": "question1",
-      "currentQuestionState": "UNANSWERED",
-      "questState": "COMPLETED",
-    },
-  },
-}
-`;
-
-exports[`sets the question state if the answer is correct 1`] = `
+exports[`processes ANSWER_QUESTION action with correct answer 1`] = `
 Object {
   "entities": Object {
     "questions": Object {
@@ -192,7 +64,7 @@ Object {
 }
 `;
 
-exports[`sets the question state if the answer is incorrect 1`] = `
+exports[`processes ANSWER_QUESTION action with incorrect answer 1`] = `
 Object {
   "entities": Object {
     "questions": Object {
@@ -256,7 +128,135 @@ Object {
 }
 `;
 
-exports[`sets the question to show the correct answer 1`] = `
+exports[`processes GOTO_NEXT_QUESTION action when it is the last question 1`] = `
+Object {
+  "entities": Object {
+    "questions": Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "id": "question0",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        "question1": Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько часов в сутках?",
+        },
+      },
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
+  },
+  "progress": Object {
+    "quest0": Object {
+      "currentAnswer": "",
+      "currentQuestion": "question1",
+      "currentQuestionState": "UNANSWERED",
+      "questState": "COMPLETED",
+    },
+  },
+}
+`;
+
+exports[`processes GOTO_NEXT_QUESTION action when there is a next question 1`] = `
+Object {
+  "entities": Object {
+    "questions": Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "id": "question0",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        "question1": Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько часов в сутках?",
+        },
+      },
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
+  },
+  "progress": Object {
+    "quest0": Object {
+      "currentAnswer": "",
+      "currentQuestion": "question1",
+      "currentQuestionState": "UNANSWERED",
+      "questState": "IN_PROGRESS",
+    },
+  },
+}
+`;
+
+exports[`processes SHOW_CORRECT_ANSWER action 1`] = `
 Object {
   "entities": Object {
     "questions": Object {
@@ -320,7 +320,7 @@ Object {
 }
 `;
 
-exports[`starts a quest 1`] = `
+exports[`processes START_QUEST action 1`] = `
 Object {
   "entities": Object {
     "questions": Object {

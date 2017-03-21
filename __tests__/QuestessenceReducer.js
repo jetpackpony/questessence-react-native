@@ -20,13 +20,13 @@ const DummyQuestProgress = () => {
   };
 };
 
-it('starts a quest', () => {
+it('processes START_QUEST action', () => {
   expect(
     QuestessenceReducer(DummyData(), startQuest("quest0"))
   ).toMatchSnapshot();
 });
 
-it('sets the question state if the answer is correct', () => {
+it('processes ANSWER_QUESTION action with correct answer', () => {
   let state = DummyData();
   state.progress["quest0"] = DummyQuestProgress();
   state.entities.questions.byId["question0"].answer = "8";
@@ -36,7 +36,7 @@ it('sets the question state if the answer is correct', () => {
   ).toMatchSnapshot();
 });
 
-it('sets the question state if the answer is incorrect', () => {
+it('processes ANSWER_QUESTION action with incorrect answer', () => {
   let state = DummyData();
   state.progress["quest0"] = DummyQuestProgress();
   state.entities.questions.byId["question1"].answer = "24";
@@ -46,7 +46,7 @@ it('sets the question state if the answer is incorrect', () => {
   ).toMatchSnapshot();
 });
 
-it('sets the question to show the correct answer', () => {
+it('processes SHOW_CORRECT_ANSWER action', () => {
   let state = DummyData();
   state.progress["quest0"] = DummyQuestProgress();
 
@@ -55,7 +55,7 @@ it('sets the question to show the correct answer', () => {
   ).toMatchSnapshot();
 });
 
-it('jumps to the next question if there is one', () => {
+it('processes GOTO_NEXT_QUESTION action when there is a next question', () => {
   let state = DummyData();
   state.progress["quest0"] = DummyQuestProgress();
 
@@ -64,7 +64,7 @@ it('jumps to the next question if there is one', () => {
   ).toMatchSnapshot();
 });
 
-it('sets the quest as complete if it is a last question', () => {
+it('processes GOTO_NEXT_QUESTION action when it is the last question', () => {
   let state = DummyData();
   state.progress["quest0"] = DummyQuestProgress();
 
