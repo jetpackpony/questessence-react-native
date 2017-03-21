@@ -1,45 +1,63 @@
 import { QuestStates, QuestionStates } from '../actions/Actions';
+import quests from './__Quests';
 
 export const initialState = {
-  questData: {
-    quests: [],
-    questions: {}
+  entities: {
+    quests: {
+      byId: {},
+      allIds: []
+    },
+    questions: {
+      byId: {},
+      allIds: []
+    }
   },
-  questProgress: {}
+  progress: {}
 };
 
 const isAnswerCorrect = (question, answer) => {
   return question.answer === answer;
 };
 
-const isQuestComplete = (questions, currentQuestion) => {
-  return questions.length >= currentQuestion + 1;
+const isQuestComplete = (quest, newProgress) => {
+  const questionNumber = quest.questionsInOrder.indexOf(newProgress.currentQuestion);
+  return questionNumber >= quest.questionsInOrder.length - 1;
+};
+
+const getNextQuestionId = (quest, newProgress) => {
+  const questionNumber = quest.questionsInOrder.indexOf(newProgress.currentQuestion);
+  if (!isQuestComplete(quest, newProgress)) {
+    return quest.questionsInOrder[questionNumber + 1];
+  } else {
+    return null;
+  }
 };
 
 export function QuestessenceReducer(state = initialState, action) {
-  let questId = `quest${action.questId}`;
+  const quest = state.entities.quests.byId[action.questId];
+
   switch (action.type) {
     case 'START_QUEST':
       return {
         ...state,
-        questProgress: {
-          ...state.questProgress,
-          [questId]: {
+        progress: {
+          ...state.progress,
+          [quest.id]: {
             questState: QuestStates.IN_PROGRESS,
-            currentQuestion: 0,
-            currentAnswer: '',
+            currentQuestion: quest.questionsInOrder[0],
+            currentAnswer: "",
             currentQuestionState: QuestionStates.UNANSWERED
           }
         }
       };
     case 'ANSWER_QUESTION':
-      let question = state.questData.questions[questId][action.questionId];
+      let question = state.entities.questions.byId[action.questionId];
       return {
         ...state,
-        questProgress: {
-          ...state.questProgress,
-          [questId]: {
-            ...state.questProgress[questId],
+        progress: {
+          ...state.progress,
+          [quest.id]: {
+            ...state.progress[quest.id],
             currentAnswer: action.answer,
             currentQuestionState: isAnswerCorrect(question, action.answer) ? QuestionStates.CORRECT : QuestionStates.INCORRECT
           }
@@ -48,29 +66,29 @@ export function QuestessenceReducer(state = initialState, action) {
     case 'SHOW_CORRECT_ANSWER':
       return {
         ...state,
-        questProgress: {
-          ...state.questProgress,
-          [questId]: {
-            ...state.questProgress[questId],
+        progress: {
+          ...state.progress,
+          [quest.id]: {
+            ...state.progress[quest.id],
             currentQuestionState: QuestionStates.SHOW_ANSWER
           }
         }
       };
     case 'GOTO_NEXT_QUESTION':
-      let newProgress = { ...state.questProgress[questId] };
-      if (isQuestComplete(state.questData.questions[questId]), newProgress.currentQuestion) {
+      let newProgress = { ...state.progress[quest.id] };
+      if (isQuestComplete(quest, newProgress)) {
         newProgress.questState = QuestStates.COMPLETED;
       } else {
-        newProgress.currentQuestion += 1;
+        newProgress.currentQuestion = getNextQuestionId(quest, newProgress);
         newProgress.currentQuestionState = QuestionStates.UNANSWERED
-        newProgress.currentAnswer = '';
+        newProgress.currentAnswer = "";
       }
       debugger;
       return {
         ...state,
-        questProgress: {
-          ...state.questProgress,
-          [questId]: newProgress
+        progress: {
+          ...state.progress,
+          [quest.id]: newProgress
         }
       };
     default:

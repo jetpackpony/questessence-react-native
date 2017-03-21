@@ -2,44 +2,61 @@
 
 exports[`jumps to the next question if there is one 1`] = `
 Object {
-  "questData": Object {
+  "entities": Object {
     "questions": Object {
-      "quest0": Array [
-        Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
           "answer": "8",
           "answerDesc": "Потому что Плутон больше не планета",
           "desc": "На этом месте будет описание ",
+          "id": "question0",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько планет в солнечной системе?",
         },
-        Object {
+        "question1": Object {
           "answer": "24",
           "answerDesc": "Хотелось бы больше, конечно",
           "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько часов в сутках?",
         },
-      ],
-    },
-    "quests": Array [
-      Object {
-        "cover": "http://...",
-        "desc": "Description",
-        "id": 0,
-        "title": "Test",
       },
-    ],
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
   },
-  "questProgress": Object {
+  "progress": Object {
     "quest0": Object {
       "currentAnswer": "",
-      "currentQuestion": 1,
+      "currentQuestion": "question1",
       "currentQuestionState": "UNANSWERED",
       "questState": "IN_PROGRESS",
     },
@@ -49,44 +66,61 @@ Object {
 
 exports[`sets the quest as complete if it is a last question 1`] = `
 Object {
-  "questData": Object {
+  "entities": Object {
     "questions": Object {
-      "quest0": Array [
-        Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
           "answer": "8",
           "answerDesc": "Потому что Плутон больше не планета",
           "desc": "На этом месте будет описание ",
+          "id": "question0",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько планет в солнечной системе?",
         },
-        Object {
+        "question1": Object {
           "answer": "24",
           "answerDesc": "Хотелось бы больше, конечно",
           "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько часов в сутках?",
         },
-      ],
-    },
-    "quests": Array [
-      Object {
-        "cover": "http://...",
-        "desc": "Description",
-        "id": 0,
-        "title": "Test",
       },
-    ],
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
   },
-  "questProgress": Object {
+  "progress": Object {
     "quest0": Object {
       "currentAnswer": "",
-      "currentQuestion": 1,
+      "currentQuestion": "question1",
       "currentQuestionState": "UNANSWERED",
       "questState": "COMPLETED",
     },
@@ -96,44 +130,61 @@ Object {
 
 exports[`sets the question state if the answer is correct 1`] = `
 Object {
-  "questData": Object {
+  "entities": Object {
     "questions": Object {
-      "quest0": Array [
-        Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
           "answer": "8",
           "answerDesc": "Потому что Плутон больше не планета",
           "desc": "На этом месте будет описание ",
+          "id": "question0",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько планет в солнечной системе?",
         },
-        Object {
+        "question1": Object {
           "answer": "24",
           "answerDesc": "Хотелось бы больше, конечно",
           "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько часов в сутках?",
         },
-      ],
-    },
-    "quests": Array [
-      Object {
-        "cover": "http://...",
-        "desc": "Description",
-        "id": 0,
-        "title": "Test",
       },
-    ],
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
   },
-  "questProgress": Object {
+  "progress": Object {
     "quest0": Object {
       "currentAnswer": "8",
-      "currentQuestion": 0,
+      "currentQuestion": "question0",
       "currentQuestionState": "CORRECT",
       "questState": "IN_PROGRESS",
     },
@@ -143,44 +194,61 @@ Object {
 
 exports[`sets the question state if the answer is incorrect 1`] = `
 Object {
-  "questData": Object {
+  "entities": Object {
     "questions": Object {
-      "quest0": Array [
-        Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
           "answer": "8",
           "answerDesc": "Потому что Плутон больше не планета",
           "desc": "На этом месте будет описание ",
+          "id": "question0",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько планет в солнечной системе?",
         },
-        Object {
+        "question1": Object {
           "answer": "24",
           "answerDesc": "Хотелось бы больше, конечно",
           "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько часов в сутках?",
         },
-      ],
-    },
-    "quests": Array [
-      Object {
-        "cover": "http://...",
-        "desc": "Description",
-        "id": 0,
-        "title": "Test",
       },
-    ],
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
   },
-  "questProgress": Object {
+  "progress": Object {
     "quest0": Object {
       "currentAnswer": "15",
-      "currentQuestion": 0,
+      "currentQuestion": "question0",
       "currentQuestionState": "INCORRECT",
       "questState": "IN_PROGRESS",
     },
@@ -190,44 +258,61 @@ Object {
 
 exports[`sets the question to show the correct answer 1`] = `
 Object {
-  "questData": Object {
+  "entities": Object {
     "questions": Object {
-      "quest0": Array [
-        Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
           "answer": "8",
           "answerDesc": "Потому что Плутон больше не планета",
           "desc": "На этом месте будет описание ",
+          "id": "question0",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько планет в солнечной системе?",
         },
-        Object {
+        "question1": Object {
           "answer": "24",
           "answerDesc": "Хотелось бы больше, конечно",
           "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
           "media": Object {
             "type": "image",
             "uri": "https://",
           },
+          "quest": "quest0",
           "questionText": "Сколько часов в сутках?",
         },
-      ],
-    },
-    "quests": Array [
-      Object {
-        "cover": "http://...",
-        "desc": "Description",
-        "id": 0,
-        "title": "Test",
       },
-    ],
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
   },
-  "questProgress": Object {
+  "progress": Object {
     "quest0": Object {
       "currentAnswer": "",
-      "currentQuestion": 0,
+      "currentQuestion": "question0",
       "currentQuestionState": "SHOW_ANSWER",
       "questState": "IN_PROGRESS",
     },
@@ -237,14 +322,61 @@ Object {
 
 exports[`starts a quest 1`] = `
 Object {
-  "questData": Object {
-    "questions": Object {},
-    "quests": Array [],
+  "entities": Object {
+    "questions": Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "id": "question0",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        "question1": Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько часов в сутках?",
+        },
+      },
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
   },
-  "questProgress": Object {
+  "progress": Object {
     "quest0": Object {
       "currentAnswer": "",
-      "currentQuestion": 0,
+      "currentQuestion": "question0",
       "currentQuestionState": "UNANSWERED",
       "questState": "IN_PROGRESS",
     },

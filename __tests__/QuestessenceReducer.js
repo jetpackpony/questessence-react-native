@@ -9,93 +9,69 @@ import {
   goToNextQuestion
 } from '../actions/Actions.js';
 import { QuestStates, QuestionStates } from '../actions/Actions';
+import DummyData from './__helpers__/DummyData';
 
-const addDummyQuest = (inState) => {
+const DummyQuestProgress = () => {
   return {
-    ...inState,
-    questData: {
-      ...inState.questData,
-      quests: inState.questData.quests.concat({
-        id: 0,
-        title: 'Test',
-        cover: 'http://...',
-        desc: 'Description'
-      }),
-      questions: {
-        ...inState.questData.questions,
-        quest0: [{
-          media: {
-            type: 'image',
-            uri: 'https://'
-          },
-          desc: 'На этом месте будет описание ',
-          questionText: 'Сколько планет в солнечной системе?',
-          answer: '8',
-          answerDesc: 'Потому что Плутон больше не планета'
-        },{
-          media: {
-            type: 'image',
-            uri: 'https://'
-          },
-          desc: 'На этом месте будет описание вопроса',
-          questionText: 'Сколько часов в сутках?',
-          answer: '24',
-          answerDesc: 'Хотелось бы больше, конечно'
-        }]
-      }
-    },
-    questProgress: {
-      ...inState.questProgress,
-      quest0: {
-        questState: QuestStates.IN_PROGRESS,
-        currentQuestion: 0,
-        currentAnswer: '',
-        currentQuestionState: QuestionStates.UNANSWERED
-      }
-    }
+    questState: QuestStates.IN_PROGRESS,
+    currentQuestion: "question0",
+    currentAnswer: '',
+    currentQuestionState: QuestionStates.UNANSWERED
   };
 };
 
 it('starts a quest', () => {
   expect(
-    QuestessenceReducer(initialState, startQuest(0))
+    QuestessenceReducer(DummyData(), startQuest("quest0"))
   ).toMatchSnapshot();
 });
 
 it('sets the question state if the answer is correct', () => {
-  let state = addDummyQuest(initialState);
-  state.questData.questions.quest0[0].answer = '8';
+  let state = DummyData();
+  state.progress["quest0"] = DummyQuestProgress();
+  state.entities.questions.byId["question0"].answer = "8";
+
   expect(
-    QuestessenceReducer(state, answerQuestion(0, 0, '8'))
+    QuestessenceReducer(state, answerQuestion("quest0", "question0", "8"))
   ).toMatchSnapshot();
 });
 
 it('sets the question state if the answer is incorrect', () => {
-  let state = addDummyQuest(initialState);
-  state.questData.questions.quest0[1].answer = '24';
+  let state = DummyData();
+  state.progress["quest0"] = DummyQuestProgress();
+  state.entities.questions.byId["question1"].answer = "24";
+
   expect(
-    QuestessenceReducer(state, answerQuestion(0, 1, '15'))
+    QuestessenceReducer(state, answerQuestion("quest0", "question1", "15"))
   ).toMatchSnapshot();
 });
 
 it('sets the question to show the correct answer', () => {
-  let state = addDummyQuest(initialState);
+  let state = DummyData();
+  state.progress["quest0"] = DummyQuestProgress();
+
   expect(
-    QuestessenceReducer(state, showCorrectAnswer(0))
+    QuestessenceReducer(state, showCorrectAnswer("quest0"))
   ).toMatchSnapshot();
 });
 
 it('jumps to the next question if there is one', () => {
-  let state = addDummyQuest(initialState);
+  let state = DummyData();
+  state.progress["quest0"] = DummyQuestProgress();
+
   expect(
-    QuestessenceReducer(state, goToNextQuestion(0))
+    QuestessenceReducer(state, goToNextQuestion("quest0"))
   ).toMatchSnapshot();
 });
 
 it('sets the quest as complete if it is a last question', () => {
-  let state = addDummyQuest(initialState);
-  state.questProgress.quest0.currentQuestion = state.questData.questions.quest0.length - 1;
+  let state = DummyData();
+  state.progress["quest0"] = DummyQuestProgress();
+
+  let questions = state.entities.quests.byId["quest0"].questionsInOrder;
+  state.progress["quest0"].currentQuestion = questions[questions.length - 1];
+
   expect(
-    QuestessenceReducer(state, goToNextQuestion(0))
+    QuestessenceReducer(state, goToNextQuestion("quest0"))
   ).toMatchSnapshot();
 });

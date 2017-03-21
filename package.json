@@ -26,6 +26,9 @@
     "preset": "react-native",
     "transformIgnorePatterns": [
       "node_modules/(?!native-base)/"
+    ],
+    "testPathIgnorePatterns": [
+      "__helpers__/", "/node_modules/"
     ]
   }
 }
