@@ -6,13 +6,7 @@ import { Container, Content, Footer,
 import QuestionMedia from './QuestionMedia';
 import AnswerBlock from './AnswerBlock/AnswerBlock';
 
-const Question = ({
-  question,
-  questionState,
-  nextQuestion,
-  actionShowAnswer,
-  actionSubmitAnswer
-}) => {
+const Question = ({ question }) => {
   return (
     <View>
       <View style={styles.mediaContainer}>
@@ -30,10 +24,6 @@ const Question = ({
         <AnswerBlock
           questionId={question.id}
           questId={question.quest}
-          questionState={questionState}
-          nextQuestion={nextQuestion}
-          actionShowAnswer={actionShowAnswer}
-          actionSubmitAnswer={actionSubmitAnswer}
         />
       </View>
     </View>

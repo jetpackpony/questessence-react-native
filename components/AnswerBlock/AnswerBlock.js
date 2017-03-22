@@ -9,10 +9,6 @@ import {
   answerQuestion, showCorrectAnswer, goToNextQuestion
 } from '../../actions/Actions';
 
-const QUESTION_STATE = {
-  UNANSWERED: 0, CORRECT: 1, INCORRECT: 2, SHOW_ANSWER: 3
-};
-
 const mapStateToProps = (state, ownProps) => {
   const question = state.entities.questions.byId[ownProps.questionId];
   return {
