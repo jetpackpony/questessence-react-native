@@ -11,22 +11,20 @@ import {
 
 import QuestImageWithTitle from './QuestImageWithTitle';
 
-export default class QuestCard extends Component {
-  render() {
-    return (
-      <Card>
-        <CardItem cardBody onPress={this.props.onPress}>
-          <View style={styles.cardImageContainer}>
-            <QuestImageWithTitle
-              img={this.props.quest.img}
-              title={this.props.quest.title}
-            />
-          </View>
-        </CardItem>
-      </Card>
-    );
-  }
-}
+const QuestCard = ({ quest, onPress }) => {
+  return (
+    <Card>
+      <CardItem cardBody onPress={onPress}>
+        <View style={styles.cardImageContainer}>
+          <QuestImageWithTitle
+            img={quest.cover}
+            title={quest.title}
+          />
+        </View>
+      </CardItem>
+    </Card>
+  );
+};
 
 const styles = StyleSheet.create({
   cardImageContainer: {
@@ -34,3 +32,5 @@ const styles = StyleSheet.create({
     height: 300
   }
 });
+
+export default QuestCard;

@@ -2,33 +2,48 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Container, Content, Footer,
   Button, Form, Label, Input, Item } from 'native-base';
+import { connect } from 'react-redux';
 
-const QUESTION_STATE = {
-  UNANSWERED: 0, CORRECT: 1, INCORRECT: 2, SHOW_ANSWER: 3
+import {
+  QuestStates, QuestionStates,
+  answerQuestion, showCorrectAnswer, goToNextQuestion
+} from '../../actions/Actions';
+
+const mapStateToProps = (state, ownProps) => {
+  const question = state.entities.questions.byId[ownProps.questionId];
+  return {
+    question,
+    questionState: state.progress[question.quest].currentQuestionState
+  };
 };
 
-export default class AnswerBlock extends Component {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const questionId = ownProps.questionId;
+  const questId = ownProps.questId;
+  return {
+    onActionSubmitAnswer: (answer) => {
+      dispatch(answerQuestion(questId, questionId, answer));
+    },
+    onActionShowAnswer: () => {
+      dispatch(showCorrectAnswer(questId));
+    },
+    onNextQuestion: () => {
+      dispatch(goToNextQuestion(questId));
+    }
+  };
+};
+
+class AnswerBlock extends Component {
   constructor(props) {
     super(props);
     this.state = { answer: undefined };
-
-    this.submitAnswer = this.submitAnswer.bind(this);
-    this.showAnswer = this.showAnswer.bind(this);
-  }
-
-  submitAnswer() {
-    this.props.actionSubmitAnswer(this.state.answer);
-  }
-
-  showAnswer() {
-    this.props.actionShowAnswer();
   }
 
   render() {
-    const unanswered = this.props.questionState === QUESTION_STATE.UNANSWERED;
-    const correct = this.props.questionState === QUESTION_STATE.CORRECT;
-    const incorrect = this.props.questionState === QUESTION_STATE.INCORRECT;
-    const showAnswer = this.props.questionState === QUESTION_STATE.SHOW_ANSWER;
+    const unanswered = this.props.questionState === QuestionStates.UNANSWERED;
+    const correct = this.props.questionState === QuestionStates.CORRECT;
+    const incorrect = this.props.questionState === QuestionStates.INCORRECT;
+    const showAnswer = this.props.questionState === QuestionStates.SHOW_ANSWER;
 
     let elements = [];
 
@@ -70,7 +85,7 @@ export default class AnswerBlock extends Component {
           <Button
             block
             style={{ margin: 10 }}
-            onPress={this.submitAnswer}
+            onPress={() => this.props.onActionSubmitAnswer(this.state.answer)}
           >
             <Text>Готово</Text>
           </Button>
@@ -79,14 +94,14 @@ export default class AnswerBlock extends Component {
     }
     if (correct || showAnswer) {
       elements.push(
-        <Button key='5' onPress={this.props.nextQuestion}>
+        <Button key='5' onPress={this.props.onNextQuestion}>
           <Text>Дальше</Text>
         </Button>
       );
     }
     if (incorrect && !showAnswer) {
       elements.push(
-        <Button key='6' onPress={this.showAnswer}>
+        <Button key='6' onPress={this.props.onActionShowAnswer}>
           <Text>Узнать ответ</Text>
         </Button>
       );
@@ -102,3 +117,5 @@ export default class AnswerBlock extends Component {
 
 const styles = StyleSheet.create({
 });
+
+export default connect(mapStateToProps, mapDispatchToProps)(AnswerBlock);

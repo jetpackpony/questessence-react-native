@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image
-} from 'react-native';
-import {
-  Container, Content,
-} from 'native-base';
+import { Container, Content } from 'native-base';
+import { connect } from 'react-redux';
 
 import QuestCard from '../components/QuestCard';
-import quests from './__Quests';
 
-export default class HomeScreen extends Component {
+const mapStateToProps = (state) => {
+  const quests = state.entities.quests;
+  return {
+    quests: quests.allIds.map((el) => quests.byId[el])
+  };
+};
+
+class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Home'
   };
   render() {
     const { navigate } = this.props.navigation;
-    const cards = quests.map((quest, i) => {
+    const cards = this.props.quests.map(quest => {
       return (
         <QuestCard
-          key={i}
+          key={quest.id}
           quest={quest}
-          onPress={() => navigate('Quest', { quest })}
+          onPress={() => navigate('Quest', {
+            questId: quest.id,
+            title: quest.title
+          })}
         />
       );
     });
@@ -36,3 +38,5 @@ export default class HomeScreen extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(HomeScreen);

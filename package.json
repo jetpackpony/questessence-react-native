@@ -4,21 +4,31 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "test-debug": "node --inspect --debug-brk ./node_modules/.bin/jest -i --env jest-environment-node-debug"
   },
   "dependencies": {
     "native-base": "^2.0.12",
     "react": "15.4.2",
     "react-native": "0.42.0",
-    "react-navigation": "^1.0.0-beta.6"
+    "react-navigation": "^1.0.0-beta.6",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
     "jest": "19.0.2",
+    "jest-environment-node-debug": "^2.0.0",
     "react-test-renderer": "15.4.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!native-base)/"
+    ],
+    "testPathIgnorePatterns": [
+      "__helpers__/", "/node_modules/"
+    ]
   }
 }

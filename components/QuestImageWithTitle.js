@@ -6,25 +6,23 @@ import {
   Image
 } from 'react-native';
 
-export default class QuestImageWithTitle extends Component {
-  render() {
-    return (
-      <Image
-        resizeMode='cover'
-        style={styles.cardImage}
-        source={{ uri: this.props.img }}
-      >
-        <View style={{ flex: 2 }}></View>
-        <View style={{ flex: 1 }}>
-          <View style={styles.textUnderlay}></View>
-          <View style={styles.textContainer}>
-            <Text style={styles.cardHeader}>{this.props.title}</Text>
-          </View>
+const QuestImageWithTitle = ({ img, title }) => {
+  return (
+    <Image
+      resizeMode='cover'
+      style={styles.cardImage}
+      source={{ uri: img }}
+    >
+      <View style={{ flex: 2 }}></View>
+      <View style={{ flex: 1 }}>
+        <View style={styles.textUnderlay}></View>
+        <View style={styles.textContainer}>
+          <Text style={styles.cardHeader}>{title}</Text>
         </View>
-      </Image>
-    );
-  }
-}
+      </View>
+    </Image>
+  );
+};
 
 const styles = StyleSheet.create({
   cardImage: {
@@ -51,3 +49,5 @@ const styles = StyleSheet.create({
     textAlign: 'right'
   }
 });
+
+export default QuestImageWithTitle;
