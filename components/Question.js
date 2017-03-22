@@ -28,7 +28,8 @@ const Question = ({
           {question.questionText}
         </Text>
         <AnswerBlock
-          question={question}
+          questionId={question.id}
+          questId={question.quest}
           questionState={questionState}
           nextQuestion={nextQuestion}
           actionShowAnswer={actionShowAnswer}

@@ -4,6 +4,7 @@ import { Container, Content, Button } from 'native-base';
 import { connect } from 'react-redux';
 
 import QuestImageWithTitle from '../components/QuestImageWithTitle';
+import { startQuest } from '../actions/Actions';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.state.params.questId;
@@ -13,12 +14,24 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const questId = ownProps.navigation.state.params.questId;
+  return {
+    onStartClick: () => {
+      dispatch(startQuest(questId));
+      ownProps.navigation.navigate('QuestProgress', {
+        questId,
+        title: ownProps.navigation.state.params.title
+      });
+    }
+  };
+};
+
 class QuestScreen extends Component {
   static navigationOptions = {
     title: ({ state }) => state.params.title
   };
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <Container>
         <Content>
@@ -34,9 +47,7 @@ class QuestScreen extends Component {
               block
               success
               style={{ margin: 10 }}
-              onPress={() => navigate('QuestProgress', {
-                questId: this.props.questId
-              })}
+              onPress={this.props.onStartClick}
             >
               <Text>Начать</Text>
             </Button>
@@ -57,4 +68,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps)(QuestScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(QuestScreen);

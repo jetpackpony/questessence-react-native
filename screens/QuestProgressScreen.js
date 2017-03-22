@@ -2,16 +2,31 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Container, Content, Footer,
   Button, Form, Label, Input, Item } from 'native-base';
+import { connect } from 'react-redux';
 
 import Question from '../components/Question';
+import { QuestStates, QuestionStates } from '../actions/Actions';
 
 const QUESTION_STATE = {
   UNANSWERED: 0, CORRECT: 1, INCORRECT: 2, SHOW_ANSWER: 3
 };
 
-export default class QuestProgressScreen extends Component {
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.navigation.state.params.questId;
+  const currentId = state.progress[id].currentQuestion;
+  return {
+    quest: state.entities.quests.byId[id],
+    currentQuestion: state.entities.questions.byId[currentId],
+    currentQuestionState: state.progress[id].currentQuestionState,
+    progress: state.progress[id],
+    completed: state.progress[id].questState === QuestStates.COMPLETED
+  };
+};
+
+class QuestProgressScreen extends Component {
   constructor(props) {
     super(props);
+    /*
     const quest = props.navigation.state.params.quest;
     this.state = {
       currentQuestionId: 0,
@@ -20,6 +35,7 @@ export default class QuestProgressScreen extends Component {
       })),
       completed: false
     };
+    */
 
     this.nextQuestion = this.nextQuestion.bind(this);
     this.submitAnswer = this.submitAnswer.bind(this);
@@ -55,7 +71,7 @@ export default class QuestProgressScreen extends Component {
   }
 
   static navigationOptions = {
-    title: ({ state }) => state.params.quest.title
+    title: ({ state }) => state.params.title
   };
 
   nextQuestion() {
@@ -70,6 +86,7 @@ export default class QuestProgressScreen extends Component {
   }
 
   render() {
+    /*
     const { params } = this.props.navigation.state;
     const currentQuestion = params.quest.questions.find((el) =>
       (el.id === this.state.currentQuestionId)
@@ -77,14 +94,15 @@ export default class QuestProgressScreen extends Component {
     const currentQuestionState = this.state.questionStates.find((el) =>
       (el.id === this.state.currentQuestionId)
     ).state;
+    */
     return (
       <Container>
         <Content>
-          {(this.state.completed)
+          {(this.props.completed)
               ? <View><Text>Ура! Вы прошли квест!</Text></View>
               : <Question
-                question={currentQuestion}
-                questionState={currentQuestionState}
+                question={this.props.currentQuestion}
+                questionState={this.props.currentQuestionState}
                 nextQuestion={this.nextQuestion}
                 actionShowAnswer={this.showAnswer}
                 actionSubmitAnswer={this.submitAnswer}
@@ -109,3 +127,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   }
 });
+
+export default connect(mapStateToProps)(QuestProgressScreen);
