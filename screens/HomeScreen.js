@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image
-} from 'react-native';
-import {
-  Container, Content,
-} from 'native-base';
+import { Container, Content } from 'native-base';
 import { connect } from 'react-redux';
 
 import QuestCard from '../components/QuestCard';
