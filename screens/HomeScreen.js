@@ -30,7 +30,10 @@ class HomeScreen extends Component {
         <QuestCard
           key={quest.id}
           quest={quest}
-          onPress={() => navigate('Quest', { quest })}
+          onPress={() => navigate('Quest', {
+            questId: quest.id,
+            title: quest.title
+          })}
         />
       );
     });
