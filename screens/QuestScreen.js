@@ -4,26 +4,32 @@ import { Container, Content, Button } from 'native-base';
 import { connect } from 'react-redux';
 
 import QuestImageWithTitle from '../components/QuestImageWithTitle';
+import StartButton from '../components/StartButton';
+import ContinueButton from '../components/ContinueButton';
 import { startQuest } from '../actions/Actions';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.state.params.questId;
   return {
     quest: state.entities.quests.byId[id],
-    progress: state.progress[id]
+    started: state.progress[id] !== undefined
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
+  const nav = () => {
+    ownProps.navigation.navigate('QuestProgress', {
+      questId,
+      title: ownProps.navigation.state.params.title
+    });
+  };
   return {
     onStartClick: () => {
       dispatch(startQuest(questId));
-      ownProps.navigation.navigate('QuestProgress', {
-        questId,
-        title: ownProps.navigation.state.params.title
-      });
-    }
+      nav();
+    },
+    onContinueClick: nav
   };
 };
 
@@ -43,14 +49,10 @@ class QuestScreen extends Component {
           </View>
           <View style={styles.descriptionContainer}>
             <Text>{this.props.quest.desc}</Text>
-            <Button
-              block
-              success
-              style={{ margin: 10 }}
-              onPress={this.props.onStartClick}
-            >
-              <Text>Начать</Text>
-            </Button>
+            {(this.props.started)
+                ? <ContinueButton onPress={this.props.onContinueClick} />
+                : <StartButton onPress={this.props.onStartClick} />
+            }
           </View>
         </Content>
       </Container>
