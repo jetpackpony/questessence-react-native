@@ -69,7 +69,6 @@ export function QuestessenceReducer(state = initialState, action) {
         newProgress.currentQuestionState = QuestionStates.UNANSWERED
         newProgress.currentAnswer = "";
       }
-      debugger;
       return {
         ...state,
         progress: {
