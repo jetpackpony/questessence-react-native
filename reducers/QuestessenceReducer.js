@@ -1,5 +1,18 @@
 import { QuestStates, QuestionStates } from '../actions/Actions';
-import initialState from './__Quests';
+
+const initialState = {
+  entities: {
+    "quests": {
+      "byId": { },
+      "allIds": [ ]
+    },
+    "questions": {
+      "byId": { },
+      "allIds": [ ]
+    }
+  },
+  progress: {}
+};
 
 const isAnswerCorrect = (question, answer) => {
   return question.answer === answer;

@@ -11,6 +11,8 @@ import HomeScreen from './screens/HomeScreen';
 import QuestScreen from './screens/QuestScreen';
 import QuestProgressScreen from './screens/QuestProgressScreen';
 import { QuestessenceReducer } from './reducers/QuestessenceReducer.js';
+import { updateQuestList } from './actions/Actions';
+import Database from './database/Database';
 
 const QuestEssenceNavigator = StackNavigator({
   Home: { screen: HomeScreen },
@@ -26,6 +28,9 @@ const store = createStore(
   )
 );
 persistStore(store, {storage: AsyncStorage});
+Database.loadQuests((quests) => {
+  store.dispatch(updateQuestList(quests))
+});
 
 class QuestEssence extends React.Component {
   render() {
