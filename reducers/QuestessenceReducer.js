@@ -1,5 +1,18 @@
 import { QuestStates, QuestionStates } from '../actions/Actions';
-import initialState from './__Quests';
+
+const initialState = {
+  entities: {
+    "quests": {
+      "byId": { },
+      "allIds": [ ]
+    },
+    "questions": {
+      "byId": { },
+      "allIds": [ ]
+    }
+  },
+  progress: {}
+};
 
 const isAnswerCorrect = (question, answer) => {
   return question.answer === answer;
@@ -20,7 +33,9 @@ const getNextQuestionId = (quest, newProgress) => {
 };
 
 export function QuestessenceReducer(state = initialState, action) {
-  const quest = state.entities.quests.byId[action.questId];
+  if (action.questId) {
+    const quest = state.entities.quests.byId[action.questId];
+  }
 
   switch (action.type) {
     case 'START_QUEST':
@@ -74,6 +89,14 @@ export function QuestessenceReducer(state = initialState, action) {
         progress: {
           ...state.progress,
           [quest.id]: newProgress
+        }
+      };
+    case 'UPDATE_QUEST_LIST':
+      return {
+        ...state,
+        entities: {
+          ...state.entities,
+          quests: action.quests
         }
       };
     default:
