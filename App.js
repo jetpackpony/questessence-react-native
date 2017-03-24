@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { AppRegistry, AsyncStorage } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux'
 import { persistStore, autoRehydrate } from 'redux-persist';
+import logger from 'redux-logger';
 
 import HomeScreen from './screens/HomeScreen';
 import QuestScreen from './screens/QuestScreen';
@@ -16,7 +17,13 @@ const QuestEssenceNavigator = StackNavigator({
   QuestProgress: { screen: QuestProgressScreen },
 });
 
-const store = createStore(QuestessenceReducer, autoRehydrate());
+const store = createStore(
+  QuestessenceReducer,
+  compose(
+    autoRehydrate(),
+    applyMiddleware(logger)
+  )
+);
 persistStore(store, {storage: AsyncStorage});
 
 class QuestEssence extends React.Component {
