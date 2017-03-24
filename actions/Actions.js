@@ -26,3 +26,7 @@ export function showCorrectAnswer(questId) {
 export function goToNextQuestion(questId) {
   return { type: 'GOTO_NEXT_QUESTION', questId };
 };
+
+export function updateQuestList(quests) {
+  return { type: 'UPDATE_QUEST_LIST', quests };
+};
