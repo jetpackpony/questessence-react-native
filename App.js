@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, compose, applyMiddleware } from 'redux'
 import { persistStore, autoRehydrate } from 'redux-persist';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import HomeScreen from './screens/HomeScreen';
 import QuestScreen from './screens/QuestScreen';
@@ -21,7 +22,7 @@ const store = createStore(
   QuestessenceReducer,
   compose(
     autoRehydrate(),
-    applyMiddleware(logger)
+    applyMiddleware(thunk, logger)
   )
 );
 persistStore(store, {storage: AsyncStorage});
