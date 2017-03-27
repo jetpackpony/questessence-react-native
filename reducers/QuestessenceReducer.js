@@ -33,8 +33,9 @@ const getNextQuestionId = (quest, newProgress) => {
 };
 
 export function QuestessenceReducer(state = initialState, action) {
+  let quest;
   if (action.questId) {
-    const quest = state.entities.quests.byId[action.questId];
+    quest = state.entities.quests.byId[action.questId];
   }
 
   switch (action.type) {
