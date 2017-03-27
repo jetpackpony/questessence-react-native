@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import QuestImageWithTitle from '../components/QuestImageWithTitle';
 import QuestButtonBlock from '../components/QuestButtonBlock';
-import { QuestStates, startQuest } from '../actions/Actions';
+import { QuestStates, startQuest, downloadQuest } from '../actions/Actions';
 
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     quest: state.entities.quests.byId[questId],
     purchased: progress,
-    started: progress && progress.questState === QuestStates.IN_PROGRESS
+    started: progress && progress.questState === QuestStates.IN_PROGRESS,
+    downloading: progress && progress.questState === QuestStates.DOWNLOADING
   };
 };
 
@@ -30,7 +31,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(startQuest(questId));
       nav();
     },
-    onContinueClick: nav
+    onContinueClick: nav,
+    onPurchaseClick: () => {
+      dispatch(downloadQuest(questId));
+    }
   };
 };
 
@@ -53,8 +57,10 @@ class QuestScreen extends Component {
             <QuestButtonBlock
               isStarted={this.props.started}
               isPurchased={this.props.purchased}
+              isDownloading={this.props.downloading}
               onStart={this.props.onStartClick}
               onContinue={this.props.onContinueClick}
+              onPurchase={this.props.onPurchaseClick}
             />
           </View>
         </Content>

@@ -1,4 +1,7 @@
+import Database from '../database/Database';
+
 export const QuestStates = {
+  DOWNLOADING: 'DOWNLOADING',
   NOT_STARTED: 'NOT_STARTED',
   IN_PROGRESS: 'IN_PROGRESS',
   COMPLETED: 'COMPLETED'
@@ -29,4 +32,16 @@ export function goToNextQuestion(questId) {
 
 export function updateQuestList(quests) {
   return { type: 'UPDATE_QUEST_LIST', quests };
+};
+
+export function downloadQuest(questId) {
+  return (dispatch) => {
+    dispatch({ type: 'DOWNLOADING_QUEST_START', questId });
+
+    Database
+      .downloadQuestions(questId)
+      .then((questions) => {
+        dispatch({ type: 'DOWNLOADING_QUEST_SUCCESS', questId, questions });
+      });
+  };
 };

@@ -15,4 +15,13 @@ const listenToQuests = (callback) => {
   });
 };
 
-export default { listenToQuests };
+const downloadQuestions = (questId, callback) => {
+  return firebase.database()
+    .ref('questions/byId')
+    .orderByChild('quest')
+    .equalTo(questId)
+    .once('value')
+    .then((snapshot) => snapshot.val());
+};
+
+export default { listenToQuests, downloadQuestions };

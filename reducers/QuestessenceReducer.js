@@ -39,12 +39,47 @@ export function QuestessenceReducer(state = initialState, action) {
   }
 
   switch (action.type) {
+    case 'DOWNLOADING_QUEST_START':
+      return {
+        ...state,
+        progress: {
+          ...state.progress,
+          [quest.id]: {
+            questState: QuestStates.DOWNLOADING
+          }
+        }
+      };
+    case 'DOWNLOADING_QUEST_SUCCESS':
+      const questions = action.questions;
+      const ids = Object.keys(questions);
+      return {
+        ...state,
+        entities: {
+          ...state.entities,
+          questions: {
+            ...state.entities.questions,
+            byId: {
+              ...state.entities.questions.byId,
+              ...questions
+            },
+            allIds: state.entities.questions.allIds.concat(ids)
+          }
+
+        },
+        progress: {
+          ...state.progress,
+          [quest.id]: {
+            questState: QuestStates.NOT_STARTED
+          }
+        }
+      };
     case 'START_QUEST':
       return {
         ...state,
         progress: {
           ...state.progress,
           [quest.id]: {
+            ...state.progress[quest.id],
             questState: QuestStates.IN_PROGRESS,
             currentQuestion: quest.questionsInOrder[0],
             currentAnswer: "",
