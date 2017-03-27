@@ -4,15 +4,17 @@ import { Container, Content, Button } from 'native-base';
 import { connect } from 'react-redux';
 
 import QuestImageWithTitle from '../components/QuestImageWithTitle';
-import StartButton from '../components/StartButton';
-import ContinueButton from '../components/ContinueButton';
-import { startQuest } from '../actions/Actions';
+import QuestButtonBlock from '../components/QuestButtonBlock';
+import { QuestStates, startQuest, downloadQuest } from '../actions/Actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const id = ownProps.navigation.state.params.questId;
+  const questId = ownProps.navigation.state.params.questId;
+  const progress = state.progress[questId];
   return {
-    quest: state.entities.quests.byId[id],
-    started: state.progress[id] !== undefined
+    quest: state.entities.quests.byId[questId],
+    purchased: progress,
+    started: progress && progress.questState === QuestStates.IN_PROGRESS,
+    downloading: progress && progress.questState === QuestStates.DOWNLOADING
   };
 };
 
@@ -29,7 +31,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(startQuest(questId));
       nav();
     },
-    onContinueClick: nav
+    onContinueClick: nav,
+    onPurchaseClick: () => {
+      dispatch(downloadQuest(questId));
+    }
   };
 };
 
@@ -49,10 +54,14 @@ class QuestScreen extends Component {
           </View>
           <View style={styles.descriptionContainer}>
             <Text>{this.props.quest.desc}</Text>
-            {(this.props.started)
-                ? <ContinueButton onPress={this.props.onContinueClick} />
-                : <StartButton onPress={this.props.onStartClick} />
-            }
+            <QuestButtonBlock
+              isStarted={this.props.started}
+              isPurchased={this.props.purchased}
+              isDownloading={this.props.downloading}
+              onStart={this.props.onStartClick}
+              onContinue={this.props.onContinueClick}
+              onPurchase={this.props.onPurchaseClick}
+            />
           </View>
         </Content>
       </Container>

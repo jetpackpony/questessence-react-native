@@ -33,17 +33,53 @@ const getNextQuestionId = (quest, newProgress) => {
 };
 
 export function QuestessenceReducer(state = initialState, action) {
+  let quest;
   if (action.questId) {
-    const quest = state.entities.quests.byId[action.questId];
+    quest = state.entities.quests.byId[action.questId];
   }
 
   switch (action.type) {
+    case 'DOWNLOADING_QUEST_START':
+      return {
+        ...state,
+        progress: {
+          ...state.progress,
+          [quest.id]: {
+            questState: QuestStates.DOWNLOADING
+          }
+        }
+      };
+    case 'DOWNLOADING_QUEST_SUCCESS':
+      const questions = action.questions;
+      const ids = Object.keys(questions);
+      return {
+        ...state,
+        entities: {
+          ...state.entities,
+          questions: {
+            ...state.entities.questions,
+            byId: {
+              ...state.entities.questions.byId,
+              ...questions
+            },
+            allIds: state.entities.questions.allIds.concat(ids)
+          }
+
+        },
+        progress: {
+          ...state.progress,
+          [quest.id]: {
+            questState: QuestStates.NOT_STARTED
+          }
+        }
+      };
     case 'START_QUEST':
       return {
         ...state,
         progress: {
           ...state.progress,
           [quest.id]: {
+            ...state.progress[quest.id],
             questState: QuestStates.IN_PROGRESS,
             currentQuestion: quest.questionsInOrder[0],
             currentAnswer: "",

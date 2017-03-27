@@ -28,7 +28,7 @@ const store = createStore(
   )
 );
 persistStore(store, {storage: AsyncStorage});
-Database.loadQuests((quests) => {
+Database.listenToQuests((quests) => {
   store.dispatch(updateQuestList(quests))
 });
 
