@@ -9,10 +9,10 @@ firebase.database.enableLogging(function(message) {
   console.log("[FIREBASE]", message);
 });
 
-const loadQuests = (callback) => {
+const listenToQuests = (callback) => {
   firebase.database().ref('quests').on('value', (snapshot) => {
     callback(snapshot.val());
   });
 };
 
-export default { loadQuests };
+export default { listenToQuests };
