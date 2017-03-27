@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="result"></div>
+<script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBxWC7Qxzrkak8oT3IEes_rOtiKB7lVAZk",
+    authDomain: "questessence-a486c.firebaseapp.com",
+    databaseURL: "https://questessence-a486c.firebaseio.com",
+    storageBucket: "questessence-a486c.appspot.com",
+    messagingSenderId: "324917358942"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+
+function printResult(res) {
+  let pre = document.createElement('pre');
+  pre.innerText = res;
+  document.getElementById('result').appendChild(pre);
+}
+
+/*
+firebase.database().ref('quests').on('value', (snapshot) => {
+  printResult(JSON.stringify(snapshot.val(), null, 2));
+});
+*/
+firebase.database()
+  .ref('questions/byId')
+  .orderByChild('quest')
+  .equalTo('quest1')
+  .once('value')
+  .then((snapshot) => snapshot.val())
+  .then((questions) => {
+    printResult(JSON.stringify(questions, null, 2));
+  });
+
+</script>
+</body>
+</html>
