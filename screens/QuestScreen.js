@@ -7,7 +7,7 @@ import QuestImageWithTitle from '../components/QuestImageWithTitle';
 import QuestButtonBlock from '../components/QuestButtonBlock';
 import {
   QuestStates, startQuest,
-  purchaseQuest, downloadQuest
+  purchaseQuest, downloadQuest, deleteQuest
 } from '../actions/Actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -38,6 +38,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onDownloadClick: () => {
       dispatch(downloadQuest(questId));
+    },
+    onDelete: () => {
+      dispatch(deleteQuest(questId));
     }
   };
 };
@@ -65,6 +68,13 @@ class QuestScreen extends Component {
               onPurchase={this.props.onPurchaseClick}
               onDownload={this.props.onDownloadClick}
             />
+            {(this.props.progress)
+                ? (
+                  <Button block danger style={{ margin: 10 }} onPress={this.props.onDelete}>
+                    <Text>Удалить</Text>
+                  </Button>
+                )
+                : null}
           </View>
         </Content>
       </Container>

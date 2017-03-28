@@ -39,6 +39,10 @@ export function QuestessenceReducer(state = initialState, action) {
   }
 
   switch (action.type) {
+    case 'DELETE_QUEST':
+      let res = { ...state };
+      delete res.progress[quest.id]
+      return res;
     case 'PURCHASE_QUEST_SUCCESS':
       return {
         ...state,

@@ -69,3 +69,7 @@ export function downloadQuest(questId) {
       });
   };
 };
+
+export function deleteQuest(questId) {
+  return { type: 'DELETE_QUEST', questId };
+}
