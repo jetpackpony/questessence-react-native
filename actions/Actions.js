@@ -1,6 +1,6 @@
 import Database from '../database/Database';
 import PurchaseAPI from '../purchaseApi/PurchaseAPI';
-import Config from 'react-native-config';
+import { useDummyGoogleProductID } from '../config';
 
 export const QuestStates = {
   PURCHASED: 'PURCHASED',
@@ -41,7 +41,7 @@ export function purchaseQuest(questId, productId) {
   return (dispatch) => {
     dispatch({ type: 'PURCHASE_QUEST_START', questId, productId });
 
-    if (Config.USE_DUMMY_GOOGLE_PLAY_PODUCTS === "true") {
+    if (useDummyGoogleProductID) {
       productId = "android.test.purchased";
     }
     PurchaseAPI.purchase(productId)
