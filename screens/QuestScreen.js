@@ -33,8 +33,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       nav();
     },
     onContinueClick: nav,
-    onPurchaseClick: () => {
-      dispatch(purchaseQuest(questId));
+    onPurchaseClick: (productId) => {
+      dispatch(purchaseQuest(questId, productId));
     },
     onDownloadClick: () => {
       dispatch(downloadQuest(questId));
@@ -65,7 +65,7 @@ class QuestScreen extends Component {
               progress={this.props.progress}
               onStart={this.props.onStartClick}
               onContinue={this.props.onContinueClick}
-              onPurchase={this.props.onPurchaseClick}
+              onPurchase={() => this.props.onPurchaseClick(this.props.quest.googlePlayProductId)}
               onDownload={this.props.onDownloadClick}
             />
             {(this.props.progress)
