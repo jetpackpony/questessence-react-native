@@ -1,0 +1,2 @@
+#!/bin/sh
+react-native run-android --variant Release

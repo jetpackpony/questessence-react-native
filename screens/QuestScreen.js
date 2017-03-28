@@ -5,16 +5,17 @@ import { connect } from 'react-redux';
 
 import QuestImageWithTitle from '../components/QuestImageWithTitle';
 import QuestButtonBlock from '../components/QuestButtonBlock';
-import { QuestStates, startQuest, downloadQuest } from '../actions/Actions';
+import {
+  QuestStates, startQuest,
+  purchaseQuest, downloadQuest, deleteQuest
+} from '../actions/Actions';
 
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
   const progress = state.progress[questId];
   return {
     quest: state.entities.quests.byId[questId],
-    purchased: progress,
-    started: progress && progress.questState === QuestStates.IN_PROGRESS,
-    downloading: progress && progress.questState === QuestStates.DOWNLOADING
+    progress,
   };
 };
 
@@ -32,8 +33,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       nav();
     },
     onContinueClick: nav,
-    onPurchaseClick: () => {
+    onPurchaseClick: (productId) => {
+      dispatch(purchaseQuest(questId, productId));
+    },
+    onDownloadClick: () => {
       dispatch(downloadQuest(questId));
+    },
+    onDelete: () => {
+      dispatch(deleteQuest(questId));
     }
   };
 };
@@ -55,13 +62,19 @@ class QuestScreen extends Component {
           <View style={styles.descriptionContainer}>
             <Text>{this.props.quest.desc}</Text>
             <QuestButtonBlock
-              isStarted={this.props.started}
-              isPurchased={this.props.purchased}
-              isDownloading={this.props.downloading}
+              progress={this.props.progress}
               onStart={this.props.onStartClick}
               onContinue={this.props.onContinueClick}
-              onPurchase={this.props.onPurchaseClick}
+              onPurchase={() => this.props.onPurchaseClick(this.props.quest.googlePlayProductId)}
+              onDownload={this.props.onDownloadClick}
             />
+            {(this.props.progress)
+                ? (
+                  <Button block danger style={{ margin: 10 }} onPress={this.props.onDelete}>
+                    <Text>Удалить</Text>
+                  </Button>
+                )
+                : null}
           </View>
         </Content>
       </Container>
