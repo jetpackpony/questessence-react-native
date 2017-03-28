@@ -39,6 +39,16 @@ export function QuestessenceReducer(state = initialState, action) {
   }
 
   switch (action.type) {
+    case 'PURCHASE_QUEST_SUCCESS':
+      return {
+        ...state,
+        progress: {
+          ...state.progress,
+          [quest.id]: {
+            questState: QuestStates.PURCHASED
+          }
+        }
+      };
     case 'DOWNLOADING_QUEST_START':
       return {
         ...state,

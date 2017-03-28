@@ -1,6 +1,9 @@
 import Database from '../database/Database';
+import PurchaseAPI from '../purchaseApi/PurchaseAPI';
+import Config from 'react-native-config';
 
 export const QuestStates = {
+  PURCHASED: 'PURCHASED',
   DOWNLOADING: 'DOWNLOADING',
   NOT_STARTED: 'NOT_STARTED',
   IN_PROGRESS: 'IN_PROGRESS',
@@ -33,6 +36,27 @@ export function goToNextQuestion(questId) {
 export function updateQuestList(quests) {
   return { type: 'UPDATE_QUEST_LIST', quests };
 };
+
+export function purchaseQuest(questId, productId) {
+  return (dispatch) => {
+    dispatch({ type: 'PURCHASE_QUEST_START', questId, productId });
+
+    if (Config.USE_DUMMY_GOOGLE_PLAY_PODUCTS === "true") {
+      productId = "android.test.purchased";
+    }
+    PurchaseAPI.purchase(productId)
+      .then((res) => {
+        console.log('You purchased: ', res);
+        return PurchaseAPI.consume(productId);
+      })
+      .then(() => {
+        dispatch({ type: 'PURCHASE_QUEST_SUCCESS', questId, productId });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+}
 
 export function downloadQuest(questId) {
   return (dispatch) => {
