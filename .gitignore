@@ -54,3 +54,4 @@ fastlane/screenshots
 
 # Some api keys and such
 config.js
+.env
