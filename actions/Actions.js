@@ -2,6 +2,8 @@ import Database from '../database/Database';
 import PurchaseAPI from '../purchaseApi/PurchaseAPI';
 import { useDummyGoogleProductID } from '../config';
 
+import { AccessToken } from 'react-native-fbsdk';
+
 export const QuestStates = {
   PURCHASED: 'PURCHASED',
   DOWNLOADING: 'DOWNLOADING',
@@ -88,4 +90,35 @@ export function downloadQuestSuccess(questId, questions) {
 
 export function deleteQuest(questId) {
   return { type: 'DELETE_QUEST', questId };
+}
+
+export function loginFacebook(error, result) {
+  return (dispatch) => {
+    if (error) {
+      console.log("login has error: " + result.error);
+    } else if (result.isCancelled) {
+      console.log("login is cancelled.");
+    } else {
+      AccessToken.getCurrentAccessToken().then(
+        (data) => {
+          console.log("access token: ", data.accessToken.toString())
+          dispatch(loginSuccess());
+        }
+      )
+    }
+  };
+}
+
+export function logoutFacebook() {
+  return (dispatch) => {
+    dispatch(logoutSuccess());
+  };
+}
+
+export function loginSuccess() {
+  return { type: 'LOGIN' };
+}
+
+export function logoutSuccess() {
+  return { type: 'LOGOUT' };
 }

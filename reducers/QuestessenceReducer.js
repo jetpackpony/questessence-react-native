@@ -8,6 +8,7 @@ import answerQuestion from './answerQuestion';
 import showCorrectAnswer from './showCorrectAnswer';
 import goToNextQuestion from './goToNextQuestion';
 import updateQuestList from './updateQuestList';
+import { login, logout } from './login';
 
 const initialState = {
   entities: {
@@ -34,6 +35,8 @@ export function QuestessenceReducer(state = initialState, action) {
     case 'SHOW_CORRECT_ANSWER': return showCorrectAnswer(state, action);
     case 'GOTO_NEXT_QUESTION': return goToNextQuestion(state, action);
     case 'UPDATE_QUEST_LIST': return updateQuestList(state, action);
+    case 'LOGIN': return login(state, action);
+    case 'LOGOUT': return logout(state, action);
     default: return state;
   }
 };

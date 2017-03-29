@@ -2,6 +2,9 @@ import { QuestStates, QuestionStates } from '../../actions/Actions';
 
 const DummyData = () => {
   return {
+    user: {
+      isLoggedIn: false
+    },
     entities: {
       quests: {
         byId: {
