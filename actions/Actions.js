@@ -39,7 +39,7 @@ export function updateQuestList(quests) {
 
 export function purchaseQuest(questId, productId) {
   return (dispatch) => {
-    dispatch({ type: 'PURCHASE_QUEST_START', questId, productId });
+    dispatch(purchaseQuestStart(questId, productId));
 
     if (useDummyGoogleProductID) {
       productId = "android.test.purchased";
@@ -50,7 +50,7 @@ export function purchaseQuest(questId, productId) {
         return PurchaseAPI.consume(productId);
       })
       .then(() => {
-        dispatch({ type: 'PURCHASE_QUEST_SUCCESS', questId, productId });
+        dispatch(purchaseQuestSuccess(questId, productId));
       })
       .catch((err) => {
         console.log(err);
@@ -58,17 +58,33 @@ export function purchaseQuest(questId, productId) {
   };
 }
 
+export function purchaseQuestStart(questId, productId) {
+  return { type: 'PURCHASE_QUEST_START', questId, productId };
+}
+
+export function purchaseQuestSuccess(questId, productId) {
+  return { type: 'PURCHASE_QUEST_SUCCESS', questId, productId };
+}
+
 export function downloadQuest(questId) {
   return (dispatch) => {
-    dispatch({ type: 'DOWNLOADING_QUEST_START', questId });
+    dispatch(downloadQuestStart(questId));
 
     Database
       .downloadQuestions(questId)
       .then((questions) => {
-        dispatch({ type: 'DOWNLOADING_QUEST_SUCCESS', questId, questions });
+        dispatch(downloadQuestSuccess(questId, questions));
       });
   };
 };
+
+export function downloadQuestStart(questId) {
+  return { type: 'DOWNLOADING_QUEST_START', questId };
+}
+
+export function downloadQuestSuccess(questId, questions) {
+  return { type: 'DOWNLOADING_QUEST_SUCCESS', questId, questions };
+}
 
 export function deleteQuest(questId) {
   return { type: 'DELETE_QUEST', questId };

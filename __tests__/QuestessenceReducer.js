@@ -1,9 +1,10 @@
 import { QuestessenceReducer } from '../reducers/QuestessenceReducer';
 import {
-  startQuest,
-  answerQuestion,
-  showCorrectAnswer,
-  goToNextQuestion
+  startQuest, answerQuestion,
+  showCorrectAnswer, goToNextQuestion,
+  updateQuestList, deleteQuest,
+  purchaseQuestSuccess, downloadQuestStart,
+  downloadQuestSuccess
 } from '../actions/Actions.js';
 import { QuestStates, QuestionStates } from '../actions/Actions';
 import DummyData from './__helpers__/DummyData';
@@ -70,5 +71,59 @@ it('processes GOTO_NEXT_QUESTION action when it is the last question', () => {
 
   expect(
     QuestessenceReducer(state, goToNextQuestion("quest0"))
+  ).toMatchSnapshot();
+});
+
+it('processes UPDATE_QUEST_LIST action', () => {
+  let state = DummyData();
+  let newQuests = {
+    ...state.entities.quests,
+    byId: {
+      ...state.entities.quests.byId,
+      "quest333": {
+        "id": "quest333"
+      }
+    },
+    allIds: [
+      ...state.entities.quests.allIds,
+      "quest333"
+    ]
+  };
+  expect(
+    QuestessenceReducer(state, updateQuestList(newQuests))
+  ).toMatchSnapshot();
+});
+
+it('processes DELETE_QUEST action', () => {
+  let state = DummyData();
+  state.progress["quest0"] = DummyQuestProgress();
+
+  expect(
+    QuestessenceReducer(state, deleteQuest("quest0"))
+  ).toMatchSnapshot();
+});
+
+it('processes PURCHASE_QUEST_SUCCESS action', () => {
+  expect(
+    QuestessenceReducer(DummyData(), purchaseQuestSuccess("quest0", "test_quest_0"))
+  ).toMatchSnapshot();
+});
+
+it('processes DOWNLOADING_QUEST_START action', () => {
+  expect(
+    QuestessenceReducer(DummyData(), downloadQuestStart("quest0"))
+  ).toMatchSnapshot();
+});
+
+it('processes DOWNLOADING_QUEST_SUCCESS action', () => {
+  let state = DummyData();
+  let questions = state.entities.questions.byId;
+  state.entities.questions = {
+    byId: {  },
+    allIds: []
+  };
+
+  expect(
+    QuestessenceReducer(state, downloadQuestSuccess("quest0", questions))
   ).toMatchSnapshot();
 });

@@ -128,6 +128,185 @@ Object {
 }
 `;
 
+exports[`processes DELETE_QUEST action 1`] = `
+Object {
+  "entities": Object {
+    "questions": Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "id": "question0",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        "question1": Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько часов в сутках?",
+        },
+      },
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
+  },
+  "progress": Object {},
+}
+`;
+
+exports[`processes DOWNLOADING_QUEST_START action 1`] = `
+Object {
+  "entities": Object {
+    "questions": Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "id": "question0",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        "question1": Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько часов в сутках?",
+        },
+      },
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
+  },
+  "progress": Object {
+    "quest0": Object {
+      "questState": "DOWNLOADING",
+    },
+  },
+}
+`;
+
+exports[`processes DOWNLOADING_QUEST_SUCCESS action 1`] = `
+Object {
+  "entities": Object {
+    "questions": Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "id": "question0",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        "question1": Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько часов в сутках?",
+        },
+      },
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
+  },
+  "progress": Object {
+    "quest0": Object {
+      "questState": "NOT_STARTED",
+    },
+  },
+}
+`;
+
 exports[`processes GOTO_NEXT_QUESTION action when it is the last question 1`] = `
 Object {
   "entities": Object {
@@ -251,6 +430,67 @@ Object {
       "currentQuestion": "question1",
       "currentQuestionState": "UNANSWERED",
       "questState": "IN_PROGRESS",
+    },
+  },
+}
+`;
+
+exports[`processes PURCHASE_QUEST_SUCCESS action 1`] = `
+Object {
+  "entities": Object {
+    "questions": Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "id": "question0",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        "question1": Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько часов в сутках?",
+        },
+      },
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+      },
+    },
+  },
+  "progress": Object {
+    "quest0": Object {
+      "questState": "PURCHASED",
     },
   },
 }
@@ -381,5 +621,66 @@ Object {
       "questState": "IN_PROGRESS",
     },
   },
+}
+`;
+
+exports[`processes UPDATE_QUEST_LIST action 1`] = `
+Object {
+  "entities": Object {
+    "questions": Object {
+      "allIds": Array [
+        "question0",
+        "question1",
+      ],
+      "byId": Object {
+        "question0": Object {
+          "answer": "8",
+          "answerDesc": "Потому что Плутон больше не планета",
+          "desc": "На этом месте будет описание ",
+          "id": "question0",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько планет в солнечной системе?",
+        },
+        "question1": Object {
+          "answer": "24",
+          "answerDesc": "Хотелось бы больше, конечно",
+          "desc": "На этом месте будет описание вопроса",
+          "id": "question1",
+          "media": Object {
+            "type": "image",
+            "uri": "https://",
+          },
+          "quest": "quest0",
+          "questionText": "Сколько часов в сутках?",
+        },
+      },
+    },
+    "quests": Object {
+      "allIds": Array [
+        "quest0",
+        "quest333",
+      ],
+      "byId": Object {
+        "quest0": Object {
+          "cover": "http://...",
+          "desc": "Description",
+          "id": "quest0",
+          "questionsInOrder": Array [
+            "question0",
+            "question1",
+          ],
+          "title": "Test",
+        },
+        "quest333": Object {
+          "id": "quest333",
+        },
+      },
+    },
+  },
+  "progress": Object {},
 }
 `;
