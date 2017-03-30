@@ -117,7 +117,8 @@ export function loginFacebook(error, result) {
 
 export function logoutFacebook() {
   return (dispatch) => {
-    dispatch(logoutSuccess());
+    firebase.auth().signOut()
+      .then(() => dispatch(logoutSuccess()));
   };
 }
 
