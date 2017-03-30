@@ -12,6 +12,7 @@ const FBLoginButton = ({ loginFacebook, logout }) => {
   return (
     <View>
       <LoginButton
+        readPermissions={["email"]}
         onLoginFinished={loginFacebook}
         onLogoutFinished={logout}
       />
