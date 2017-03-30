@@ -54,6 +54,7 @@ export function purchaseQuest(questId, productId) {
       })
       .then(() => {
         dispatch(purchaseQuestSuccess(questId, productId));
+        dispatch(showLoginModal());
       })
       .catch((err) => {
         console.log(err);
@@ -138,10 +139,22 @@ export function logout() {
   };
 }
 
+export function loginStart() {
+  return { type: 'LOGIN_START' };
+}
+
 export function loginSuccess() {
-  return { type: 'LOGIN' };
+  return { type: 'LOGIN_SUCCESS' };
 }
 
 export function logoutSuccess() {
   return { type: 'LOGOUT' };
+}
+
+export function showLoginModal() {
+  return { type: 'SHOW_LOGIN_MODAL' };
+}
+
+export function hideLoginModal() {
+  return { type: 'HIDE_LOGIN_MODAL' };
 }

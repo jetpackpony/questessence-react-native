@@ -8,7 +8,10 @@ import answerQuestion from './answerQuestion';
 import showCorrectAnswer from './showCorrectAnswer';
 import goToNextQuestion from './goToNextQuestion';
 import updateQuestList from './updateQuestList';
-import { login, logout } from './login';
+import {
+  loginSuccess, logout, loginStart,
+  showLoginModal, hideLoginModal
+} from './login';
 
 const initialState = {
   entities: {
@@ -24,7 +27,9 @@ const initialState = {
   progress: {},
   user: {
     "isLoggedIn": false
-  }
+  },
+  isLoginModalShown: false,
+  isLoggingInSpinnerShown: false
 };
 
 export function QuestessenceReducer(state = initialState, action) {
@@ -38,8 +43,11 @@ export function QuestessenceReducer(state = initialState, action) {
     case 'SHOW_CORRECT_ANSWER': return showCorrectAnswer(state, action);
     case 'GOTO_NEXT_QUESTION': return goToNextQuestion(state, action);
     case 'UPDATE_QUEST_LIST': return updateQuestList(state, action);
-    case 'LOGIN': return login(state, action);
+    case 'LOGIN_SUCCESS': return loginSuccess(state, action);
+    case 'LOGIN_START': return loginStart(state, action);
     case 'LOGOUT': return logout(state, action);
+    case 'SHOW_LOGIN_MODAL': return showLoginModal(state, action);
+    case 'HIDE_LOGIN_MODAL': return hideLoginModal(state, action);
     default: return state;
   }
 };

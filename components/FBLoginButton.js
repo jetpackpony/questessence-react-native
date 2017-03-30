@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import { connect } from 'react-redux';
-import { loginFacebook, logout } from '../actions/Actions';
+import { loginFacebook, logout, loginStart } from '../actions/Actions';
 
-const mapDispatchToProps = {
-  loginFacebook, logout
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginFacebook: (error, result) => {
+      dispatch(loginStart());
+      dispatch(loginFacebook(error, result));
+    },
+    logout: () => dispatch(logout())
+  };
 };
 
 const FBLoginButton = ({ loginFacebook, logout }) => {
