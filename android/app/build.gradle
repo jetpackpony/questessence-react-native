@@ -85,7 +85,7 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.questessence"
@@ -139,6 +139,8 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-device-info')
+    compile project(':react-native-fbsdk')
     compile project(':react-native-config')
     compile project(':react-native-billing')
     compile fileTree(dir: "libs", include: ["*.jar"])

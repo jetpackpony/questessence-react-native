@@ -9,7 +9,7 @@ import PurchaseButton from '../components/PurchaseButton';
 import { QuestStates } from '../actions/Actions';
 
 const QuestButtonBlock = ({
-  progress,
+  progress, isPurchasingSpinnerShown,
   onStart, onContinue, onPurchase, onDownload
 }) => {
   if (progress) {
@@ -33,7 +33,15 @@ const QuestButtonBlock = ({
         return (<ContinueButton onPress={onContinue} />);
     }
   } else {
-    return (<PurchaseButton onPress={onPurchase} />);
+    if (isPurchasingSpinnerShown) {
+      return (
+        <Button block disabled style={{ margin: 10 }}>
+          <Text>Подождите...</Text>
+        </Button>
+      );
+    } else {
+      return (<PurchaseButton onPress={onPurchase} />);
+    }
   }
 };
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Modal, Text, View, StyleSheet } from 'react-native';
 import { Container, Content, Button } from 'native-base';
 import { connect } from 'react-redux';
 
@@ -7,8 +7,10 @@ import QuestImageWithTitle from '../components/QuestImageWithTitle';
 import QuestButtonBlock from '../components/QuestButtonBlock';
 import {
   QuestStates, startQuest,
-  purchaseQuest, downloadQuest, deleteQuest
+  purchaseQuest, downloadQuest, deleteQuest,
+  hideLoginModal
 } from '../actions/Actions';
+import FBLoginButton from '../components/FBLoginButton';
 
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
@@ -16,6 +18,9 @@ const mapStateToProps = (state, ownProps) => {
   return {
     quest: state.entities.quests.byId[questId],
     progress,
+    isPurchasingSpinnerShown: state.isPurchasingSpinnerShown,
+    isLoginModalShown: state.isLoginModalShown,
+    isLoggingInSpinnerShown: state.isLoggingInSpinnerShown
   };
 };
 
@@ -41,6 +46,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onDelete: () => {
       dispatch(deleteQuest(questId));
+    },
+    hideLoginModal: () => {
+      dispatch(hideLoginModal());
     }
   };
 };
@@ -53,6 +61,28 @@ class QuestScreen extends Component {
     return (
       <Container>
         <Content>
+          <Modal
+            animationType={"slide"}
+            transparent={false}
+            visible={this.props.isLoginModalShown}
+            onRequestClose={this.props.hideLoginModal}>
+            <Text>Зарегистрируйтесь, чтобы сохранять купленные квесты и прогресс в ваших квестах.</Text>
+            {(this.props.isLoggingInSpinnerShown)
+                ? (
+                  <Button disabled ><Text>Подождите...</Text></Button>
+                )
+                : (
+                  <View>
+                    <FBLoginButton />
+                    <Button onPress={this.props.hideLoginModal}>
+                      <Text>
+                        Не сейчас
+                      </Text>
+                    </Button>
+                  </View>
+                )
+            }
+          </Modal>
           <View style={styles.coverContainer}>
             <QuestImageWithTitle
               img={this.props.quest.cover}
@@ -63,6 +93,7 @@ class QuestScreen extends Component {
             <Text>{this.props.quest.desc}</Text>
             <QuestButtonBlock
               progress={this.props.progress}
+              isPurchasingSpinnerShown={this.props.isPurchasingSpinnerShown}
               onStart={this.props.onStartClick}
               onContinue={this.props.onContinueClick}
               onPurchase={() => this.props.onPurchaseClick(this.props.quest.googlePlayProductId)}

@@ -2,6 +2,9 @@ import Database from '../database/Database';
 import PurchaseAPI from '../purchaseApi/PurchaseAPI';
 import { useDummyGoogleProductID } from '../config';
 
+import { AccessToken } from 'react-native-fbsdk';
+import firebase from '../database/firebase';
+
 export const QuestStates = {
   PURCHASED: 'PURCHASED',
   DOWNLOADING: 'DOWNLOADING',
@@ -51,6 +54,7 @@ export function purchaseQuest(questId, productId) {
       })
       .then(() => {
         dispatch(purchaseQuestSuccess(questId, productId));
+        dispatch(showLoginModal());
       })
       .catch((err) => {
         console.log(err);
@@ -88,4 +92,69 @@ export function downloadQuestSuccess(questId, questions) {
 
 export function deleteQuest(questId) {
   return { type: 'DELETE_QUEST', questId };
+}
+
+export function loginFacebook(error, result) {
+  return (dispatch) => {
+    if (error) {
+      console.log("login has error: ", error);
+    } else if (result.isCancelled) {
+      console.log("login is cancelled.", result);
+    } else {
+      dispatch(loginFirebaseFacebook());
+    }
+  };
+}
+
+export function loginFirebaseFacebook() {
+  return (dispatch) => {
+    AccessToken.refreshCurrentAccessTokenAsync()
+      .then((userData) => {
+        let credential = firebase.auth.FacebookAuthProvider.credential(userData.accessToken.toString());
+        firebase.auth().signInWithCredential(credential)
+          .then(() => {
+            dispatch(loginSuccess());
+          })
+          .catch(() => {
+            console.log('FIREBASE ERROR: ', error);
+          });
+      })
+      .catch((error) => {
+        // If there is not token, logout from firebase
+        dispatch(logout());
+      });
+  };
+}
+
+export function restoreLogin() {
+  return (dispatch) => {
+    dispatch(loginFirebaseFacebook());
+  };
+}
+
+export function logout() {
+  return (dispatch) => {
+    firebase.auth().signOut()
+      .then(() => dispatch(logoutSuccess()));
+  };
+}
+
+export function loginStart() {
+  return { type: 'LOGIN_START' };
+}
+
+export function loginSuccess() {
+  return { type: 'LOGIN_SUCCESS' };
+}
+
+export function logoutSuccess() {
+  return { type: 'LOGOUT' };
+}
+
+export function showLoginModal() {
+  return { type: 'SHOW_LOGIN_MODAL' };
+}
+
+export function hideLoginModal() {
+  return { type: 'HIDE_LOGIN_MODAL' };
 }
