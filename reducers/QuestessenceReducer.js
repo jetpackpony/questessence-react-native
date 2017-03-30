@@ -21,7 +21,10 @@ const initialState = {
       "allIds": [ ]
     }
   },
-  progress: {}
+  progress: {},
+  user: {
+    "isLoggedIn": false
+  }
 };
 
 export function QuestessenceReducer(state = initialState, action) {
