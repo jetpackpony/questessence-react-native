@@ -7,6 +7,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.idehub.Billing.InAppBillingBridgePackage;
 import com.facebook.react.ReactNativeHost;
@@ -35,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNDeviceInfo(),
             new FBSDKPackage(mCallbackManager),
             new ReactNativeConfigPackage(),
           new InAppBillingBridgePackage(BuildConfig.GOOGLE_PLAY_LICESE_KEY)
