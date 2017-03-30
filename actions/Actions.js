@@ -3,6 +3,7 @@ import PurchaseAPI from '../purchaseApi/PurchaseAPI';
 import { useDummyGoogleProductID } from '../config';
 
 import { AccessToken } from 'react-native-fbsdk';
+import firebase from '../database/firebase';
 
 export const QuestStates = {
   PURCHASED: 'PURCHASED',
@@ -99,12 +100,17 @@ export function loginFacebook(error, result) {
     } else if (result.isCancelled) {
       console.log("login is cancelled.");
     } else {
-      AccessToken.getCurrentAccessToken().then(
-        (data) => {
-          console.log("access token: ", data.accessToken.toString())
+      AccessToken.getCurrentAccessToken()
+        .then((data) => {
+          let credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken.toString());
+          return firebase.auth().signInWithCredential(credential);
+        })
+        .then(() => {
           dispatch(loginSuccess());
-        }
-      )
+        })
+        .catch((error) => {
+          console.log('ERROR: ', error);
+        })
     }
   };
 }
