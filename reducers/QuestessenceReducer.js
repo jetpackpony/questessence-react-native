@@ -28,7 +28,8 @@ const initialState = {
   },
   progress: {},
   user: {
-    "isLoggedIn": false
+    "isLoggedIn": false,
+    "uid": null
   },
   isLoginModalShown: false,
   isLoggingInSpinnerShown: false,

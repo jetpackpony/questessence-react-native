@@ -113,7 +113,7 @@ export function loginFirebaseFacebook() {
         let credential = firebase.auth.FacebookAuthProvider.credential(userData.accessToken.toString());
         firebase.auth().signInWithCredential(credential)
           .then(() => {
-            dispatch(loginSuccess());
+            dispatch(loginSuccess(firebase.auth().currentUser));
           })
           .catch(() => {
             console.log('FIREBASE ERROR: ', error);
@@ -143,8 +143,8 @@ export function loginStart() {
   return { type: 'LOGIN_START' };
 }
 
-export function loginSuccess() {
-  return { type: 'LOGIN_SUCCESS' };
+export function loginSuccess(user) {
+  return { type: 'LOGIN_SUCCESS', user };
 }
 
 export function logoutSuccess() {
