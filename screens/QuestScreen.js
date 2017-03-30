@@ -18,6 +18,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     quest: state.entities.quests.byId[questId],
     progress,
+    isPurchasingSpinnerShown: state.isPurchasingSpinnerShown,
     isLoginModalShown: state.isLoginModalShown,
     isLoggingInSpinnerShown: state.isLoggingInSpinnerShown
   };
@@ -92,6 +93,7 @@ class QuestScreen extends Component {
             <Text>{this.props.quest.desc}</Text>
             <QuestButtonBlock
               progress={this.props.progress}
+              isPurchasingSpinnerShown={this.props.isPurchasingSpinnerShown}
               onStart={this.props.onStartClick}
               onContinue={this.props.onContinueClick}
               onPurchase={() => this.props.onPurchaseClick(this.props.quest.googlePlayProductId)}

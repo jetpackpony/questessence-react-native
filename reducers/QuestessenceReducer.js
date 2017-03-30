@@ -1,7 +1,9 @@
 import { QuestStates, QuestionStates } from '../actions/Actions';
 
 import deleteQuest from './deleteQuest';
-import { purchaseQuestSuccess } from './purchaseQuest';
+import {
+  purchaseQuestSuccess, purchaseQuestStart
+} from './purchaseQuest';
 import { downloadQuestStart, downloadQuestSuccess } from './downloadQuest';
 import startQuest from './startQuest';
 import answerQuestion from './answerQuestion';
@@ -29,12 +31,14 @@ const initialState = {
     "isLoggedIn": false
   },
   isLoginModalShown: false,
-  isLoggingInSpinnerShown: false
+  isLoggingInSpinnerShown: false,
+  isPurchasingSpinnerShown: false
 };
 
 export function QuestessenceReducer(state = initialState, action) {
   switch (action.type) {
     case 'DELETE_QUEST': return deleteQuest(state, action);
+    case 'PURCHASE_QUEST_START': return purchaseQuestStart(state, action);
     case 'PURCHASE_QUEST_SUCCESS': return purchaseQuestSuccess(state, action);
     case 'DOWNLOADING_QUEST_START': return downloadQuestStart(state, action);
     case 'DOWNLOADING_QUEST_SUCCESS': return downloadQuestSuccess(state, action);

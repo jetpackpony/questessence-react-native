@@ -8,6 +8,14 @@ export const purchaseQuestSuccess = (state, action) => {
       [action.questId]: {
         questState: QuestStates.PURCHASED
       }
-    }
+    },
+    isPurchasingSpinnerShown: false
+  };
+};
+
+export const purchaseQuestStart = (state, action) => {
+  return {
+    ...state,
+    isPurchasingSpinnerShown: true
   };
 };
