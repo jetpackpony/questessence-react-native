@@ -96,26 +96,42 @@ export function deleteQuest(questId) {
 export function loginFacebook(error, result) {
   return (dispatch) => {
     if (error) {
-      console.log("login has error: " + result.error);
+      console.log("login has error: ", error);
     } else if (result.isCancelled) {
-      console.log("login is cancelled.");
+      console.log("login is cancelled.", result);
     } else {
-      AccessToken.getCurrentAccessToken()
-        .then((data) => {
-          let credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken.toString());
-          return firebase.auth().signInWithCredential(credential);
-        })
-        .then(() => {
-          dispatch(loginSuccess());
-        })
-        .catch((error) => {
-          console.log('ERROR: ', error);
-        })
+      dispatch(loginFirebaseFacebook());
     }
   };
 }
 
-export function logoutFacebook() {
+export function loginFirebaseFacebook() {
+  return (dispatch) => {
+    AccessToken.refreshCurrentAccessTokenAsync()
+      .then((userData) => {
+        let credential = firebase.auth.FacebookAuthProvider.credential(userData.accessToken.toString());
+        firebase.auth().signInWithCredential(credential)
+          .then(() => {
+            dispatch(loginSuccess());
+          })
+          .catch(() => {
+            console.log('FIREBASE ERROR: ', error);
+          });
+      })
+      .catch((error) => {
+        // If there is not token, logout from firebase
+        dispatch(logout());
+      });
+  };
+}
+
+export function restoreLogin() {
+  return (dispatch) => {
+    dispatch(loginFirebaseFacebook());
+  };
+}
+
+export function logout() {
   return (dispatch) => {
     firebase.auth().signOut()
       .then(() => dispatch(logoutSuccess()));

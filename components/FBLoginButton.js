@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import { connect } from 'react-redux';
-import { loginFacebook, logoutFacebook } from '../actions/Actions';
+import { loginFacebook, logout } from '../actions/Actions';
 
 const mapDispatchToProps = {
-  loginFacebook, logoutFacebook
+  loginFacebook, logout
 };
 
-const FBLoginButton = ({ loginFacebook, logoutFacebook }) => {
+const FBLoginButton = ({ loginFacebook, logout }) => {
   return (
     <View>
       <LoginButton
         onLoginFinished={loginFacebook}
-        onLogoutFinished={logoutFacebook}
+        onLogoutFinished={logout}
       />
     </View>
   );

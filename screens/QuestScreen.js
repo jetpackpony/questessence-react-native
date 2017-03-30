@@ -9,6 +9,7 @@ import {
   QuestStates, startQuest,
   purchaseQuest, downloadQuest, deleteQuest
 } from '../actions/Actions';
+import FBLoginButton from '../components/FBLoginButton';
 
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
@@ -76,6 +77,7 @@ class QuestScreen extends Component {
                 )
                 : null}
           </View>
+          <FBLoginButton />
         </Content>
       </Container>
     );
