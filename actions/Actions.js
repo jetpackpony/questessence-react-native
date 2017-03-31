@@ -120,6 +120,7 @@ export function loginFirebaseFacebook() {
         firebase.auth().signInWithCredential(credential)
           .then(() => {
             dispatch(loginSuccess(firebase.auth().currentUser));
+            dispatch(syncProgress());
           })
           .catch(() => {
             console.log('FIREBASE ERROR: ', error);
@@ -163,4 +164,18 @@ export function showLoginModal() {
 
 export function hideLoginModal() {
   return { type: 'HIDE_LOGIN_MODAL' };
+}
+
+export function syncProgress() {
+  return (dispatch, getState) => {
+    Database
+      .syncQuestsProgress(getState().user.uid, getState().progress)
+      .then((newProgress) => {
+        dispatch(syncProgressSuccess(newProgress));
+      });
+  };
+}
+
+export function syncProgressSuccess(newProgress) {
+  return { type: 'SYNC_PROGRESS_SUCCESS', newProgress };
 }

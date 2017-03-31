@@ -14,6 +14,7 @@ import {
   loginSuccess, logout, loginStart,
   showLoginModal, hideLoginModal
 } from './login';
+import { syncProgressSuccess }from './syncProgress';
 
 const initialState = {
   entities: {
@@ -53,6 +54,7 @@ const reduceState = (state = initialState, action) => {
     case 'LOGOUT': return logout(state, action);
     case 'SHOW_LOGIN_MODAL': return showLoginModal(state, action);
     case 'HIDE_LOGIN_MODAL': return hideLoginModal(state, action);
+    case 'SYNC_PROGRESS_SUCCESS': return syncProgressSuccess(state, action);
     default: return state;
   }
 };

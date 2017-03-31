@@ -14,6 +14,7 @@ import { QuestessenceReducer } from './reducers/QuestessenceReducer.js';
 import { updateQuestList, restoreLogin } from './actions/Actions';
 import Database from './database/Database';
 import addTimeStamp from './middleware/AddTimeStamp';
+import syncStorageWithFirebase from './middleware/SyncStorageWithFirebase';
 
 const QuestEssenceNavigator = StackNavigator({
   Home: { screen: HomeScreen },
@@ -25,7 +26,11 @@ const store = createStore(
   QuestessenceReducer,
   compose(
     autoRehydrate(),
-    applyMiddleware(thunk, addTimeStamp, logger)
+    applyMiddleware(
+      thunk, addTimeStamp,
+      /* These middleware have to be at the end */
+      syncStorageWithFirebase, logger
+    )
   )
 );
 Database.listenToQuests((quests) => {
