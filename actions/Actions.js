@@ -21,19 +21,25 @@ export const QuestionStates = {
 };
 
 export function startQuest(questId) {
-  return { type: 'START_QUEST', questId };
+  return { type: 'START_QUEST', questId, updatingProgress: true };
 };
 
 export function answerQuestion(questId, questionId, answer) {
-  return { type: 'ANSWER_QUESTION', questId, questionId, answer };
+  return {
+    type: 'ANSWER_QUESTION',
+    questId,
+    questionId,
+    answer,
+    updatingProgress: true
+  };
 };
 
 export function showCorrectAnswer(questId) {
-  return { type: 'SHOW_CORRECT_ANSWER', questId };
+  return { type: 'SHOW_CORRECT_ANSWER', questId, updatingProgress: true  };
 };
 
 export function goToNextQuestion(questId) {
-  return { type: 'GOTO_NEXT_QUESTION', questId };
+  return { type: 'GOTO_NEXT_QUESTION', questId, updatingProgress: true  };
 };
 
 export function updateQuestList(quests) {
@@ -67,7 +73,7 @@ export function purchaseQuestStart(questId, productId) {
 }
 
 export function purchaseQuestSuccess(questId, productId) {
-  return { type: 'PURCHASE_QUEST_SUCCESS', questId, productId };
+  return { type: 'PURCHASE_QUEST_SUCCESS', questId, productId, updatingProgress: true };
 }
 
 export function downloadQuest(questId) {
@@ -87,7 +93,7 @@ export function downloadQuestStart(questId) {
 }
 
 export function downloadQuestSuccess(questId, questions) {
-  return { type: 'DOWNLOADING_QUEST_SUCCESS', questId, questions };
+  return { type: 'DOWNLOADING_QUEST_SUCCESS', questId, questions, updatingProgress: true  };
 }
 
 export function deleteQuest(questId) {

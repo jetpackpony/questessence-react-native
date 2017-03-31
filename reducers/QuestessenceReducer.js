@@ -36,7 +36,7 @@ const initialState = {
   isPurchasingSpinnerShown: false
 };
 
-export function QuestessenceReducer(state = initialState, action) {
+const reduceState = (state = initialState, action) => {
   switch (action.type) {
     case 'DELETE_QUEST': return deleteQuest(state, action);
     case 'PURCHASE_QUEST_START': return purchaseQuestStart(state, action);
@@ -55,4 +55,22 @@ export function QuestessenceReducer(state = initialState, action) {
     case 'HIDE_LOGIN_MODAL': return hideLoginModal(state, action);
     default: return state;
   }
+};
+
+const addTimestamp = (state, action) => {
+  if (action.timestamp) {
+    return {
+      ...state,
+      progress: {
+        ...state.progress,
+        timestamp: action.timestamp
+      }
+    };
+  } else {
+    return state;
+  }
+};
+
+export function QuestessenceReducer(state, action) {
+  return addTimestamp(reduceState(state, action), action);
 };
