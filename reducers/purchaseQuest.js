@@ -6,7 +6,7 @@ export const purchaseQuestSuccess = (state, action) => {
     progress: {
       ...state.progress,
       [action.questId]: {
-        questState: QuestStates.PURCHASED
+        questState: QuestStates.NOT_STARTED
       }
     },
     isPurchasingSpinnerShown: false

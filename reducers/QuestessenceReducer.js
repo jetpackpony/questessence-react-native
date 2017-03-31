@@ -32,6 +32,7 @@ const initialState = {
     "isLoggedIn": false,
     "uid": null
   },
+  downloadedQuests: {},
   isLoginModalShown: false,
   isLoggingInSpinnerShown: false,
   isPurchasingSpinnerShown: false

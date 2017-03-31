@@ -7,10 +7,15 @@ import firebase from '../database/firebase';
 
 export const QuestStates = {
   PURCHASED: 'PURCHASED',
-  DOWNLOADING: 'DOWNLOADING',
   NOT_STARTED: 'NOT_STARTED',
   IN_PROGRESS: 'IN_PROGRESS',
   COMPLETED: 'COMPLETED'
+};
+
+export const DownloadStates = {
+  NOT_DOWNLOADED: 'NOT_DOWNLOADED',
+  DOWNLOADING: 'DOWNLOADING',
+  DOWNLOADED: 'DOWNLOADED'
 };
 
 export const QuestionStates = {
