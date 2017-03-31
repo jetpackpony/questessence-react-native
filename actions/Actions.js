@@ -102,7 +102,7 @@ export function downloadQuestSuccess(questId, questions) {
 }
 
 export function deleteQuest(questId) {
-  return { type: 'DELETE_QUEST', questId };
+  return { type: 'DELETE_QUEST', questId, updatingProgress: true };
 }
 
 export function loginFacebook(error, result) {
