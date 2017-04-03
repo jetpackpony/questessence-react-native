@@ -9,7 +9,7 @@ export default (state, action) => {
       ...state.progress,
       [action.questId]: {
         ...state.progress[action.questId],
-        currentAnswer: action.answer,
+        currentAnswer: action.answer || "",
         currentQuestionState: isAnswerCorrect(question, action.answer) ? QuestionStates.CORRECT : QuestionStates.INCORRECT
       }
     }
