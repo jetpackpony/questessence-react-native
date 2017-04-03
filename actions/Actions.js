@@ -61,7 +61,9 @@ export function purchaseQuest(questId, productId) {
     PurchaseAPI.purchase(productId)
       .then((res) => {
         console.log('You purchased: ', res);
-        return PurchaseAPI.consume(productId);
+        if (useDummyGoogleProductID) {
+          return PurchaseAPI.consume(productId);
+        }
       })
       .then(() => {
         dispatch(purchaseQuestSuccess(questId, productId));

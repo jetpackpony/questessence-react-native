@@ -14,6 +14,8 @@ const purchase = (productId) => {
       .then((purchased) => {
         if (!purchased) {
           return InAppBilling.purchase(productId);
+        } else {
+          return true;
         }
       })
       .then((res) => {
