@@ -2,7 +2,8 @@ export const loginSuccess = (state, action) => {
   return {
     ...state,
     user: {
-      isLoggedIn: true
+      isLoggedIn: true,
+      uid: action.user.uid
     },
     isLoginModalShown: false,
     isLoggingInSpinnerShown: false
@@ -20,7 +21,8 @@ export const logout = (state, action) => {
   return {
     ...state,
     user: {
-      isLoggedIn: false
+      isLoggedIn: false,
+      uid: null
     }
   };
 };

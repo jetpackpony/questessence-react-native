@@ -7,10 +7,15 @@ import firebase from '../database/firebase';
 
 export const QuestStates = {
   PURCHASED: 'PURCHASED',
-  DOWNLOADING: 'DOWNLOADING',
   NOT_STARTED: 'NOT_STARTED',
   IN_PROGRESS: 'IN_PROGRESS',
   COMPLETED: 'COMPLETED'
+};
+
+export const DownloadStates = {
+  NOT_DOWNLOADED: 'NOT_DOWNLOADED',
+  DOWNLOADING: 'DOWNLOADING',
+  DOWNLOADED: 'DOWNLOADED'
 };
 
 export const QuestionStates = {
@@ -21,19 +26,25 @@ export const QuestionStates = {
 };
 
 export function startQuest(questId) {
-  return { type: 'START_QUEST', questId };
+  return { type: 'START_QUEST', questId, updatingProgress: true };
 };
 
 export function answerQuestion(questId, questionId, answer) {
-  return { type: 'ANSWER_QUESTION', questId, questionId, answer };
+  return {
+    type: 'ANSWER_QUESTION',
+    questId,
+    questionId,
+    answer,
+    updatingProgress: true
+  };
 };
 
 export function showCorrectAnswer(questId) {
-  return { type: 'SHOW_CORRECT_ANSWER', questId };
+  return { type: 'SHOW_CORRECT_ANSWER', questId, updatingProgress: true  };
 };
 
 export function goToNextQuestion(questId) {
-  return { type: 'GOTO_NEXT_QUESTION', questId };
+  return { type: 'GOTO_NEXT_QUESTION', questId, updatingProgress: true  };
 };
 
 export function updateQuestList(quests) {
@@ -50,7 +61,9 @@ export function purchaseQuest(questId, productId) {
     PurchaseAPI.purchase(productId)
       .then((res) => {
         console.log('You purchased: ', res);
-        return PurchaseAPI.consume(productId);
+        if (useDummyGoogleProductID) {
+          return PurchaseAPI.consume(productId);
+        }
       })
       .then(() => {
         dispatch(purchaseQuestSuccess(questId, productId));
@@ -67,7 +80,7 @@ export function purchaseQuestStart(questId, productId) {
 }
 
 export function purchaseQuestSuccess(questId, productId) {
-  return { type: 'PURCHASE_QUEST_SUCCESS', questId, productId };
+  return { type: 'PURCHASE_QUEST_SUCCESS', questId, productId, updatingProgress: true };
 }
 
 export function downloadQuest(questId) {
@@ -87,11 +100,11 @@ export function downloadQuestStart(questId) {
 }
 
 export function downloadQuestSuccess(questId, questions) {
-  return { type: 'DOWNLOADING_QUEST_SUCCESS', questId, questions };
+  return { type: 'DOWNLOADING_QUEST_SUCCESS', questId, questions, updatingProgress: true  };
 }
 
 export function deleteQuest(questId) {
-  return { type: 'DELETE_QUEST', questId };
+  return { type: 'DELETE_QUEST', questId, updatingProgress: true };
 }
 
 export function loginFacebook(error, result) {
@@ -113,7 +126,8 @@ export function loginFirebaseFacebook() {
         let credential = firebase.auth.FacebookAuthProvider.credential(userData.accessToken.toString());
         firebase.auth().signInWithCredential(credential)
           .then(() => {
-            dispatch(loginSuccess());
+            dispatch(loginSuccess(firebase.auth().currentUser));
+            dispatch(syncProgress());
           })
           .catch(() => {
             console.log('FIREBASE ERROR: ', error);
@@ -143,8 +157,8 @@ export function loginStart() {
   return { type: 'LOGIN_START' };
 }
 
-export function loginSuccess() {
-  return { type: 'LOGIN_SUCCESS' };
+export function loginSuccess(user) {
+  return { type: 'LOGIN_SUCCESS', user };
 }
 
 export function logoutSuccess() {
@@ -157,4 +171,18 @@ export function showLoginModal() {
 
 export function hideLoginModal() {
   return { type: 'HIDE_LOGIN_MODAL' };
+}
+
+export function syncProgress() {
+  return (dispatch, getState) => {
+    Database
+      .syncQuestsProgress(getState().user.uid, getState().progress)
+      .then((newProgress) => {
+        dispatch(syncProgressSuccess(newProgress));
+      });
+  };
+}
+
+export function syncProgressSuccess(newProgress) {
+  return { type: 'SYNC_PROGRESS_SUCCESS', newProgress };
 }

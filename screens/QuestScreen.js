@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import QuestImageWithTitle from '../components/QuestImageWithTitle';
 import QuestButtonBlock from '../components/QuestButtonBlock';
 import {
-  QuestStates, startQuest,
+  QuestStates, startQuest, DownloadStates,
   purchaseQuest, downloadQuest, deleteQuest,
   hideLoginModal
 } from '../actions/Actions';
@@ -15,9 +15,15 @@ import FBLoginButton from '../components/FBLoginButton';
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
   const progress = state.progress[questId];
+  let downloaded = state.downloadedQuests[questId];
+  if (!downloaded) {
+    downloaded = DownloadStates.NOT_DOWNLOADED;
+  }
+
   return {
     quest: state.entities.quests.byId[questId],
     progress,
+    downloaded,
     isPurchasingSpinnerShown: state.isPurchasingSpinnerShown,
     isLoginModalShown: state.isLoginModalShown,
     isLoggingInSpinnerShown: state.isLoggingInSpinnerShown
@@ -93,6 +99,7 @@ class QuestScreen extends Component {
             <Text>{this.props.quest.desc}</Text>
             <QuestButtonBlock
               progress={this.props.progress}
+              downloaded={this.props.downloaded}
               isPurchasingSpinnerShown={this.props.isPurchasingSpinnerShown}
               onStart={this.props.onStartClick}
               onContinue={this.props.onContinueClick}
