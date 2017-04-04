@@ -16,6 +16,8 @@ import Database from './database/Database';
 import addTimeStamp from './middleware/AddTimeStamp';
 import syncStorageWithFirebase from './middleware/SyncStorageWithFirebase';
 
+import { dontHydrateKeys } from './reducers/QuestessenceReducer';
+
 const QuestEssenceNavigator = StackNavigator({
   Home: { screen: HomeScreen },
   Quest: { screen: QuestScreen },
@@ -37,7 +39,10 @@ Database.listenToQuests((quests) => {
   store.dispatch(updateQuestList(quests))
 });
 store.dispatch(restoreLogin());
-persistStore(store, {storage: AsyncStorage});
+persistStore(store, {
+  storage: AsyncStorage,
+  blacklist: dontHydrateKeys
+});
 
 class QuestEssence extends React.Component {
   render() {

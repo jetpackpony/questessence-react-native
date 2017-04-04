@@ -16,6 +16,13 @@ import {
 } from './login';
 import { syncProgressSuccess }from './syncProgress';
 
+
+export const dontHydrateKeys = [
+  "isLoginModalShown",
+  "isLoggingInSpinnerShown",
+  "isPurchasingSpinnerShown"
+];
+
 const initialState = {
   entities: {
     "quests": {
