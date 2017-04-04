@@ -27,7 +27,7 @@ const QuestEssenceNavigator = StackNavigator({
 const store = createStore(
   QuestessenceReducer,
   compose(
-    autoRehydrate(),
+    autoRehydrate({ log: true }),
     applyMiddleware(
       thunk, addTimeStamp,
       /* These middleware have to be at the end */
