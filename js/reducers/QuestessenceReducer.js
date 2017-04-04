@@ -1,4 +1,4 @@
-import { QuestStates, QuestionStates } from '../actions/Actions';
+import { QuestStates, QuestionStates, ActionTypes } from '../actions/Actions';
 
 import deleteQuest from './deleteQuest';
 import {
@@ -40,22 +40,22 @@ const initialState = {
 
 const reduceState = (state = initialState, action) => {
   switch (action.type) {
-    case 'DELETE_QUEST': return deleteQuest(state, action);
-    case 'PURCHASE_QUEST_START': return purchaseQuestStart(state, action);
-    case 'PURCHASE_QUEST_SUCCESS': return purchaseQuestSuccess(state, action);
-    case 'DOWNLOADING_QUEST_START': return downloadQuestStart(state, action);
-    case 'DOWNLOADING_QUEST_SUCCESS': return downloadQuestSuccess(state, action);
-    case 'START_QUEST': return startQuest(state, action);
-    case 'ANSWER_QUESTION': return answerQuestion(state, action);
-    case 'SHOW_CORRECT_ANSWER': return showCorrectAnswer(state, action);
-    case 'GOTO_NEXT_QUESTION': return goToNextQuestion(state, action);
-    case 'UPDATE_QUEST_LIST': return updateQuestList(state, action);
-    case 'LOGIN_SUCCESS': return loginSuccess(state, action);
-    case 'LOGIN_START': return loginStart(state, action);
-    case 'LOGOUT': return logout(state, action);
-    case 'SHOW_LOGIN_MODAL': return showLoginModal(state, action);
-    case 'HIDE_LOGIN_MODAL': return hideLoginModal(state, action);
-    case 'SYNC_PROGRESS_SUCCESS': return syncProgressSuccess(state, action);
+    case ActionTypes.DELETE_QUEST: return deleteQuest(state, action);
+    case ActionTypes.PURCHASE_QUEST_START: return purchaseQuestStart(state, action);
+    case ActionTypes.PURCHASE_QUEST_SUCCESS: return purchaseQuestSuccess(state, action);
+    case ActionTypes.DOWNLOADING_QUEST_START: return downloadQuestStart(state, action);
+    case ActionTypes.DOWNLOADING_QUEST_SUCCESS: return downloadQuestSuccess(state, action);
+    case ActionTypes.START_QUEST: return startQuest(state, action);
+    case ActionTypes.ANSWER_QUESTION: return answerQuestion(state, action);
+    case ActionTypes.SHOW_CORRECT_ANSWER: return showCorrectAnswer(state, action);
+    case ActionTypes.GOTO_NEXT_QUESTION: return goToNextQuestion(state, action);
+    case ActionTypes.UPDATE_QUEST_LIST: return updateQuestList(state, action);
+    case ActionTypes.LOGIN_SUCCESS: return loginSuccess(state, action);
+    case ActionTypes.LOGIN_START: return loginStart(state, action);
+    case ActionTypes.LOGOUT: return logout(state, action);
+    case ActionTypes.SHOW_LOGIN_MODAL: return showLoginModal(state, action);
+    case ActionTypes.HIDE_LOGIN_MODAL: return hideLoginModal(state, action);
+    case ActionTypes.SYNC_PROGRESS_SUCCESS: return syncProgressSuccess(state, action);
     default: return state;
   }
 };
