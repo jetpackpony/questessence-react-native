@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import ButtonText from '../ButtonText';
 import BodyText from '../BodyText';
 import BoldBodyText from '../BoldBodyText';
+import PrimaryButton from '../PrimaryButton';
+import SecondaryButton from '../SecondaryButton';
 
 import {
   QuestStates, QuestionStates,
@@ -86,28 +88,26 @@ class AnswerBlock extends Component {
               />
             </Item>
           </Form>
-          <Button
-            block
-            style={{ margin: 10 }}
+          <SecondaryButton
             onPress={() => this.props.onActionSubmitAnswer(this.state.answer)}
           >
-            <ButtonText>Ответить</ButtonText>
-          </Button>
+            Ответить
+          </SecondaryButton>
         </View>
       );
     }
     if (correct || showAnswer) {
       elements.push(
-        <Button key='5' onPress={this.props.onNextQuestion}>
-          <ButtonText>Следующий Вопрос</ButtonText>
-        </Button>
+        <SecondaryButton key='5' onPress={this.props.onNextQuestion}>
+          Следующий Вопрос
+        </SecondaryButton>
       );
     }
     if (incorrect && !showAnswer) {
       elements.push(
-        <Button key='6' onPress={this.props.onActionShowAnswer}>
-          <ButtonText>Узнать ответ</ButtonText>
-        </Button>
+        <PrimaryButton key='6' onPress={this.props.onActionShowAnswer}>
+          Узнать ответ
+        </PrimaryButton>
       );
     }
 
