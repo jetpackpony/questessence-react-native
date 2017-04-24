@@ -63,9 +63,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 class QuestScreen extends Component {
-  static navigationOptions = {
-    title: ({ state }) => state.params.title
-  };
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.title
+  });
   render() {
     return (
       <Container>
