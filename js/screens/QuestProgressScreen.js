@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 
 import Question from '../components/Question';
 import { QuestStates, QuestionStates } from '../actions/Actions';
+import QuestComplete from '../components/QuestComplete';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.state.params.questId;
@@ -24,12 +25,16 @@ class QuestProgressScreen extends Component {
   render() {
     return (
       <Container>
-        <Content>
-          {(this.props.completed)
-              ? <View><Text>Ура! Вы прошли квест!</Text></View>
-              : <Question question={this.props.currentQuestion} />
-          }
-        </Content>
+        {(this.props.completed)
+            ? (
+              <QuestComplete />
+            )
+            : (
+              <Content>
+                <Question question={this.props.currentQuestion} />
+              </Content>
+            )
+        }
         <View style={styles.progressBar}>
           <Text>1/12</Text>
         </View>
