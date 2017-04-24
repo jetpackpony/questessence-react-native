@@ -4,6 +4,10 @@ import { Container, Content, Footer,
   Button, Form, Label, Input, Item } from 'native-base';
 import { connect } from 'react-redux';
 
+import ButtonText from '../ButtonText';
+import BodyText from '../BodyText';
+import BoldBodyText from '../BoldBodyText';
+
 import {
   QuestStates, QuestionStates,
   answerQuestion, showCorrectAnswer, goToNextQuestion
@@ -51,7 +55,7 @@ class AnswerBlock extends Component {
       elements.push(
         <View key='1'>
           <Text>Правильно!</Text>
-          <Text>{this.props.question.answerDesc}</Text>
+          <BodyText>{this.props.question.answerDesc}</BodyText>
         </View>
       );
     }
@@ -59,15 +63,15 @@ class AnswerBlock extends Component {
       elements.push(
         <View key='2'>
           <Text>Неправильно!</Text>
-          <Text>Попробуйте ещё раз</Text>
+          <BodyText>Попробуйте ещё раз</BodyText>
         </View>
       );
     }
     if (showAnswer) {
       elements.push(
         <View key='3'>
-          <Text>Правильный ответ: {this.props.question.answer}</Text>
-          <Text>{this.props.question.answerDesc}</Text>
+          <BoldBodyText>Правильный ответ: {this.props.question.answer}</BoldBodyText>
+          <BodyText>{this.props.question.answerDesc}</BodyText>
         </View>
       );
     }
@@ -87,7 +91,7 @@ class AnswerBlock extends Component {
             style={{ margin: 10 }}
             onPress={() => this.props.onActionSubmitAnswer(this.state.answer)}
           >
-            <Text>Готово</Text>
+            <ButtonText>Ответить</ButtonText>
           </Button>
         </View>
       );
@@ -95,14 +99,14 @@ class AnswerBlock extends Component {
     if (correct || showAnswer) {
       elements.push(
         <Button key='5' onPress={this.props.onNextQuestion}>
-          <Text>Дальше</Text>
+          <ButtonText>Следующий Вопрос</ButtonText>
         </Button>
       );
     }
     if (incorrect && !showAnswer) {
       elements.push(
         <Button key='6' onPress={this.props.onActionShowAnswer}>
-          <Text>Узнать ответ</Text>
+          <ButtonText>Узнать ответ</ButtonText>
         </Button>
       );
     }

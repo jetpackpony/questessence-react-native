@@ -3,6 +3,9 @@ import { Modal, Text, View, StyleSheet } from 'react-native';
 import { Container, Content, Button } from 'native-base';
 import { connect } from 'react-redux';
 
+import BodyText from '../components/BodyText';
+import ButtonText from '../components/ButtonText';
+
 import QuestImageWithTitle from '../components/QuestImageWithTitle';
 import QuestButtonBlock from '../components/QuestButtonBlock';
 import {
@@ -75,15 +78,15 @@ class QuestScreen extends Component {
             <Text>Зарегистрируйтесь, чтобы сохранять купленные квесты и прогресс в ваших квестах.</Text>
             {(this.props.isLoggingInSpinnerShown)
                 ? (
-                  <Button disabled ><Text>Подождите...</Text></Button>
+                  <Button disabled ><ButtonText>Подождите...</ButtonText></Button>
                 )
                 : (
                   <View>
                     <FBLoginButton />
                     <Button onPress={this.props.hideLoginModal}>
-                      <Text>
+                      <ButtonText>
                         Не сейчас
-                      </Text>
+                      </ButtonText>
                     </Button>
                   </View>
                 )
@@ -96,7 +99,7 @@ class QuestScreen extends Component {
             />
           </View>
           <View style={styles.descriptionContainer}>
-            <Text>{this.props.quest.desc}</Text>
+            <BodyText>{this.props.quest.desc}</BodyText>
             <QuestButtonBlock
               progress={this.props.progress}
               downloaded={this.props.downloaded}
@@ -109,7 +112,7 @@ class QuestScreen extends Component {
             {(this.props.progress)
                 ? (
                   <Button block danger style={{ margin: 10 }} onPress={this.props.onDelete}>
-                    <Text>Удалить</Text>
+                    <ButtonText>Удалить</ButtonText>
                   </Button>
                 )
                 : null}

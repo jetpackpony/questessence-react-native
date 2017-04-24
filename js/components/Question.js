@@ -5,6 +5,8 @@ import { Container, Content, Footer,
 
 import QuestionMedia from './QuestionMedia';
 import AnswerBlock from './AnswerBlock/AnswerBlock';
+import BodyText from './BodyText';
+import BoldBodyText from './BoldBodyText';
 
 const Question = ({ question }) => {
   return (
@@ -15,12 +17,12 @@ const Question = ({ question }) => {
         />
       </View>
       <View style={styles.questionContainer}>
-        <Text>
+        <BodyText>
           {question.desc}
-        </Text>
-        <Text style={styles.questionText}>
+        </BodyText>
+        <BoldBodyText>
           {question.questionText}
-        </Text>
+        </BoldBodyText>
         <AnswerBlock
           questionId={question.id}
           questId={question.quest}
@@ -37,10 +39,6 @@ const styles = StyleSheet.create({
   },
   questionContainer: {
     padding: 10
-  },
-  questionText: {
-    marginTop: 10,
-    fontWeight: 'bold'
   }
 });
 
