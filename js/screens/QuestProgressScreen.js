@@ -8,6 +8,8 @@ import Question from '../components/Question';
 import { QuestStates, QuestionStates } from '../actions/Actions';
 import QuestComplete from '../components/QuestComplete';
 
+import BoldBodyText from '../components/BoldBodyText';
+
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.state.params.questId;
   const currentId = state.progress[id].currentQuestion;
@@ -36,7 +38,7 @@ class QuestProgressScreen extends Component {
             )
         }
         <View style={styles.progressBar}>
-          <Text>1/12</Text>
+          <BoldBodyText>1/12</BoldBodyText>
         </View>
       </Container>
     );

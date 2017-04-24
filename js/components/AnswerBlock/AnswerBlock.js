@@ -56,7 +56,7 @@ class AnswerBlock extends Component {
     if (correct) {
       elements.push(
         <View key='1'>
-          <Text>Правильно!</Text>
+          <BoldBodyText style={styles.correct}>Правильно!</BoldBodyText>
           <BodyText>{this.props.question.answerDesc}</BodyText>
         </View>
       );
@@ -64,7 +64,7 @@ class AnswerBlock extends Component {
     if (incorrect) {
       elements.push(
         <View key='2'>
-          <Text>Неправильно!</Text>
+          <BoldBodyText style={styles.incorrect}>Неправильно!</BoldBodyText>
           <BodyText>Попробуйте ещё раз</BodyText>
         </View>
       );
@@ -120,6 +120,12 @@ class AnswerBlock extends Component {
 };
 
 const styles = StyleSheet.create({
+  correct: {
+    color: 'green'
+  },
+  incorrect: {
+    color: 'red'
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerBlock);
