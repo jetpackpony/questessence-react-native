@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { Container, Content } from 'native-base';
 import { connect } from 'react-redux';
 
@@ -14,7 +14,7 @@ import {
   purchaseQuest, downloadQuest, deleteQuest,
   hideLoginModal
 } from '../actions/Actions';
-import FBLoginButton from '../components/FBLoginButton';
+import LoginModal from '../components/LoginModal';
 
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
@@ -71,28 +71,11 @@ class QuestScreen extends Component {
     return (
       <Container>
         <Content>
-          <Modal
-            animationType={"slide"}
-            transparent={false}
-            visible={this.props.isLoginModalShown}
-            onRequestClose={this.props.hideLoginModal}>
-            <Text>Зарегистрируйтесь, чтобы сохранять купленные квесты и прогресс в ваших квестах.</Text>
-            {(this.props.isLoggingInSpinnerShown)
-                ? (
-                  <PrimaryButton disabled >
-                    Подождите...
-                  </PrimaryButton>
-                )
-                : (
-                  <View>
-                    <FBLoginButton />
-                    <PrimaryButton onPress={this.props.hideLoginModal}>
-                        Не сейчас
-                    </PrimaryButton>
-                  </View>
-                )
-            }
-          </Modal>
+          <LoginModal
+            isLoggingInSpinnerShown={this.props.isLoggingInSpinnerShown}
+            isLoginModalShown={this.props.isLoginModalShown}
+            hideLoginModal={this.props.hideLoginModal}
+          />
           <View style={styles.coverContainer}>
             <QuestImageWithTitle
               img={this.props.quest.cover}
