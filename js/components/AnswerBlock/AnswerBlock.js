@@ -4,6 +4,12 @@ import { Container, Content, Footer,
   Button, Form, Label, Input, Item } from 'native-base';
 import { connect } from 'react-redux';
 
+import ButtonText from '../ButtonText';
+import BodyText from '../BodyText';
+import BoldBodyText from '../BoldBodyText';
+import PrimaryButton from '../PrimaryButton';
+import SecondaryButton from '../SecondaryButton';
+
 import {
   QuestStates, QuestionStates,
   answerQuestion, showCorrectAnswer, goToNextQuestion
@@ -49,25 +55,31 @@ class AnswerBlock extends Component {
 
     if (correct) {
       elements.push(
-        <View key='1'>
-          <Text>Правильно!</Text>
-          <Text>{this.props.question.answerDesc}</Text>
+        <View key='1' style={{ padding: 10 }}>
+          <Text style={{ color: 'green' }}>
+            <BoldBodyText style={styles.correct}>Правильно!</BoldBodyText>
+          </Text>
+          <BodyText>{this.props.question.answerDesc}</BodyText>
         </View>
       );
     }
     if (incorrect) {
       elements.push(
-        <View key='2'>
-          <Text>Неправильно!</Text>
-          <Text>Попробуйте ещё раз</Text>
+        <View key='2' style={{ padding: 10 }}>
+          <Text style={{ color: 'red' }}>
+            <BoldBodyText style={styles.incorrect}>Неправильно!</BoldBodyText>
+          </Text>
+          <BodyText>Попробуйте ещё раз</BodyText>
         </View>
       );
     }
     if (showAnswer) {
       elements.push(
-        <View key='3'>
-          <Text>Правильный ответ: {this.props.question.answer}</Text>
-          <Text>{this.props.question.answerDesc}</Text>
+        <View key='3' style={{ padding: 10 }}>
+          <Text style={{ color: 'green' }}>
+            <BoldBodyText>Правильный ответ: {this.props.question.answer}</BoldBodyText>
+          </Text>
+          <BodyText>{this.props.question.answerDesc}</BodyText>
         </View>
       );
     }
@@ -82,28 +94,26 @@ class AnswerBlock extends Component {
               />
             </Item>
           </Form>
-          <Button
-            block
-            style={{ margin: 10 }}
+          <SecondaryButton
             onPress={() => this.props.onActionSubmitAnswer(this.state.answer)}
           >
-            <Text>Готово</Text>
-          </Button>
+            Ответить
+          </SecondaryButton>
         </View>
       );
     }
     if (correct || showAnswer) {
       elements.push(
-        <Button key='5' onPress={this.props.onNextQuestion}>
-          <Text>Дальше</Text>
-        </Button>
+        <SecondaryButton key='5' onPress={this.props.onNextQuestion}>
+          Следующий Вопрос
+        </SecondaryButton>
       );
     }
     if (incorrect && !showAnswer) {
       elements.push(
-        <Button key='6' onPress={this.props.onActionShowAnswer}>
-          <Text>Узнать ответ</Text>
-        </Button>
+        <PrimaryButton key='6' onPress={this.props.onActionShowAnswer}>
+          Узнать ответ
+        </PrimaryButton>
       );
     }
 
@@ -116,6 +126,12 @@ class AnswerBlock extends Component {
 };
 
 const styles = StyleSheet.create({
+  correct: {
+    color: 'green'
+  },
+  incorrect: {
+    color: 'red'
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnswerBlock);

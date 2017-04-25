@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { Button } from 'native-base';
 
-import StartButton from '../components/StartButton';
-import ContinueButton from '../components/ContinueButton';
-import PurchaseButton from '../components/PurchaseButton';
-
 import { QuestStates, DownloadStates } from '../actions/Actions';
+
+import PrimaryButton from '../components/PrimaryButton';
+import SecondaryButton from '../components/SecondaryButton';
 
 const QuestButtonBlock = ({
   progress, downloaded, isPurchasingSpinnerShown,
@@ -15,35 +14,47 @@ const QuestButtonBlock = ({
   if (!progress) {
     if (isPurchasingSpinnerShown) {
       return (
-        <Button block disabled style={{ margin: 10 }}>
-          <Text>Подождите...</Text>
-        </Button>
+        <PrimaryButton disabled >
+          Подождите...
+        </PrimaryButton>
       );
     } else {
-      return (<PurchaseButton onPress={onPurchase} />);
+      return (
+        <SecondaryButton onPress={onPurchase}>
+          Купить
+        </SecondaryButton>
+      );
     }
   } else if (downloaded !== DownloadStates.DOWNLOADED) {
     switch (downloaded) {
       case DownloadStates.NOT_DOWNLOADED:
         return (
-          <Button block success style={{ margin: 10 }} onPress={onDownload}>
-            <Text>Загрузить</Text>
-          </Button>
+          <SecondaryButton onPress={onDownload}>
+            Загрузить
+          </SecondaryButton>
         );
       case DownloadStates.DOWNLOADING:
         return (
-          <Button block disabled style={{ margin: 10 }}>
-            <Text>Загрузка...</Text>
-          </Button>
+          <SecondaryButton disabled >
+            Загрузка...
+          </SecondaryButton>
         );
     }
   } else {
     switch (progress.questState) {
       case QuestStates.NOT_STARTED:
-        return (<StartButton onPress={onStart} />);
+        return (
+          <SecondaryButton onPress={onStart}>
+            Начать
+          </SecondaryButton>
+        );
       case QuestStates.IN_PROGRESS:
       default:
-        return (<ContinueButton onPress={onContinue} />);
+        return (
+          <SecondaryButton onPress={onContinue}>
+            Продолжить
+          </SecondaryButton>
+        );
     }
   }
 };

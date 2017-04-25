@@ -18,10 +18,19 @@ import syncStorageWithFirebase from './middleware/SyncStorageWithFirebase';
 
 import { dontHydrateKeys } from './reducers/QuestessenceReducer';
 
+import { PRIMARY_COLOR, HEADER_TEXT_COLOR } from './Colors';
+
 const QuestEssenceNavigator = StackNavigator({
   Home: { screen: HomeScreen },
   Quest: { screen: QuestScreen },
   QuestProgress: { screen: QuestProgressScreen },
+} , {
+  navigationOptions: {
+    headerStyle: {
+      backgroundColor: PRIMARY_COLOR
+    },
+    headerTintColor: HEADER_TEXT_COLOR
+  }
 });
 
 const store = createStore(

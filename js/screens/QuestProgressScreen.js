@@ -6,47 +6,49 @@ import { connect } from 'react-redux';
 
 import Question from '../components/Question';
 import { QuestStates, QuestionStates } from '../actions/Actions';
+import QuestComplete from '../components/QuestComplete';
+import ProgressBar from '../components/ProgressBar';
+
+import BoldBodyText from '../components/BoldBodyText';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.state.params.questId;
   const currentId = state.progress[id].currentQuestion;
+  const questionsInOrder = state.entities.quests.byId[id].questionsInOrder;
+  const currentOrder = questionsInOrder.findIndex((el) => el === currentId) + 1;
   return {
     currentQuestion: state.entities.questions.byId[currentId],
-    completed: state.progress[id].questState === QuestStates.COMPLETED
+    completed: state.progress[id].questState === QuestStates.COMPLETED,
+    currentIndex: currentOrder,
+    totalAmount: questionsInOrder.length
   };
 };
 
 class QuestProgressScreen extends Component {
-  static navigationOptions = {
-    title: ({ state }) => state.params.title
-  }
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.title
+  });
 
   render() {
     return (
       <Container>
-        <Content>
-          {(this.props.completed)
-              ? <View><Text>Ура! Вы прошли квест!</Text></View>
-              : <Question question={this.props.currentQuestion} />
-          }
-        </Content>
-        <View style={styles.progressBar}>
-          <Text>1/12</Text>
-        </View>
+        {(this.props.completed)
+            ? (
+              <QuestComplete />
+            )
+            : (
+              <Content keyboardShouldPersistTaps={'always'}>
+                <Question question={this.props.currentQuestion} />
+              </Content>
+            )
+        }
+        <ProgressBar
+          current={this.props.currentIndex}
+          total={this.props.totalAmount}
+        />
       </Container>
     );
   }
 };
-
-const styles = StyleSheet.create({
-  progressBar: {
-    height: 30,
-    backgroundColor: 'white',
-    borderTopWidth: 1,
-    borderTopColor: 'grey',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
 
 export default connect(mapStateToProps)(QuestProgressScreen);
