@@ -14,9 +14,13 @@ import BoldBodyText from '../components/BoldBodyText';
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.state.params.questId;
   const currentId = state.progress[id].currentQuestion;
+  const questionsInOrder = state.entities.quests.byId[id].questionsInOrder;
+  const currentOrder = questionsInOrder.findIndex((el) => el === currentId) + 1;
   return {
     currentQuestion: state.entities.questions.byId[currentId],
-    completed: state.progress[id].questState === QuestStates.COMPLETED
+    completed: state.progress[id].questState === QuestStates.COMPLETED,
+    currentIndex: currentOrder,
+    totalAmount: questionsInOrder.length
   };
 };
 
@@ -38,7 +42,10 @@ class QuestProgressScreen extends Component {
               </Content>
             )
         }
-        <ProgressBar current="1" total="12"/>
+        <ProgressBar
+          current={this.props.currentIndex}
+          total={this.props.totalAmount}
+        />
       </Container>
     );
   }
