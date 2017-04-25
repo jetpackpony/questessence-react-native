@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import Question from '../components/Question';
 import { QuestStates, QuestionStates } from '../actions/Actions';
 import QuestComplete from '../components/QuestComplete';
+import ProgressBar from '../components/ProgressBar';
 
 import BoldBodyText from '../components/BoldBodyText';
 
@@ -37,23 +38,10 @@ class QuestProgressScreen extends Component {
               </Content>
             )
         }
-        <View style={styles.progressBar}>
-          <BoldBodyText>1/12</BoldBodyText>
-        </View>
+        <ProgressBar current="1" total="12"/>
       </Container>
     );
   }
 };
-
-const styles = StyleSheet.create({
-  progressBar: {
-    height: 30,
-    backgroundColor: 'white',
-    borderTopWidth: 1,
-    borderTopColor: 'grey',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
 
 export default connect(mapStateToProps)(QuestProgressScreen);
