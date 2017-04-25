@@ -55,24 +55,30 @@ class AnswerBlock extends Component {
 
     if (correct) {
       elements.push(
-        <View key='1'>
-          <BoldBodyText style={styles.correct}>Правильно!</BoldBodyText>
+        <View key='1' style={{ padding: 10 }}>
+          <Text style={{ color: 'green' }}>
+            <BoldBodyText style={styles.correct}>Правильно!</BoldBodyText>
+          </Text>
           <BodyText>{this.props.question.answerDesc}</BodyText>
         </View>
       );
     }
     if (incorrect) {
       elements.push(
-        <View key='2'>
-          <BoldBodyText style={styles.incorrect}>Неправильно!</BoldBodyText>
+        <View key='2' style={{ padding: 10 }}>
+          <Text style={{ color: 'red' }}>
+            <BoldBodyText style={styles.incorrect}>Неправильно!</BoldBodyText>
+          </Text>
           <BodyText>Попробуйте ещё раз</BodyText>
         </View>
       );
     }
     if (showAnswer) {
       elements.push(
-        <View key='3'>
-          <BoldBodyText>Правильный ответ: {this.props.question.answer}</BoldBodyText>
+        <View key='3' style={{ padding: 10 }}>
+          <Text style={{ color: 'green' }}>
+            <BoldBodyText>Правильный ответ: {this.props.question.answer}</BoldBodyText>
+          </Text>
           <BodyText>{this.props.question.answerDesc}</BodyText>
         </View>
       );

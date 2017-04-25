@@ -17,12 +17,16 @@ const Question = ({ question }) => {
         />
       </View>
       <View style={styles.questionContainer}>
-        <BodyText>
-          {question.desc}
-        </BodyText>
-        <BoldBodyText>
-          {question.questionText}
-        </BoldBodyText>
+        <View style={{ padding: 10 }}>
+          <BodyText>
+            {question.desc}
+          </BodyText>
+        </View>
+        <View style={{ padding: 10 }}>
+          <BoldBodyText>
+            {question.questionText}
+          </BoldBodyText>
+        </View>
         <AnswerBlock
           questionId={question.id}
           questId={question.quest}

@@ -83,7 +83,9 @@ class QuestScreen extends Component {
             />
           </View>
           <View style={styles.descriptionContainer}>
+            <View style={{ padding: 10 }}>
             <BodyText>{this.props.quest.desc}</BodyText>
+          </View>
             <QuestButtonBlock
               progress={this.props.progress}
               downloaded={this.props.downloaded}
