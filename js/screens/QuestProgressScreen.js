@@ -32,7 +32,7 @@ class QuestProgressScreen extends Component {
               <QuestComplete />
             )
             : (
-              <Content>
+              <Content keyboardShouldPersistTaps={'always'}>
                 <Question question={this.props.currentQuestion} />
               </Content>
             )
