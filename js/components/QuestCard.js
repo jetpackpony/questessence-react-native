@@ -14,7 +14,7 @@ import QuestImageWithTitle from './QuestImageWithTitle';
 const QuestCard = ({ quest, onPress }) => {
   return (
     <Card>
-      <CardItem cardBody onPress={onPress}>
+      <CardItem cardBody button onPress={onPress}>
         <View style={styles.cardImageContainer}>
           <QuestImageWithTitle
             img={quest.cover}
