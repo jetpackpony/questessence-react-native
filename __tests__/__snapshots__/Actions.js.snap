@@ -6,6 +6,7 @@ Object {
   "questId": 0,
   "questionId": 0,
   "type": "ANSWER_QUESTION",
+  "updatingProgress": true,
 }
 `;
 
@@ -13,6 +14,7 @@ exports[`create a GOTO_NEXT_QUESTION action 1`] = `
 Object {
   "questId": 0,
   "type": "GOTO_NEXT_QUESTION",
+  "updatingProgress": true,
 }
 `;
 
@@ -20,6 +22,7 @@ exports[`create a SHOW_CORRECT_ANSWER action 1`] = `
 Object {
   "questId": 0,
   "type": "SHOW_CORRECT_ANSWER",
+  "updatingProgress": true,
 }
 `;
 
@@ -27,5 +30,6 @@ exports[`create a START_QUEST action 1`] = `
 Object {
   "questId": 0,
   "type": "START_QUEST",
+  "updatingProgress": true,
 }
 `;

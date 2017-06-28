@@ -3,7 +3,7 @@ import {
   answerQuestion,
   showCorrectAnswer,
   goToNextQuestion
-} from '../actions/Actions.js';
+} from '../js/actions/Actions.js';
 
 it('create a START_QUEST action', () => {
   expect(startQuest(0)).toMatchSnapshot();
