@@ -10,8 +10,8 @@
   "dependencies": {
     "firebase": "^3.7.3",
     "native-base": "^2.0.12",
-    "react": "15.4.2",
-    "react-native": "0.42.0",
+    "react": "^16.0.0-alpha.12",
+    "react-native": "^0.45.1",
     "react-native-billing": "^2.3.0",
     "react-native-config": "^0.3.1",
     "react-native-device-info": "^0.10.1",
