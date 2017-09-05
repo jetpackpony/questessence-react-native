@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native';
 
 export default ({ children }) => (
   <Text style={{
-    fontFamily: 'sans-serif'
+    backgroundColor: 'transparent'
   }}>
     {children}
   </Text>
