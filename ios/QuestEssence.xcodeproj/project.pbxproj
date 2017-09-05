@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -291,9 +292,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				BBA1480591D94E188FE4A395 /* libReactNativeConfig.a in Frameworks */,
-				061DC9040A9A4A3C97A352AC /* libRCTFBSDK.a in Frameworks */,
-				831F87E6664148C794A13CB5 /* libRNDeviceInfo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,9 +460,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				49CA5FB7EFEC4C38A0567BD2 /* ReactNativeConfig.xcodeproj */,
-				5402AAD673954AEEAEB558F3 /* RCTFBSDK.xcodeproj */,
-				7EA4BFBDAECA49349A88997B /* RNDeviceInfo.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -485,7 +480,6 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* QuestEssenceTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
-				4384A2958765450DA899A5F2 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -503,7 +497,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-
 		ADBDB9201DFEBF0600ED6528 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,7 +586,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 610;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -881,40 +874,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				E16A4245F1784A7F812FB313 /* Andale Mono.ttf in Resources */,
-				10E03BE44AC1483CB6F9F26D /* Arial Black.ttf in Resources */,
-				B4A4882E870141B9B19AA9AD /* Arial.ttf in Resources */,
-				57699501CE17470BABA79F89 /* Comic Sans MS.ttf in Resources */,
-				C3AFDAEE716E4847AD81395A /* Courier New.ttf in Resources */,
-				A37AC8BF095C4319AA9E05CC /* Entypo.ttf in Resources */,
-				5614B45D0D7D4C9790CFF68C /* EvilIcons.ttf in Resources */,
-				83210110384A4BFCB2626FCB /* FontAwesome.ttf in Resources */,
-				E2A920E7F4D54380B083BF9F /* Foundation.ttf in Resources */,
-				73C73377AE3B45DB91E7821B /* Georgia.ttf in Resources */,
-				55FA4B2E5E1D4E7593E571EB /* Ionicons.ttf in Resources */,
-				E0D3E4AF04914BCC9B0BABE6 /* MaterialIcons.ttf in Resources */,
-				AD047467AEB34D078CD96B3D /* Microsoft Sans Serif.ttf in Resources */,
-				6CAA28B37DE24235B48451A1 /* Octicons.ttf in Resources */,
-				B670F47997E449BC92DFBC6E /* Roboto_medium.ttf in Resources */,
-				52E111A9A45741AE905B6172 /* Roboto.ttf in Resources */,
-				B674071012594CA1890B8215 /* rubicon-icon-font.ttf in Resources */,
-				20987AE6DE6545BF9006ACC1 /* Rubik-Black.ttf in Resources */,
-				BB6F79610E674F34A488EF9F /* Rubik-BlackItalic.ttf in Resources */,
-				CB51E564A8F145A29C388DB8 /* Rubik-Bold.ttf in Resources */,
-				46AE20F46FC44F8598209025 /* Rubik-BoldItalic.ttf in Resources */,
-				E73A73112AE2462CB3B60433 /* Rubik-Italic.ttf in Resources */,
-				A1BD7312A36E40F6936BC132 /* Rubik-Light.ttf in Resources */,
-				1874F3CC5F1F4217B41BEAAB /* Rubik-LightItalic.ttf in Resources */,
-				336F49CFF1754D88B35BF1A8 /* Rubik-Medium.ttf in Resources */,
-				6967B56C54E14549A7E695B3 /* Rubik-MediumItalic.ttf in Resources */,
-				0EFF466D310A41CC84BE6124 /* Rubik-Regular.ttf in Resources */,
-				E93F70AD55F447AAA34847F3 /* SanFrancisco.ttf in Resources */,
-				BFE1F67C7BD642299A986C08 /* SanFranciscoBold.ttf in Resources */,
-				18DAA13FFCA0401C999F0F2C /* SanFranciscoThin.ttf in Resources */,
-				36BB61B735A24C0AAB9480AA /* SF-UI-Text-Regular.otf in Resources */,
-				7E72EBDE37CB454D81426655 /* Skia.ttf in Resources */,
-				CA666B2148C2489F8DF9A2A1 /* Times New Roman.ttf in Resources */,
-				A1B5B433131F4D9DBBBB4E5D /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,18 +1005,6 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuestEssence.app/QuestEssence";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
-				);
 			};
 			name = Debug;
 		};
@@ -1075,18 +1022,6 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuestEssence.app/QuestEssence";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
-				);
 			};
 			name = Release;
 		};
@@ -1105,12 +1040,6 @@
 				);
 				PRODUCT_NAME = QuestEssence;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
-				);
 			};
 			name = Debug;
 		};
@@ -1128,12 +1057,6 @@
 				);
 				PRODUCT_NAME = QuestEssence;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
-				);
 			};
 			name = Release;
 		};
@@ -1160,18 +1083,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
-				);
 			};
 			name = Debug;
 		};
@@ -1198,18 +1109,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-config/ios/ReactNativeConfig",
-					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
-					"$(SRCROOT)/../node_modules/react-native-device-info/RNDeviceInfo",
-				);
 			};
 			name = Release;
 		};
@@ -1231,12 +1130,6 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuestEssence-tvOS.app/QuestEssence-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 			};
 			name = Debug;
 		};
@@ -1258,12 +1151,6 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuestEssence-tvOS.app/QuestEssence-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 			};
 			name = Release;
 		};
