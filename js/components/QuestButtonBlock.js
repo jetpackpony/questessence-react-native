@@ -8,24 +8,9 @@ import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
 
 const QuestButtonBlock = ({
-  progress, downloaded, isPurchasingSpinnerShown,
-  onStart, onContinue, onPurchase, onDownload
+  progress, downloaded, onStart, onContinue, onDownload
 }) => {
-  if (!progress) {
-    if (isPurchasingSpinnerShown) {
-      return (
-        <PrimaryButton disabled >
-          Подождите...
-        </PrimaryButton>
-      );
-    } else {
-      return (
-        <SecondaryButton onPress={onPurchase}>
-          Купить
-        </SecondaryButton>
-      );
-    }
-  } else if (downloaded !== DownloadStates.DOWNLOADED) {
+  if (downloaded !== DownloadStates.DOWNLOADED) {
     switch (downloaded) {
       case DownloadStates.NOT_DOWNLOADED:
         return (
