@@ -47,7 +47,6 @@ const store = createStore(
 Database.listenToQuests((quests) => {
   store.dispatch(updateQuestList(quests))
 });
-//store.dispatch(restoreLogin());
 persistStore(store, {
   storage: AsyncStorage,
   blacklist: dontHydrateKeys
