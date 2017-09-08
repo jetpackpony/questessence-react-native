@@ -1,9 +1,6 @@
 import { ActionTypes } from '../actions/Actions';
 
 import deleteQuest from './deleteQuest';
-import {
-  purchaseQuestSuccess, purchaseQuestStart
-} from './purchaseQuest';
 import { downloadQuestStart, downloadQuestSuccess } from './downloadQuest';
 import startQuest from './startQuest';
 import answerQuestion from './answerQuestion';
@@ -16,11 +13,9 @@ import {
 } from './login';
 import { syncProgressSuccess }from './syncProgress';
 
-
 export const dontHydrateKeys = [
   "isLoginModalShown",
-  "isLoggingInSpinnerShown",
-  "isPurchasingSpinnerShown"
+  "isLoggingInSpinnerShown"
 ];
 
 const initialState = {
@@ -41,15 +36,12 @@ const initialState = {
   },
   downloadedQuests: {},
   isLoginModalShown: false,
-  isLoggingInSpinnerShown: false,
-  isPurchasingSpinnerShown: false
+  isLoggingInSpinnerShown: false
 };
 
 const getReducer = (actionType) => {
   switch (actionType) {
     case ActionTypes.DELETE_QUEST: return deleteQuest;
-    case ActionTypes.PURCHASE_QUEST_START: return purchaseQuestStart;
-    case ActionTypes.PURCHASE_QUEST_SUCCESS: return purchaseQuestSuccess;
     case ActionTypes.DOWNLOADING_QUEST_START: return downloadQuestStart;
     case ActionTypes.DOWNLOADING_QUEST_SUCCESS: return downloadQuestSuccess;
     case ActionTypes.START_QUEST: return startQuest;

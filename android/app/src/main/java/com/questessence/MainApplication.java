@@ -9,7 +9,6 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.react.ReactApplication;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
-import com.idehub.Billing.InAppBillingBridgePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -38,8 +37,7 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new RNDeviceInfo(),
             new FBSDKPackage(mCallbackManager),
-            new ReactNativeConfigPackage(),
-          new InAppBillingBridgePackage(BuildConfig.GOOGLE_PLAY_LICESE_KEY)
+            new ReactNativeConfigPackage()
       );
     }
   };

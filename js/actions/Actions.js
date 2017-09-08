@@ -12,10 +12,6 @@ export {
 } from './QuestProgressActions';
 
 export {
-  purchaseQuest, purchaseQuestStart, purchaseQuestSuccess
-} from './PurchaseActions';
-
-export {
   downloadQuest, downloadQuestStart,
   downloadQuestSuccess, updateQuestList
 } from './DownloadActions';

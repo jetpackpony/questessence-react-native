@@ -11,7 +11,7 @@ import QuestImageWithTitle from '../components/QuestImageWithTitle';
 import QuestButtonBlock from '../components/QuestButtonBlock';
 import {
   QuestStates, startQuest, DownloadStates,
-  purchaseQuest, downloadQuest, deleteQuest,
+  downloadQuest, deleteQuest,
   hideLoginModal
 } from '../actions/Actions';
 import LoginModal from '../components/LoginModal';
@@ -28,7 +28,6 @@ const mapStateToProps = (state, ownProps) => {
     quest: state.entities.quests.byId[questId],
     progress,
     downloaded,
-    isPurchasingSpinnerShown: state.isPurchasingSpinnerShown,
     isLoginModalShown: state.isLoginModalShown,
     isLoggingInSpinnerShown: state.isLoggingInSpinnerShown
   };
@@ -48,9 +47,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       nav();
     },
     onContinueClick: nav,
-    onPurchaseClick: (productId) => {
-      dispatch(purchaseQuest(questId, productId));
-    },
     onDownloadClick: () => {
       dispatch(downloadQuest(questId));
     },
@@ -89,10 +85,8 @@ class QuestScreen extends Component {
             <QuestButtonBlock
               progress={this.props.progress}
               downloaded={this.props.downloaded}
-              isPurchasingSpinnerShown={this.props.isPurchasingSpinnerShown}
               onStart={this.props.onStartClick}
               onContinue={this.props.onContinueClick}
-              onPurchase={() => this.props.onPurchaseClick(this.props.quest.googlePlayProductId)}
               onDownload={this.props.onDownloadClick}
             />
             {(this.props.progress)

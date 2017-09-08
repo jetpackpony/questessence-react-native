@@ -1,5 +1,6 @@
 import Database from '../database/Database';
 import types from './ActionTypes';
+import { showLoginModal } from './Actions';
 
 export function updateQuestList(quests) {
   return { type: types.UPDATE_QUEST_LIST, quests };
@@ -13,6 +14,7 @@ export function downloadQuest(questId) {
       .downloadQuestions(questId)
       .then((questions) => {
         dispatch(downloadQuestSuccess(questId, questions));
+        dispatch(showLoginModal());
       });
   };
 };
