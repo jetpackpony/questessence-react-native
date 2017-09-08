@@ -18,9 +18,10 @@ export function loginFacebook(error, result) {
 
 export function loginFirebaseFacebook() {
   return (dispatch) => {
-    AccessToken.refreshCurrentAccessTokenAsync()
+    AccessToken.getCurrentAccessToken()
       .then((userData) => {
-        let credential = firebase.auth.FacebookAuthProvider.credential(userData.accessToken.toString());
+        let token = userData.accessToken.toString();
+        let credential = firebase.auth.FacebookAuthProvider.credential(token);
         firebase.auth().signInWithCredential(credential)
           .then(() => {
             dispatch(loginSuccess(firebase.auth().currentUser));
