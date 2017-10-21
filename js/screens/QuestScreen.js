@@ -16,6 +16,8 @@ import {
 } from '../actions/Actions';
 import LoginModal from '../components/LoginModal';
 
+import I18n from '../locales/i18n';
+
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
   const progress = state.progress[questId];
@@ -92,7 +94,7 @@ class QuestScreen extends Component {
             {(this.props.progress)
                 ? (
                   <PrimaryButton onPress={this.props.onDelete}>
-                    Удалить
+                    {I18n.t('deleteQuest')}
                   </PrimaryButton>
                 )
                 : null}

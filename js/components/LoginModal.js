@@ -5,6 +5,8 @@ import PrimaryButton from './PrimaryButton';
 import FBLoginButton from './FBLoginButton';
 import BoldBodyText from './BoldBodyText';
 
+import I18n from '../locales/i18n';
+
 export default ({
   hideLoginModal,
   isLoginModalShown,
@@ -21,8 +23,7 @@ export default ({
         <View style={styles.top}>
           <Text style={{ textAlign: 'center' }}>
             <BoldBodyText>
-              Зарегистрируйтесь, чтобы сохранять купленные
-              квесты и прогресс в ваших квестах.
+              {I18n.t('loginModalRegisterText')}
             </BoldBodyText>
           </Text>
         </View>
@@ -30,14 +31,14 @@ export default ({
           {(isLoggingInSpinnerShown)
               ? (
                 <PrimaryButton disabled >
-                  Подождите...
+                  {I18n.t('loginModalHoldOnButton')}
                 </PrimaryButton>
               )
               : (
                 <View>
                   <FBLoginButton />
                   <PrimaryButton onPress={hideLoginModal}>
-                    Не сейчас
+                    {I18n.t('loginModalNotNowButton')}
                   </PrimaryButton>
                 </View>
               )

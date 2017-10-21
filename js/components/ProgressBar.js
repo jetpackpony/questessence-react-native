@@ -3,13 +3,17 @@ import { Text, View, StyleSheet } from 'react-native';
 import BoldBodyText from '../components/BoldBodyText';
 import { SECONDARY_COLOR } from '../Colors';
 
+import I18n from '../locales/i18n';
+
 export default ({ current, total }) => {
   return (
     <View style={styles.progressBar}>
       <View style={[styles.bar, { flex: parseInt(current) }]}></View>
       <View style={[styles.rest, { flex: parseInt(total - current) }]}></View>
       <View style={styles.textContainer}>
-        <BoldBodyText>{`${current} из ${total}`}</BoldBodyText>
+        <BoldBodyText>
+          {current} {I18n.t('progressBarOutOf')} {total}
+        </BoldBodyText>
       </View>
     </View>
   );

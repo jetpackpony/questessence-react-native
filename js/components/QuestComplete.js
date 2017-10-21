@@ -2,12 +2,14 @@ import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import BoldBodyText from './BoldBodyText';
 
+import I18n from '../locales/i18n';
+
 export default () => {
   return (
     <View style={styles.container}>
       <Text style={{ textAlign: 'center' }}>
         <BoldBodyText>
-          Ура! Вы прошли квест!
+          {I18n.t('questCompleteText')}
         </BoldBodyText>
       </Text>
     </View>

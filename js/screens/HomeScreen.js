@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import QuestCard from '../components/QuestCard';
 
+import I18n from '../locales/i18n';
+
 const mapStateToProps = (state) => {
   const quests = state.entities.quests;
   return {
@@ -13,7 +15,7 @@ const mapStateToProps = (state) => {
 
 class HomeScreen extends Component {
   static navigationOptions = {
-    title: 'Home'
+    title: I18n.t('homeTitle')
   };
   render() {
     const { navigate } = this.props.navigation;
