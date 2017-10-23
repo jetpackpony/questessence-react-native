@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Content } from 'native-base';
 import { connect } from 'react-redux';
+import { chooseTranslation, getLocales } from '../reducers/utils';
 
 import QuestCard from '../components/QuestCard';
 
@@ -26,7 +27,7 @@ class HomeScreen extends Component {
           quest={quest}
           onPress={() => navigate('Quest', {
             questId: quest.id,
-            title: quest.title
+            title: chooseTranslation(quest.title, getLocales())
           })}
         />
       );
