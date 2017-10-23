@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Content } from 'native-base';
 import { connect } from 'react-redux';
+import { chooseTranslation, getLocales } from '../reducers/utils';
 
 import QuestCard from '../components/QuestCard';
+
+import I18n from '../locales/i18n';
 
 const mapStateToProps = (state) => {
   const quests = state.entities.quests;
@@ -13,7 +16,7 @@ const mapStateToProps = (state) => {
 
 class HomeScreen extends Component {
   static navigationOptions = {
-    title: 'Home'
+    title: I18n.t('homeTitle')
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -24,7 +27,7 @@ class HomeScreen extends Component {
           quest={quest}
           onPress={() => navigate('Quest', {
             questId: quest.id,
-            title: quest.title
+            title: chooseTranslation(quest.title, getLocales())
           })}
         />
       );

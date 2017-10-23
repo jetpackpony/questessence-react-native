@@ -7,6 +7,8 @@ import { QuestStates, DownloadStates } from '../actions/Actions';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
 
+import I18n from '../locales/i18n';
+
 const QuestButtonBlock = ({
   progress, downloaded, onStart, onContinue, onDownload
 }) => {
@@ -15,13 +17,13 @@ const QuestButtonBlock = ({
       case DownloadStates.NOT_DOWNLOADED:
         return (
           <SecondaryButton onPress={onDownload}>
-            Загрузить
+            {I18n.t('download')}
           </SecondaryButton>
         );
       case DownloadStates.DOWNLOADING:
         return (
           <SecondaryButton disabled >
-            Загрузка...
+            {I18n.t('downloading')}
           </SecondaryButton>
         );
     }
@@ -30,14 +32,14 @@ const QuestButtonBlock = ({
       case QuestStates.NOT_STARTED:
         return (
           <SecondaryButton onPress={onStart}>
-            Начать
+            {I18n.t('start')}
           </SecondaryButton>
         );
       case QuestStates.IN_PROGRESS:
       default:
         return (
           <SecondaryButton onPress={onContinue}>
-            Продолжить
+            {I18n.t('continue')}
           </SecondaryButton>
         );
     }

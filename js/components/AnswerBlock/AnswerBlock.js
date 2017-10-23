@@ -15,6 +15,9 @@ import {
   answerQuestion, showCorrectAnswer, goToNextQuestion
 } from '../../actions/Actions';
 
+import I18n from '../../locales/i18n';
+import { chooseTranslation, getLocales } from '../../reducers/utils';
+
 const mapStateToProps = (state, ownProps) => {
   const question = state.entities.questions.byId[ownProps.questionId];
   return {
@@ -57,9 +60,11 @@ class AnswerBlock extends Component {
       elements.push(
         <View key='1' style={{ padding: 10 }}>
           <Text style={{ color: 'green' }}>
-            <BoldBodyText style={styles.correct}>Правильно!</BoldBodyText>
+            <BoldBodyText style={styles.correct}>
+              {I18n.t('answerCorrect')}
+            </BoldBodyText>
           </Text>
-          <BodyText>{this.props.question.answerDesc}</BodyText>
+          <BodyText>{chooseTranslation(this.props.question.answerDesc, getLocales())}</BodyText>
         </View>
       );
     }
@@ -67,9 +72,11 @@ class AnswerBlock extends Component {
       elements.push(
         <View key='2' style={{ padding: 10 }}>
           <Text style={{ color: 'red' }}>
-            <BoldBodyText style={styles.incorrect}>Неправильно!</BoldBodyText>
+            <BoldBodyText style={styles.incorrect}>
+              {I18n.t('answerIncorrect')}
+            </BoldBodyText>
           </Text>
-          <BodyText>Попробуйте ещё раз</BodyText>
+          <BodyText>{I18n.t('answerTryAgain')}</BodyText>
         </View>
       );
     }
@@ -77,9 +84,11 @@ class AnswerBlock extends Component {
       elements.push(
         <View key='3' style={{ padding: 10 }}>
           <Text style={{ color: 'green' }}>
-            <BoldBodyText>Правильный ответ: {this.props.question.answer}</BoldBodyText>
+            <BoldBodyText>
+              {I18n.t('answerCorrectAnswer')} {chooseTranslation(this.props.question.answer, getLocales())}
+            </BoldBodyText>
           </Text>
-          <BodyText>{this.props.question.answerDesc}</BodyText>
+          <BodyText>{chooseTranslation(this.props.question.answerDesc, getLocales())}</BodyText>
         </View>
       );
     }
@@ -88,7 +97,7 @@ class AnswerBlock extends Component {
         <View key='4'>
           <Form>
             <Item floatingLabel >
-              <Label>Ответ:</Label>
+              <Label>{I18n.t('answerEnterAnswer')}</Label>
               <Input
                 onChangeText={(answer) => this.setState({ answer })}
               />
@@ -97,7 +106,7 @@ class AnswerBlock extends Component {
           <SecondaryButton
             onPress={() => this.props.onActionSubmitAnswer(this.state.answer)}
           >
-            Ответить
+            {I18n.t('answerSubmit')}
           </SecondaryButton>
         </View>
       );
@@ -105,14 +114,14 @@ class AnswerBlock extends Component {
     if (correct || showAnswer) {
       elements.push(
         <SecondaryButton key='5' onPress={this.props.onNextQuestion}>
-          Следующий Вопрос
+          {I18n.t('answerNextQuestion')}
         </SecondaryButton>
       );
     }
     if (incorrect && !showAnswer) {
       elements.push(
         <PrimaryButton key='6' onPress={this.props.onActionShowAnswer}>
-          Узнать ответ
+          {I18n.t('answerRevealAnswer')}
         </PrimaryButton>
       );
     }

@@ -9,6 +9,7 @@ import {
   Card, CardItem
 } from 'native-base';
 
+import { chooseTranslation, getLocales } from '../reducers/utils';
 import QuestImageWithTitle from './QuestImageWithTitle';
 
 const QuestCard = ({ quest, onPress }) => {
@@ -18,7 +19,7 @@ const QuestCard = ({ quest, onPress }) => {
         <View style={styles.cardImageContainer}>
           <QuestImageWithTitle
             img={quest.cover}
-            title={quest.title}
+            title={chooseTranslation(quest.title, getLocales())}
           />
         </View>
       </CardItem>

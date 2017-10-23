@@ -16,6 +16,9 @@ import {
 } from '../actions/Actions';
 import LoginModal from '../components/LoginModal';
 
+import I18n from '../locales/i18n';
+import { chooseTranslation, getLocales } from '../reducers/utils';
+
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
   const progress = state.progress[questId];
@@ -75,12 +78,12 @@ class QuestScreen extends Component {
           <View style={styles.coverContainer}>
             <QuestImageWithTitle
               img={this.props.quest.cover}
-              title={this.props.quest.title}
+              title={chooseTranslation(this.props.quest.title, getLocales())}
             />
           </View>
           <View style={styles.descriptionContainer}>
             <View style={{ padding: 10 }}>
-            <BodyText>{this.props.quest.desc}</BodyText>
+            <BodyText>{chooseTranslation(this.props.quest.desc, getLocales())}</BodyText>
           </View>
             <QuestButtonBlock
               progress={this.props.progress}
@@ -92,7 +95,7 @@ class QuestScreen extends Component {
             {(this.props.progress)
                 ? (
                   <PrimaryButton onPress={this.props.onDelete}>
-                    Удалить
+                    {I18n.t('deleteQuest')}
                   </PrimaryButton>
                 )
                 : null}
