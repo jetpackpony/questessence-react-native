@@ -1,3 +1,4 @@
+import I18n from '../locales/i18n';
 
 export const isAnswerCorrect = (question, answer) => {
   return question.answer === answer;
@@ -19,4 +20,12 @@ export const getNextQuestionId = (quest, newProgress) => {
 
 export const getQuest = (state, questId) => {
   return state.entities.quests.byId[questId];
+};
+
+export const chooseTranslation = (text, locales) => {
+  return text[locales.find(locale => text[locale])];
+};
+
+export const getLocales = () => {
+  return I18n.locales.get();
 };
