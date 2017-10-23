@@ -1,7 +1,7 @@
 import I18n from '../locales/i18n';
 
 export const isAnswerCorrect = (question, answer) => {
-  return question.answer === answer;
+  return chooseTranslation(question.answer, getLocales()) === answer;
 };
 
 export const isQuestComplete = (quest, newProgress) => {

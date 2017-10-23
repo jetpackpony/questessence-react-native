@@ -16,6 +16,7 @@ import {
 } from '../../actions/Actions';
 
 import I18n from '../../locales/i18n';
+import { chooseTranslation, getLocales } from '../../reducers/utils';
 
 const mapStateToProps = (state, ownProps) => {
   const question = state.entities.questions.byId[ownProps.questionId];
@@ -63,7 +64,7 @@ class AnswerBlock extends Component {
               {I18n.t('answerCorrect')}
             </BoldBodyText>
           </Text>
-          <BodyText>{this.props.question.answerDesc}</BodyText>
+          <BodyText>{chooseTranslation(this.props.question.answerDesc, getLocales())}</BodyText>
         </View>
       );
     }
@@ -84,10 +85,10 @@ class AnswerBlock extends Component {
         <View key='3' style={{ padding: 10 }}>
           <Text style={{ color: 'green' }}>
             <BoldBodyText>
-              {I18n.t('answerCorrectAnswer')} {this.props.question.answer}
+              {I18n.t('answerCorrectAnswer')} {chooseTranslation(this.props.question.answer, getLocales())}
             </BoldBodyText>
           </Text>
-          <BodyText>{this.props.question.answerDesc}</BodyText>
+          <BodyText>{chooseTranslation(this.props.question.answerDesc, getLocales())}</BodyText>
         </View>
       );
     }

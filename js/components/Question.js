@@ -8,6 +8,9 @@ import AnswerBlock from './AnswerBlock/AnswerBlock';
 import BodyText from './BodyText';
 import BoldBodyText from './BoldBodyText';
 
+import I18n from '../locales/i18n';
+import { chooseTranslation, getLocales } from '../reducers/utils';
+
 const Question = ({ question }) => {
   return (
     <View>
@@ -19,12 +22,12 @@ const Question = ({ question }) => {
       <View style={styles.questionContainer}>
         <View style={{ padding: 10 }}>
           <BodyText>
-            {question.desc}
+            {chooseTranslation(question.desc, getLocales())}
           </BodyText>
         </View>
         <View style={{ padding: 10 }}>
           <BoldBodyText>
-            {question.questionText}
+            {chooseTranslation(question.questionText, getLocales())}
           </BoldBodyText>
         </View>
         <AnswerBlock
