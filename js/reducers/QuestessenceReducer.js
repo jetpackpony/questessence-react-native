@@ -34,7 +34,7 @@ const initialState = {
     "isLoggedIn": false,
     "uid": null
   },
-  downloadedQuests: {},
+  questsDownloadStates: {},
   isLoginModalShown: false,
   isLoggingInSpinnerShown: false
 };

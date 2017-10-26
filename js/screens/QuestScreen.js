@@ -22,7 +22,7 @@ import { chooseTranslation, getLocales } from '../reducers/utils';
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
   const progress = state.progress[questId];
-  let downloaded = state.downloadedQuests[questId];
+  let downloaded = state.questsDownloadStates[questId];
   if (!downloaded) {
     downloaded = DownloadStates.NOT_DOWNLOADED;
   }

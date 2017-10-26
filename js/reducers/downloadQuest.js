@@ -3,7 +3,7 @@ import { DownloadStates, QuestStates } from '../actions/Actions';
 export const downloadQuestStart = (state, action) => {
   return {
     ...state,
-    downloadedQuests: {
+    questsDownloadStates: {
       [action.questId]: DownloadStates.DOWNLOADING
     }
   };
@@ -32,7 +32,7 @@ export const downloadQuestSuccess = (state, action) => {
         questState: QuestStates.NOT_STARTED
       }
     },
-    downloadedQuests: {
+    questsDownloadStates: {
       [action.questId]: DownloadStates.DOWNLOADED
     }
   };
