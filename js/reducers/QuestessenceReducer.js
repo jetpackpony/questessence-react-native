@@ -1,82 +1,42 @@
-import { ActionTypes } from '../actions/Actions';
-
-import deleteQuest from './deleteQuest';
-import { downloadQuestStart, downloadQuestSuccess } from './downloadQuest';
-import startQuest from './startQuest';
-import answerQuestion from './answerQuestion';
-import showCorrectAnswer from './showCorrectAnswer';
-import goToNextQuestion from './goToNextQuestion';
-import updateQuestList from './updateQuestList';
-import {
-  loginSuccess, logout, loginStart,
-  showLoginModal, hideLoginModal
-} from './login';
-import { syncProgressSuccess }from './syncProgress';
-
-export const dontHydrateKeys = [
-  "isLoginModalShown",
-  "isLoggingInSpinnerShown"
-];
+import entities from './entities';
+import progress from './progress';
+import user from './user';
+import UIState from './UIState';
 
 const initialState = {
   entities: {
-    "quests": {
-      "byId": { },
-      "allIds": [ ]
+    quests: {
+      byId: { },
+      allIds: [ ]
     },
-    "questions": {
-      "byId": { },
-      "allIds": [ ]
-    }
+    questions: {
+      byId: { },
+      allIds: [ ]
+    },
+    questsDownloadStates: {},
   },
   progress: {},
   user: {
-    "isLoggedIn": false,
-    "uid": null
+    isLoggedIn: false,
+    uid: null
   },
-  questsDownloadStates: {},
-  isLoginModalShown: false,
-  isLoggingInSpinnerShown: false
-};
-
-const getReducer = (actionType) => {
-  switch (actionType) {
-    case ActionTypes.DELETE_QUEST: return deleteQuest;
-    case ActionTypes.DOWNLOADING_QUEST_START: return downloadQuestStart;
-    case ActionTypes.DOWNLOADING_QUEST_SUCCESS: return downloadQuestSuccess;
-    case ActionTypes.START_QUEST: return startQuest;
-    case ActionTypes.ANSWER_QUESTION: return answerQuestion;
-    case ActionTypes.SHOW_CORRECT_ANSWER: return showCorrectAnswer;
-    case ActionTypes.GOTO_NEXT_QUESTION: return goToNextQuestion;
-    case ActionTypes.UPDATE_QUEST_LIST: return updateQuestList;
-    case ActionTypes.LOGIN_SUCCESS: return loginSuccess;
-    case ActionTypes.LOGIN_START: return loginStart;
-    case ActionTypes.LOGOUT: return logout;
-    case ActionTypes.SHOW_LOGIN_MODAL: return showLoginModal;
-    case ActionTypes.HIDE_LOGIN_MODAL: return hideLoginModal;
-    case ActionTypes.SYNC_PROGRESS_SUCCESS: return syncProgressSuccess;
-    default: return (state = initialState, action) => state;
+  UIState: {
+    isLoginModalShown: false,
+    isLoggingInSpinnerShown: false
   }
 };
 
-const reduceState = (state = initialState, action) => {
-  return getReducer(action.type)(state, action);
+const QuestessenceReducer = (state = initialState, action) => {
+  return {
+    entities: entities(state.entities, action),
+    progress: progress(state.progress, action, state),
+    user: user(state.user, action),
+    UIState: UIState(state.UIState, action, state)
+  };
 };
 
-const addTimestamp = (state, action) => {
-  if (action.timestamp) {
-    return {
-      ...state,
-      progress: {
-        ...state.progress,
-        timestamp: action.timestamp
-      }
-    };
-  } else {
-    return state;
-  }
-};
+export default QuestessenceReducer;
 
-export function QuestessenceReducer(state, action) {
-  return addTimestamp(reduceState(state, action), action);
-};
+export const dontHydrateKeys = [
+  "UIState"
+];

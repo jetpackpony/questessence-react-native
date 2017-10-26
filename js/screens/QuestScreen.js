@@ -22,7 +22,7 @@ import { chooseTranslation, getLocales } from '../reducers/utils';
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
   const progress = state.progress[questId];
-  let downloaded = state.questsDownloadStates[questId];
+  let downloaded = state.entities.questsDownloadStates[questId];
   if (!downloaded) {
     downloaded = DownloadStates.NOT_DOWNLOADED;
   }
@@ -31,8 +31,8 @@ const mapStateToProps = (state, ownProps) => {
     quest: state.entities.quests.byId[questId],
     progress,
     downloaded,
-    isLoginModalShown: state.isLoginModalShown,
-    isLoggingInSpinnerShown: state.isLoggingInSpinnerShown
+    isLoginModalShown: state.UIState.isLoginModalShown,
+    isLoggingInSpinnerShown: state.UIState.isLoggingInSpinnerShown
   };
 };
 
