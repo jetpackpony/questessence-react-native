@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const questId = ownProps.questId;
   return {
     onActionSubmitAnswer: (answer) => {
-      dispatch(answerQuestion(questId, questionId, answer));
+      dispatch(answerQuestion(questionId, answer));
     },
     onActionShowAnswer: () => {
       dispatch(showCorrectAnswer(questId));

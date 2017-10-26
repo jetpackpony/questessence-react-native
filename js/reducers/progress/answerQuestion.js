@@ -5,8 +5,8 @@ export default (state, action, fullState) => {
   let question = fullState.entities.questions.byId[action.questionId];
   return {
     ...state,
-    [action.questId]: {
-      ...state[action.questId],
+    [question.quest]: {
+      ...state[question.quest],
       currentAnswer: action.answer || "",
       currentQuestionState: isAnswerCorrect(question, action.answer)
                               ? QuestionStates.CORRECT

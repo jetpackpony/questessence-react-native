@@ -4,10 +4,9 @@ export function startQuest(questId) {
   return { type: types.START_QUEST, questId };
 };
 
-export function answerQuestion(questId, questionId, answer) {
+export function answerQuestion(questionId, answer) {
   return {
     type: types.ANSWER_QUESTION,
-    questId,
     questionId,
     answer
   };
