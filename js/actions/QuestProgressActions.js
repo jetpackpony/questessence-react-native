@@ -1,7 +1,7 @@
 import types from './ActionTypes';
 
 export function startQuest(questId) {
-  return { type: types.START_QUEST, questId, updatingProgress: true };
+  return { type: types.START_QUEST, questId };
 };
 
 export function answerQuestion(questId, questionId, answer) {
@@ -9,15 +9,14 @@ export function answerQuestion(questId, questionId, answer) {
     type: types.ANSWER_QUESTION,
     questId,
     questionId,
-    answer,
-    updatingProgress: true
+    answer
   };
 };
 
 export function showCorrectAnswer(questId) {
-  return { type: types.SHOW_CORRECT_ANSWER, questId, updatingProgress: true  };
+  return { type: types.SHOW_CORRECT_ANSWER, questId };
 };
 
 export function goToNextQuestion(questId) {
-  return { type: types.GOTO_NEXT_QUESTION, questId, updatingProgress: true  };
+  return { type: types.GOTO_NEXT_QUESTION, questId };
 };
