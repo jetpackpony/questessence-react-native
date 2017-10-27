@@ -113,7 +113,10 @@ class AnswerBlock extends Component {
     }
     if (correct || showAnswer) {
       elements.push(
-        <SecondaryButton key='5' onPress={this.props.onNextQuestion}>
+        <SecondaryButton key='5' onPress={() => {
+          this.props.onNextQuestion();
+          this.setState({ answer: undefined });
+        }}>
           {I18n.t('answerNextQuestion')}
         </SecondaryButton>
       );
