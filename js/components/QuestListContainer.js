@@ -6,7 +6,10 @@ const mapStateToProps = (state, ownProps) => {
   const { navigate } = ownProps.navigation;
   const quests = state.entities.quests;
   return {
-    quests: quests.allIds.map((el) => quests.byId[el]),
+    quests: quests.allIds.map((id) => ({
+      ...quests.byId[id],
+      localizedTitle: chooseTranslation(quests.byId[id].title, getLocales())
+    })),
     getOnQuestPress: (quest) => () => navigate('Quest', {
       questId: quest.id,
       title: chooseTranslation(quest.title, getLocales())
