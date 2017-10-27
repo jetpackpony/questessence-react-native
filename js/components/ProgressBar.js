@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import BoldBodyText from '../components/BoldBodyText';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import BoldBodyText from './BoldBodyText';
 import { SECONDARY_COLOR } from '../Colors';
 
-import I18n from '../locales/i18n';
-
-export default ({ current, total }) => {
+export default ({
+  current, total, outOfText
+}) => {
   return (
     <View style={styles.progressBar}>
       <View style={[styles.bar, { flex: parseInt(current) }]}></View>
       <View style={[styles.rest, { flex: parseInt(total - current) }]}></View>
       <View style={styles.textContainer}>
         <BoldBodyText>
-          {current} {I18n.t('progressBarOutOf')} {total}
+          {current} {outOfText} {total}
         </BoldBodyText>
       </View>
     </View>

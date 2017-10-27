@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   const questId = ownProps.navigation.state.params.questId;
   const navigateToQuestions = () => {
-    ownProps.navigation.navigate('QuestProgress', {
+    ownProps.navigation.navigate('QuestQuestions', {
       questId,
       title: ownProps.navigation.state.params.title
     });
