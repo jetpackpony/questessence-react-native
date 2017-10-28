@@ -1,12 +1,25 @@
 import { connect } from 'react-redux';
 import { QuestStates } from '../actions/Actions';
 import QuestQuestions from './QuestQuestions';
+import { chooseTranslation, getLocales } from '../reducers/utils';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.state.params.questId;
   const currentId = state.progress[id].currentQuestion;
+  const currQuestion = state.entities.questions.byId[currentId];
   return {
-    currentQuestion: state.entities.questions.byId[currentId],
+    currentQuestion: {
+      ...currQuestion,
+      localizedQuestionText: chooseTranslation(
+        currQuestion.questionText,
+        getLocales()
+      ),
+      localizedDesc: chooseTranslation(
+        currQuestion.desc,
+        getLocales()
+      )
+
+    },
     completed: state.progress[id].questState
                                   === QuestStates.COMPLETED
   };
