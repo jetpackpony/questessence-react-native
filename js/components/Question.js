@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import QuestionMedia from './QuestionMedia';
-import AnswerContainer from './AnswerContainer';
+import AnswerTextLabelsContainer from './AnswerTextLabelsContainer';
+import AnswerFormContainer from './AnswerFormContainer';
 import BodyText from './BodyText';
 import BoldBodyText from './BoldBodyText';
 
@@ -23,7 +24,10 @@ const Question = ({ question }) => (
           {question.localizedQuestionText}
         </BoldBodyText>
       </View>
-      <AnswerContainer
+      <AnswerTextLabelsContainer
+        questionId={question.id}
+      />
+      <AnswerFormContainer
         questId={question.quest}
         questionId={question.id}
       />
