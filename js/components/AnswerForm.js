@@ -3,65 +3,41 @@ import { View, StyleSheet } from 'react-native';
 import { Form, Label, Input, Item } from 'native-base';
 import PrimaryButton from './PrimaryButton';
 import SecondaryButton from './SecondaryButton';
+import AnswerFormInputContainer from './AnswerFormInputContainer';
 
-class AnswerForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { answer: undefined };
-  }
+export default ({
+  questionId, questId,
+  nextQuestionText, revealAnswerText,
+  onActionShowAnswer, onNextQuestion,
+  unanswered, correct,
+  incorrect, showAnswer
+}) => (
+  <View>
+    {(unanswered || incorrect)
+        ? (
+          <AnswerFormInputContainer
+            questId={questId}
+            questionId={questionId}
+          />
+        )
+        : null
+    }
+    {(correct || showAnswer)
+        ? (
+          <SecondaryButton onPress={() => onNextQuestion()}>
+            {nextQuestionText}
+          </SecondaryButton>
+        )
+        : null
+    }
+    {(incorrect && !showAnswer)
+        ? (
+          <PrimaryButton onPress={onActionShowAnswer}>
+            {revealAnswerText}
+          </PrimaryButton>
+        )
+        : null
+    }
+  </View>
+);
 
-  render() {
-    const {
-      enterAnswerHereText, submitText,
-      nextQuestionText, revealAnswerText,
-      onActionSubmitAnswer, onActionShowAnswer,
-      onNextQuestion, unanswered, correct,
-      incorrect, showAnswer
-    } = this.props;
-    return (
-      <View>
-        {(unanswered || incorrect)
-            ? (
-              <View>
-                <Form>
-                  <Item floatingLabel >
-                    <Label>{enterAnswerHereText}</Label>
-                    <Input
-                      onChangeText={(answer) => this.setState({ answer })}
-                    />
-                  </Item>
-                </Form>
-                <SecondaryButton
-                  onPress={() => onActionSubmitAnswer(this.state.answer)}
-                >
-                  {submitText}
-                </SecondaryButton>
-              </View>
-            )
-            : null
-        }
-        {(correct || showAnswer)
-            ? (
-              <SecondaryButton onPress={() => {
-                onNextQuestion();
-                this.setState({ answer: undefined });
-              }}>
-              {nextQuestionText}
-            </SecondaryButton>
-            )
-            : null
-        }
-        {(incorrect && !showAnswer)
-            ? (
-              <PrimaryButton onPress={onActionShowAnswer}>
-                {revealAnswerText}
-              </PrimaryButton>
-            )
-            : null
-        }
-      </View>
-    );
-  }
-};
-
-export default AnswerForm;
