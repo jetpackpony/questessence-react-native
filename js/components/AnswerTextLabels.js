@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import BodyText from './BodyText';
-import BoldBodyText from './BoldBodyText';
+import { View } from 'react-native';
+import AnswerTextLabel from './AnswerTextLabel';
 
 export default ({
   question, answerCorrectText,
@@ -9,63 +8,36 @@ export default ({
   correctAnswerIsText, correct,
   incorrect, showAnswer
 }) => {
-  return (
-    <View>
-      {(correct)
-          ? (
-            <View style={{ padding: 10 }}>
-              <Text style={{ color: 'green' }}>
-                <BoldBodyText style={styles.correct}>
-                  {answerCorrectText}
-                </BoldBodyText>
-              </Text>
-              <BodyText>
-                {question.localizedAnswerDesc}
-              </BodyText>
-            </View>
-          )
-          : null
-      }
-      {(incorrect)
-          ? (
-            <View style={{ padding: 10 }}>
-              <Text style={{ color: 'red' }}>
-                <BoldBodyText style={styles.incorrect}>
-                  {answerIncorrectText}
-                </BoldBodyText>
-              </Text>
-              <BodyText>{tryAgainText}</BodyText>
-            </View>
-          )
-          : null
-      }
-      {(showAnswer)
-          ? (
-            <View style={{ padding: 10 }}>
-              <Text style={{ color: 'green' }}>
-                <BoldBodyText>
-                  {correctAnswerIsText}
-                  {' '}
-                  {question.localizedAnswer}
-                </BoldBodyText>
-              </Text>
-              <BodyText>
-                {question.localizedAnswerDesc}
-              </BodyText>
-            </View>
-          )
-          : null
-      }
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  correct: {
-    color: 'green'
-  },
-  incorrect: {
-    color: 'red'
+  if (incorrect) {
+    return (
+      <AnswerTextLabel
+        isCorrect={false}
+        styledText={answerIncorrectText}
+        plainText={tryAgainText}
+      />
+    );
   }
-});
+
+  if (correct) {
+    return (
+      <AnswerTextLabel
+        isCorrect={true}
+        styledText={answerCorrectText}
+        plainText={question.localizedAnswerDesc}
+      />
+    );
+  }
+
+  if (showAnswer) {
+    return (
+      <AnswerTextLabel
+        isCorrect={true}
+        styledText={correctAnswerIsText + " " + question.localizedAnswer}
+        plainText={question.localizedAnswerDesc}
+      />
+    );
+  }
+
+  return (<View></View>);
+};
 
