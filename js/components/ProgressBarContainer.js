@@ -8,9 +8,9 @@ const mapStateToProps = (state, ownProps) => {
   const questionsInOrder =
                 state.entities.quests.byId[id].questionsInOrder;
   return {
-    currentIndex: questionsInOrder.findIndex(
-                          (el) => el === currentId) + 1,
-    totalAmount: questionsInOrder.length,
+    current: questionsInOrder.findIndex(
+                                  (el) => el === currentId) + 1,
+    total: questionsInOrder.length,
     outOfText: I18n.t('progressBarOutOf')
   };
 };
