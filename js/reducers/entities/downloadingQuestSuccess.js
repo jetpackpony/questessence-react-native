@@ -13,6 +13,7 @@ export default (state, action) => {
       allIds: Object.keys(byId)
     },
     questsDownloadStates: {
+      ...state.questsDownloadStates,
       [action.questId]: DownloadStates.DOWNLOADED
     }
   };
