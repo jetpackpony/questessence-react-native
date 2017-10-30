@@ -30,7 +30,10 @@ const uploadUserProgress = (uid, progress) => {
   return firebase.database()
     .ref(`usersProgress/byId/${uid}`)
     .set(progress)
-    .then(() => progress);
+    .then(
+      () => progress,
+      (err) => console.log("Failed to update user progress: ", err)
+    );
 };
 
 export default {
