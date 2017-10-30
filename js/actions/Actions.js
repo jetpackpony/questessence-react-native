@@ -31,6 +31,6 @@ export {
 
 
 export function deleteQuest(questId) {
-  return { type: ActionTypes.DELETE_QUEST, questId, updatingProgress: true };
+  return { type: ActionTypes.DELETE_QUEST, questId };
 }
 

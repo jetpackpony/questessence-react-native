@@ -1,10 +1,5 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image
-} from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import BaseText from './BaseText';
 
 const QuestImageWithTitle = ({ img, title }) => {

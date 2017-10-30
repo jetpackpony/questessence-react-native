@@ -24,6 +24,6 @@ export function downloadQuestStart(questId) {
 }
 
 export function downloadQuestSuccess(questId, questions) {
-  return { type: types.DOWNLOADING_QUEST_SUCCESS, questId, questions, updatingProgress: true  };
+  return { type: types.DOWNLOADING_QUEST_SUCCESS, questId, questions };
 }
 

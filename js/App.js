@@ -9,8 +9,8 @@ import thunk from 'redux-thunk';
 
 import HomeScreen from './screens/HomeScreen';
 import QuestScreen from './screens/QuestScreen';
-import QuestProgressScreen from './screens/QuestProgressScreen';
-import { QuestessenceReducer } from './reducers/QuestessenceReducer.js';
+import QuestQuestionsScreen from './screens/QuestQuestionsScreen';
+import QuestessenceReducer from './reducers/QuestessenceReducer.js';
 import { updateQuestList, restoreLogin } from './actions/Actions';
 import Database from './database/Database';
 import addTimeStamp from './middleware/AddTimeStamp';
@@ -23,7 +23,7 @@ import { PRIMARY_COLOR, HEADER_TEXT_COLOR } from './Colors';
 const QuestEssenceNavigator = StackNavigator({
   Home: { screen: HomeScreen },
   Quest: { screen: QuestScreen },
-  QuestProgress: { screen: QuestProgressScreen },
+  QuestQuestions: { screen: QuestQuestionsScreen },
 } , {
   navigationOptions: {
     headerStyle: {
