@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AnswerFormInput from './AnswerFormInput';
-import { answerQuestion } from '../actions/Actions';
+import { answerQuestion } from '../actions';
 import I18n from '../locales/i18n';
 
 const mapStateToProps = (state) => ({

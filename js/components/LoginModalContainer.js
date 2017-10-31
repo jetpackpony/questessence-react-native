@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { hideLoginModal } from '../actions/Actions';
+import { hideLoginModal } from '../actions';
 import LoginModal from './LoginModal';
 import I18n from '../locales/i18n';
 

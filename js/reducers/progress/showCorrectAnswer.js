@@ -1,4 +1,4 @@
-import { QuestionStates } from '../../actions/Actions';
+import { QuestionStates } from '../../actions';
 
 export default (state, action) => {
   return {

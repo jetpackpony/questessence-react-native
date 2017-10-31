@@ -3,7 +3,7 @@ import {
   startQuest, DownloadStates,
   downloadQuest, deleteQuest,
   restartQuest
-} from '../actions/Actions';
+} from '../actions';
 import QuestButtons from './QuestButtons';
 import I18n from '../locales/i18n';
 

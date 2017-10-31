@@ -1,4 +1,4 @@
-import { ActionTypes } from '../../actions/Actions';
+import { ActionTypes } from '../../actions';
 import startQuest from './startQuest';
 import answerQuestion from './answerQuestion';
 import showCorrectAnswer from './showCorrectAnswer';

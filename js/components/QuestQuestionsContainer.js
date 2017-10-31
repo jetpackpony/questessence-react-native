@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { QuestStates } from '../actions/Actions';
+import { QuestStates } from '../actions';
 import QuestQuestions from './QuestQuestions';
 import { chooseTranslation, getLocales } from '../reducers/utils';
 

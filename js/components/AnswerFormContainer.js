@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import AnswerForm from './AnswerForm';
 import {
   showCorrectAnswer, goToNextQuestion, QuestionStates
-} from '../actions/Actions';
+} from '../actions';
 import I18n from '../locales/i18n';
 
 const mapStateToProps = (state, ownProps) => {

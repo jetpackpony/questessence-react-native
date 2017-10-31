@@ -1,4 +1,4 @@
-import { QuestStates } from '../../actions/Actions';
+import { QuestStates } from '../../actions';
 
 export default (state, action) => {
   return {

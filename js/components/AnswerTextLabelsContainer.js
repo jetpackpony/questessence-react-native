@@ -3,7 +3,7 @@ import AnswerTextLabels from './AnswerTextLabels';
 import {
   answerQuestion, showCorrectAnswer,
   goToNextQuestion, QuestionStates
-} from '../actions/Actions';
+} from '../actions';
 import I18n from '../locales/i18n';
 import { chooseTranslation, getLocales } from '../reducers/utils';
 

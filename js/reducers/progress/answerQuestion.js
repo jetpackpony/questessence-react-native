@@ -1,4 +1,4 @@
-import { QuestionStates } from '../../actions/Actions';
+import { QuestionStates } from '../../actions';
 import { isAnswerCorrect, } from '../utils';
 
 export default (state, action, fullState) => {

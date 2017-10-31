@@ -1,6 +1,6 @@
 import { downloadQuestions } from '../database/Database';
 import types from './ActionTypes';
-import { showLoginModal } from './Actions';
+import { showLoginModal } from './LoginActions';
 
 export function updateQuestList(quests) {
   return { type: types.UPDATE_QUEST_LIST, quests };

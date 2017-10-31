@@ -1,4 +1,4 @@
-import { ActionTypes } from '../actions/Actions';
+import { ActionTypes } from '../actions';
 
 const initialUser = {
   isLoggedIn: false,
