@@ -19,12 +19,13 @@ export function syncProgress() {
     if (!getState().user.isLoggedIn) return;
 
     Database.listenToProgress(getState().user.uid, (remoteProgress) => {
-      remoteProgress = remoteProgress || {};
       const state = getState();
+      const remote = remoteProgress || {};
+      const local = state.progress;
 
-      if (state.progress.timestamp !== remoteProgress.timestamp) {
+      if (local.timestamp !== remote.timestamp) {
         const mergedProgress = R.mergeWith(
-          merge(state), state.progress, remoteProgress
+          merge(state), local, remote
         );
         Database
           .uploadUserProgress(state.user.uid, mergedProgress)
@@ -33,7 +34,7 @@ export function syncProgress() {
               dispatch(syncProgressSuccess(newProgress));
             },
             (error) => {
-              console.log("SYNC PROGRESS ERROR", error);
+              console.log("Upload user progress error", error);
             }
           );
       }
