@@ -1,4 +1,4 @@
-import { uploadUserProgress } from '../database/Database';
+import { uploadUserProgress } from '../database';
 
 export default ({ getState }) => (next) => (action) => {
   let result = next(action);
