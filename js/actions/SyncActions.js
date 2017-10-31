@@ -1,15 +1,17 @@
 import R from 'ramda';
 import Database from '../database/Database';
 import types from './ActionTypes';
+import { getQuestionIndex } from '../reducers/QuestessenceReducer';
 
 const merge = R.curry((state, local, remote) => {
   if (typeof remote === "number") return remote;
 
-  const questionsInOrder = state.entities.quests.byId[local.questId].questionsInOrder;
-  const localN = questionsInOrder.findIndex((el) => el === local.currentQuestion)
-  const remoteN = questionsInOrder.findIndex((el) => el === remote.currentQuestion)
-
-  return (localN > remoteN) ? local : remote;
+  return (
+    getQuestionIndex(state, local.questId, local.currentQuestion) >
+      getQuestionIndex(state, remote.questId, remote.currentQuestion)
+  )
+    ? local
+    : remote;
 });
 
 export function syncProgress() {

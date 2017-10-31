@@ -1,4 +1,4 @@
-import entities from './entities';
+import entities, * as entitiesSelectors from './entities';
 import progress from './progress';
 import user from './user';
 import UIState from './UIState';
@@ -40,3 +40,8 @@ export default QuestessenceReducer;
 export const dontHydrateKeys = [
   "UIState"
 ];
+
+export const getQuestionIndex = (state, questId, questionId) => {
+  return entitiesSelectors
+          .getQuestionIndex(state.entities, questId, questionId);
+};
