@@ -1,4 +1,4 @@
-import Database from '../database/Database';
+import { downloadQuestions } from '../database/Database';
 import types from './ActionTypes';
 import { showLoginModal } from './Actions';
 
@@ -10,12 +10,10 @@ export function downloadQuest(questId) {
   return (dispatch) => {
     dispatch(downloadQuestStart(questId));
 
-    Database
-      .downloadQuestions(questId)
-      .then((questions) => {
-        dispatch(downloadQuestSuccess(questId, questions));
-        dispatch(showLoginModal());
-      });
+    downloadQuestions(questId).then((questions) => {
+      dispatch(downloadQuestSuccess(questId, questions));
+      dispatch(showLoginModal());
+    });
   };
 };
 

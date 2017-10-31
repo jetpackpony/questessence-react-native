@@ -19,22 +19,26 @@ export function loginFacebook(error, result) {
 export function loginFirebaseFacebook() {
   return (dispatch) => {
     AccessToken.getCurrentAccessToken()
-      .then((userData) => {
-        let token = userData.accessToken.toString();
-        let credential = firebase.auth.FacebookAuthProvider.credential(token);
-        firebase.auth().signInWithCredential(credential)
-          .then(() => {
-            dispatch(loginSuccess(firebase.auth().currentUser));
-            dispatch(syncProgress());
-          })
-          .catch(() => {
-            console.log('FIREBASE ERROR: ', error);
-          });
-      })
-      .catch((error) => {
-        // If there is not token, logout from firebase
-        dispatch(logout());
-      });
+      .then(
+        (userData) => {
+          let token = userData.accessToken.toString();
+          let credential = firebase.auth.FacebookAuthProvider.credential(token);
+          firebase.auth().signInWithCredential(credential)
+            .then(
+              () => {
+                dispatch(loginSuccess(firebase.auth().currentUser));
+                dispatch(syncProgress());
+              },
+              (error) => {
+                console.log('FIREBASE AUTH ERROR: ', error);
+              }
+            );
+        },
+        (error) => {
+          // If there is not token, logout from firebase
+          dispatch(logout());
+        }
+      );
   };
 }
 

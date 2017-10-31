@@ -11,8 +11,8 @@ import HomeScreen from './screens/HomeScreen';
 import QuestScreen from './screens/QuestScreen';
 import QuestQuestionsScreen from './screens/QuestQuestionsScreen';
 import QuestessenceReducer from './reducers/QuestessenceReducer.js';
-import { updateQuestList, restoreLogin } from './actions/Actions';
-import Database from './database/Database';
+import { updateQuestList, syncProgress } from './actions/Actions';
+import { listenToQuests } from './database/Database';
 import addTimeStamp from './middleware/AddTimeStamp';
 import syncStorageWithFirebase from './middleware/SyncStorageWithFirebase';
 
@@ -44,12 +44,15 @@ const store = createStore(
     )
   )
 );
-Database.listenToQuests((quests) => {
-  store.dispatch(updateQuestList(quests))
-});
 persistStore(store, {
   storage: AsyncStorage,
   blacklist: dontHydrateKeys
+}, () => {
+  // On rehydration complete
+  listenToQuests((quests) => {
+    store.dispatch(updateQuestList(quests))
+  });
+  store.dispatch(syncProgress());
 });
 
 class QuestEssence extends React.Component {

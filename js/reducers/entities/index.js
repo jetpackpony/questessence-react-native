@@ -7,13 +7,6 @@ import downloadingQuestStart from './downloadingQuestStart';
 import downloadingQuestSuccess from './downloadingQuestSuccess';
 import updateQuestList from './updateQuestList';
 
-const reducers = {
-  [ActionTypes.DELETE_QUEST]: deleteQuest,
-  [ActionTypes.DOWNLOADING_QUEST_START]: downloadingQuestStart,
-  [ActionTypes.DOWNLOADING_QUEST_SUCCESS]: downloadingQuestSuccess,
-  [ActionTypes.UPDATE_QUEST_LIST]: updateQuestList
-};
-
 const initialEntities = {
   quests: {
     byId: { },
@@ -27,6 +20,13 @@ const initialEntities = {
 };
 
 export default (state = initialProgress, action) => {
+  const reducers = {
+    [ActionTypes.DELETE_QUEST]: deleteQuest,
+    [ActionTypes.DOWNLOADING_QUEST_START]: downloadingQuestStart,
+    [ActionTypes.DOWNLOADING_QUEST_SUCCESS]: downloadingQuestSuccess,
+    [ActionTypes.UPDATE_QUEST_LIST]: updateQuestList
+  };
+
   if (reducers[action.type]) {
     return reducers[action.type](state, action);
   } else {
@@ -34,3 +34,7 @@ export default (state = initialProgress, action) => {
   }
 };
 
+export const getQuestionIndex = (state, questId, questionId) => {
+  return state.quests.byId[questId].questionsInOrder
+    .findIndex((el) => el === questionId);
+};
