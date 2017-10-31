@@ -16,30 +16,36 @@ export default ({
     onRequestClose={hideLoginModal}
   >
     <View style={styles.container}>
-      <View style={styles.top}>
-        <Text style={styles.topText}>
-          <BoldBodyText>
-            {registerText}
-          </BoldBodyText>
-        </Text>
-      </View>
-      <View>
-        {(isLoggingInSpinnerShown)
-            ? (
-              <PrimaryButton disabled >
-                {holdOnButtonText}
-              </PrimaryButton>
-            )
-            : (
+      {(!isLoggingInSpinnerShown)
+        ? (
+          <View style={styles.container}>
+            <View style={styles.top}>
+              <Text style={styles.topText}>
+                <BoldBodyText>
+                  {registerText}
+                </BoldBodyText>
+              </Text>
+            </View>
+            <View>
               <View>
                 <FBLoginButton />
                 <PrimaryButton onPress={hideLoginModal}>
                   {notNowButtonText}
                 </PrimaryButton>
               </View>
-            )
-        }
-      </View>
+            </View>
+          </View>
+        )
+        : (
+          <View style={styles.top}>
+            <Text style={styles.topText}>
+              <BoldBodyText>
+                {holdOnButtonText}
+              </BoldBodyText>
+            </Text>
+          </View>
+        )
+      }
     </View>
   </Modal>
 );
