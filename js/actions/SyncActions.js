@@ -14,6 +14,8 @@ const merge = R.curry((state, local, remote) => {
 
 export function syncProgress() {
   return (dispatch, getState) => {
+    if (!getState().user.isLoggedIn) return;
+
     Database.listenToProgress(getState().user.uid, (remoteProgress) => {
       remoteProgress = remoteProgress || {};
       const state = getState();
