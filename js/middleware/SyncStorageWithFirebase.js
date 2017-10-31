@@ -1,4 +1,4 @@
-import Database from '../database/Database';
+import { uploadUserProgress } from '../database/Database';
 
 export default ({ getState }) => (next) => (action) => {
   let result = next(action);
@@ -6,8 +6,7 @@ export default ({ getState }) => (next) => (action) => {
   const uid = state.user.uid;
   const updateProgress = state.progress.timestamp === action.timestamp;
   if (uid && updateProgress) {
-    Database
-      .uploadUserProgress(uid, state.progress)
+    uploadUserProgress(uid, state.progress)
       .then((newProgress) => {
         console.log("Synced progress to remote store", newProgress);
       });

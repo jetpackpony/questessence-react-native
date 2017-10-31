@@ -12,7 +12,7 @@ import QuestScreen from './screens/QuestScreen';
 import QuestQuestionsScreen from './screens/QuestQuestionsScreen';
 import QuestessenceReducer from './reducers/QuestessenceReducer.js';
 import { updateQuestList, syncProgress } from './actions/Actions';
-import Database from './database/Database';
+import { listenToQuests } from './database/Database';
 import addTimeStamp from './middleware/AddTimeStamp';
 import syncStorageWithFirebase from './middleware/SyncStorageWithFirebase';
 
@@ -49,7 +49,7 @@ persistStore(store, {
   blacklist: dontHydrateKeys
 }, () => {
   // On rehydration complete
-  Database.listenToQuests((quests) => {
+  listenToQuests((quests) => {
     store.dispatch(updateQuestList(quests))
   });
   store.dispatch(syncProgress());

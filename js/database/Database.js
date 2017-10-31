@@ -4,20 +4,20 @@ firebase.database.enableLogging(function(message) {
   console.log("[FIREBASE]", message);
 });
 
-const listenToQuests = (callback) => {
+export const listenToQuests = (callback) => {
   firebase.database().ref('quests').on('value', (snapshot) => {
     callback(snapshot.val());
   });
 };
 
-const listenToProgress = (uid, callback) => {
+export const listenToProgress = (uid, callback) => {
   firebase.database().ref(`usersProgress/byId/${uid}`)
     .on('value', (snapshot) => {
       callback(snapshot.val());
     });
 };
 
-const downloadQuestions = (questId) => {
+export const downloadQuestions = (questId) => {
   return firebase.database()
     .ref('questions/byId')
     .orderByChild('quest')
@@ -26,7 +26,7 @@ const downloadQuestions = (questId) => {
     .then((snapshot) => snapshot.val());
 };
 
-const uploadUserProgress = (uid, progress) => {
+export const uploadUserProgress = (uid, progress) => {
   return firebase.database()
     .ref(`usersProgress/byId/${uid}`)
     .set(progress)
@@ -34,9 +34,4 @@ const uploadUserProgress = (uid, progress) => {
       () => progress,
       (err) => console.log("Failed to update user progress: ", err)
     );
-};
-
-export default {
-  listenToQuests, listenToProgress,
-  downloadQuestions, uploadUserProgress
 };
