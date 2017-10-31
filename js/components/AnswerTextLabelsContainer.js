@@ -5,7 +5,7 @@ import {
   goToNextQuestion, QuestionStates
 } from '../actions';
 import I18n from '../locales/i18n';
-import { chooseTranslation, getLocales } from '../reducers/utils';
+import { chooseTranslation, getLocales } from '../reducer/utils';
 
 const mapStateToProps = (state, ownProps) => {
   const question = state.entities.questions.byId[ownProps.questionId];

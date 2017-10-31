@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ProgressBar from './ProgressBar';
 import I18n from '../locales/i18n';
-import { getQuestionIndex } from '../reducers/QuestessenceReducer';
+import { getQuestionIndex } from '../reducer';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.state.params.questId;

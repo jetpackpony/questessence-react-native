@@ -1,7 +1,7 @@
 import R from 'ramda';
 import { listenToProgress, uploadUserProgress } from '../database';
 import types from './ActionTypes';
-import { getQuestionIndex } from '../reducers/QuestessenceReducer';
+import { getQuestionIndex } from '../reducer';
 
 const merge = R.curry((state, local, remote) => {
   if (typeof remote === "number") return remote;

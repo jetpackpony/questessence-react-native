@@ -4,15 +4,14 @@ import { persistStore, autoRehydrate } from 'redux-persist';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import addTimeStamp from './middleware/AddTimeStamp';
-import QuestessenceReducer from './reducers/QuestessenceReducer.js';
+import reducer, { dontHydrateKeys } from './reducer';
 import { updateQuestList, syncProgress } from './actions';
 import { listenToQuests } from './database';
 import syncStorageWithFirebase from './middleware/SyncStorageWithFirebase';
-import { dontHydrateKeys } from './reducers/QuestessenceReducer';
 
 export default () => {
   const store = createStore(
-    QuestessenceReducer,
+    reducer,
     compose(
       autoRehydrate({ log: true }),
       applyMiddleware(

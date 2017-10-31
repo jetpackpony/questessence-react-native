@@ -26,7 +26,7 @@ const initialState = {
   }
 };
 
-const QuestessenceReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
   return {
     entities: entities(state.entities, action),
     progress: progress(state.progress, action, state),
@@ -34,8 +34,6 @@ const QuestessenceReducer = (state = initialState, action) => {
     UIState: UIState(state.UIState, action, state)
   };
 };
-
-export default QuestessenceReducer;
 
 export const dontHydrateKeys = [
   "UIState"
