@@ -6,6 +6,7 @@ export default {
   download: "Загрузить",
   downloading: "Загрузка...",
   continue: "Продолжить",
+  restart: "Начать с начала",
 
   answerCorrect: "Правильно!",
   answerIncorrect: "Неправильно!",

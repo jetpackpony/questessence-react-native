@@ -6,6 +6,7 @@ export default {
   download: "Download",
   downloading: "Downloading...",
   continue: "Continue",
+  restart: "Restart",
 
   answerCorrect: "Correct!",
   answerIncorrect: "Incorrect!",

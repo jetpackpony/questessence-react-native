@@ -19,3 +19,7 @@ export function showCorrectAnswer(questId) {
 export function goToNextQuestion(questId) {
   return { type: types.GOTO_NEXT_QUESTION, questId };
 };
+
+export function restartQuest(questId) {
+  return { type: types.RESTART_QUEST, questId };
+};

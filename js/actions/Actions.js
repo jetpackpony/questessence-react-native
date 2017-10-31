@@ -7,8 +7,8 @@ export {
 } from './constants';
 
 export {
-  startQuest, answerQuestion,
-  showCorrectAnswer, goToNextQuestion
+  startQuest, answerQuestion, showCorrectAnswer,
+  goToNextQuestion, restartQuest
 } from './QuestProgressActions';
 
 export {

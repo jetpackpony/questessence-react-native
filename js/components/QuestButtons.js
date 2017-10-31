@@ -6,9 +6,9 @@ import SecondaryButton from '../components/SecondaryButton';
 
 export default ({
   progress, downloaded, onStartClick, onContinueClick,
-  onDownloadClick, onDeleteClick, downloadButtonText,
-  downloadingButtonText, startButtonText,
-  continueButtonText, deleteButtonText
+  onDownloadClick, onDeleteClick, onRestartClick,
+  downloadButtonText, downloadingButtonText, startButtonText,
+  continueButtonText, deleteButtonText, restartButtonText
 }) => (
   <View>
     {
@@ -32,9 +32,14 @@ export default ({
             </SecondaryButton>
           )
           :(
-            <SecondaryButton onPress={onContinueClick}>
-              {continueButtonText}
-            </SecondaryButton>
+            <View>
+              <SecondaryButton onPress={onContinueClick}>
+                {continueButtonText}
+              </SecondaryButton>
+              <SecondaryButton onPress={onRestartClick}>
+                {restartButtonText}
+              </SecondaryButton>
+            </View>
           )
         )
     }

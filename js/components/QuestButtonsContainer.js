@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import {
   startQuest, DownloadStates,
-  downloadQuest, deleteQuest
+  downloadQuest, deleteQuest,
+  restartQuest
 } from '../actions/Actions';
 import QuestButtons from './QuestButtons';
 import I18n from '../locales/i18n';
@@ -17,6 +18,7 @@ const mapStateToProps = (state, ownProps) => {
     downloadingButtonText: I18n.t('downloading'),
     startButtonText: I18n.t('start'),
     continueButtonText: I18n.t('continue'),
+    restartButtonText: I18n.t('restart'),
     deleteButtonText: I18n.t('deleteQuest')
   };
 };
@@ -40,6 +42,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     onDeleteClick: () => {
       dispatch(deleteQuest(questId));
+    },
+    onRestartClick: () => {
+      dispatch(restartQuest(questId));
     }
   };
 };
