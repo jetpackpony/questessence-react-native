@@ -39,7 +39,7 @@ export default ({
         )
     }
     {
-      (progress)
+      (downloaded === DownloadStates.DOWNLOADED)
         ? (
           <PrimaryButton onPress={onDeleteClick}>
             {deleteButtonText}

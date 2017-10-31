@@ -25,3 +25,7 @@ export function downloadQuestSuccess(questId, questions) {
   return { type: types.DOWNLOADING_QUEST_SUCCESS, questId, questions };
 }
 
+export function deleteQuest(questId) {
+  return { type: types.DELETE_QUEST, questId };
+}
+

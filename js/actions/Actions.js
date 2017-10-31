@@ -13,7 +13,8 @@ export {
 
 export {
   downloadQuest, downloadQuestStart,
-  downloadQuestSuccess, updateQuestList
+  downloadQuestSuccess, updateQuestList,
+  deleteQuest
 } from './DownloadActions';
 
 export {
@@ -27,10 +28,4 @@ export {
 export {
   syncProgress, syncProgressSuccess
 } from './SyncActions';
-
-
-
-export function deleteQuest(questId) {
-  return { type: ActionTypes.DELETE_QUEST, questId };
-}
 
