@@ -1,5 +1,5 @@
 import { QuestionStates } from '../../actions';
-import { isAnswerCorrect, } from '../utils';
+import { isAnswerCorrect, } from '../../reducer';
 
 export default (state, action, fullState) => {
   let question = fullState.entities.questions.byId[action.questionId];

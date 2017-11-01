@@ -1,5 +1,5 @@
 import { QuestionStates, QuestStates } from '../../actions';
-import { getQuest } from '../utils';
+import { getQuest } from '../../reducer';
 
 export default (state, action, fullState) => {
   return {

@@ -1,5 +1,5 @@
 import { QuestionStates, QuestStates } from '../../actions';
-import { getQuest, isQuestComplete, getNextQuestionId } from '../utils';
+import { getQuest, isQuestComplete, getNextQuestionId } from '../../reducer';
 
 export default (state, action, fullState) => {
   let quest = getQuest(fullState, action.questId);

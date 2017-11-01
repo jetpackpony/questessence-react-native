@@ -43,3 +43,19 @@ export const getQuestionIndex = (state, questId, questionId) => {
   return entitiesSelectors
           .getQuestionIndex(state.entities, questId, questionId);
 };
+
+export const getQuest = (state, questId) => {
+  return entitiesSelectors.getQuest(state.entities, questId);
+};
+
+export const isQuestComplete = (quest, newProgress) => {
+  return entitiesSelectors.isQuestComplete(quest, newProgress);
+};
+
+export const getNextQuestionId = (quest, newProgress) => {
+  return entitiesSelectors.getNextQuestionId(quest, newProgress);
+};
+
+export const isAnswerCorrect = (question, answer) => {
+  return entitiesSelectors.isAnswerCorrect(question, answer);
+};
