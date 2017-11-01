@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { QuestStates } from '../actions';
 import QuestQuestions from './QuestQuestions';
-import { chooseTranslation, getLocales } from '../reducer/utils';
+import { chooseTranslation, getLocales } from '../locales';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.navigation.state.params.questId;

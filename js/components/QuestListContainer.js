@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { chooseTranslation, getLocales } from '../reducer/utils';
+import { chooseTranslation, getLocales } from '../locales';
 import QuestList from './QuestList';
 
 const mapStateToProps = (state, ownProps) => {
