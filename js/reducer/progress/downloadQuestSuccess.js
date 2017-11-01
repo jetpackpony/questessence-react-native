@@ -1,4 +1,4 @@
-import { QuestStates } from '../../actions';
+import { QuestStates } from '../../constants';
 
 export default (state, action) => {
   return {

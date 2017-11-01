@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import {
-  startQuest, DownloadStates,
-  downloadQuest, deleteQuest,
-  restartQuest
+  startQuest, downloadQuest,
+  deleteQuest, restartQuest
 } from '../actions';
+import { DownloadStates } from '../constants';
 import QuestButtons from './QuestButtons';
 import I18n from '../locales/i18n';
 

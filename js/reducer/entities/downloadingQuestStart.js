@@ -1,4 +1,4 @@
-import { DownloadStates } from '../../actions';
+import { DownloadStates } from '../../constants';
 
 export default (state, action) => {
   return {

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import AnswerTextLabels from './AnswerTextLabels';
 import {
-  answerQuestion, showCorrectAnswer,
-  goToNextQuestion, QuestionStates
+  answerQuestion, showCorrectAnswer, goToNextQuestion
 } from '../actions';
+import { QuestionStates } from '../constants';
 import I18n from '../locales/i18n';
 import { chooseTranslation, getLocales } from '../locales';
 

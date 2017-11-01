@@ -1,4 +1,4 @@
-import { QuestionStates, QuestStates } from '../../actions';
+import { QuestionStates, QuestStates } from '../../constants';
 import { getQuest, isQuestComplete, getNextQuestionId } from '../../reducer';
 
 export default (state, action, fullState) => {

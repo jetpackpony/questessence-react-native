@@ -3,10 +3,6 @@ import types from './ActionTypes';
 export const ActionTypes = types;
 
 export {
-  QuestStates, DownloadStates, QuestionStates
-} from './constants';
-
-export {
   startQuest, answerQuestion, showCorrectAnswer,
   goToNextQuestion, restartQuest
 } from './QuestProgressActions';

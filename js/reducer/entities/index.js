@@ -1,6 +1,5 @@
 import R from 'ramda';
 import { ActionTypes } from '../../actions';
-import { DownloadStates, QuestStates } from '../../actions';
 import deleteQuest from './deleteQuest';
 import downloadingQuestStart from './downloadingQuestStart';
 import downloadingQuestSuccess from './downloadingQuestSuccess';

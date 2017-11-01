@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { QuestStates, DownloadStates } from '../actions';
+import { QuestStates, DownloadStates } from '../constants';
 import PrimaryButton from '../components/PrimaryButton';
 import SecondaryButton from '../components/SecondaryButton';
 
