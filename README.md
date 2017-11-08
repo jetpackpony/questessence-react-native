@@ -15,3 +15,51 @@ facebook profile and don't store any of your data in our database except for use
 
 The app is available in English and Russian and will automatically switch depending on your phone’s language setting.
 
+## Installation
+
+* `git clone` this repository
+* `cd` into cloned directory
+* `npm install`
+* `cp .env.sample .env` and add google play license key to .env file (this step is not currently necessary as nothing can be purchased)
+* `cp js/config.js.sample js/config.js` and add Firebase app data to js/config.js file
+* change the name of the Android emulator to the one you have at `scripts/emulator` (alternatively you can start emulator from Android Studio launching the app)
+
+## Running/Development
+
+Run `npm start` or `./scripts/start-server` to start a development JS server.
+
+### Android
+
+Launch the emulator
+
+```
+$ ./scripts/emulator
+```
+
+Alternatively, launch it from Android Studio or connect a real device.
+
+Build the debug app version and install it:
+
+```
+react-native run-android
+```
+
+### iOS
+
+Run `react-native run-ios`
+
+## Testing
+
+Tests are in `__tests__` directory. Run tests by `npm test`
+
+## Building
+
+### Android
+
+To generate a signed apk ready to upload to Google Play, you need to setup your signing keys and gradle. Refer to the [Generating Signed APK](https://facebook.github.io/react-native/docs/signed-apk-android.html) page for the guide on how to do that.
+
+To build a release apk and install it on the device, run:
+
+```
+./scripts/run-android-release
+```
