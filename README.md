@@ -44,6 +44,11 @@ Build the debug app version and install it:
 react-native run-android
 ```
 
+
+node_modules\react-native-device-info\android\build.gradle
+replace: 
+    compile 'com.google.android.gms:play-services-gcm:15.0.1'
+
 ### iOS
 
 Run `react-native run-ios`
