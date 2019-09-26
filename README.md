@@ -20,7 +20,6 @@ The app is available in English and Russian and will automatically switch depend
 * `git clone` this repository
 * `cd` into cloned directory
 * `npm install`
-* `cp .env.sample .env` and add google play license key to .env file (this step is not currently necessary as nothing can be purchased)
 * `cp js/config.js.sample js/config.js` and add Firebase app data to js/config.js file
 * change the name of the Android emulator to the one you have at `scripts/emulator` (alternatively you can start emulator from Android Studio launching the app)
 
@@ -43,11 +42,6 @@ Build the debug app version and install it:
 ```
 react-native run-android
 ```
-
-
-node_modules\react-native-device-info\android\build.gradle
-replace: 
-    compile 'com.google.android.gms:play-services-gcm:15.0.1'
 
 ### iOS
 
