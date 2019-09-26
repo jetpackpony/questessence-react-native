@@ -1,29 +1,51 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import React from 'react';
+import { View, Button } from 'react-native';
+import { LoginManager } from 'react-native-fbsdk';
 import { connect } from 'react-redux';
 import { loginFacebook, logout, loginStart } from '../actions';
+import PrimaryButton from './PrimaryButton';
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
   return {
-    loginFacebook: (error, result) => {
-      dispatch(loginStart());
-      dispatch(loginFacebook(error, result));
-    },
-    logout: () => dispatch(logout())
+    isLoggedIn: state.user.isLoggedIn
   };
 };
 
-const FBLoginButton = ({ loginFacebook, logout }) => {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLogin: (error, result) => {
+      dispatch(loginStart());
+      dispatch(loginFacebook(error, result));
+    },
+    onLogout: () => dispatch(logout())
+  };
+};
+
+const FBLoginButton = ({ isLoggedIn, onLogin, onLogout }) => {
   return (
     <View>
-      <LoginButton
-        readPermissions={["email"]}
-        onLoginFinished={loginFacebook}
-        onLogoutFinished={logout}
-      />
+      {
+        (isLoggedIn)
+          ? (
+            <PrimaryButton onPress={
+              () => {
+                LoginManager.logOut();
+                onLogout();
+              }
+            }>Logout</PrimaryButton>
+          )
+          : (
+            <PrimaryButton onPress={
+              () => LoginManager.logInWithPermissions(['email'])
+                .then(
+                  (result) => onLogin(null, result),
+                  (error) => onLogin(error)
+                )
+            }>Login with Facebook</PrimaryButton>
+          )
+      }
     </View>
   );
 };
 
-export default connect(undefined, mapDispatchToProps)(FBLoginButton);
+export default connect(mapStateToProps, mapDispatchToProps)(FBLoginButton);
