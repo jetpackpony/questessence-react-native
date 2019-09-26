@@ -5,19 +5,22 @@ import QuestScreen from './screens/QuestScreen';
 import QuestQuestionsScreen from './screens/QuestQuestionsScreen';
 import { PRIMARY_COLOR, HEADER_TEXT_COLOR } from './Colors';
 
-const AppNavigator = createStackNavigator(
+const buildStackNavigator = (extraProps) => createStackNavigator(
   {
     Home: { screen: HomeScreen },
     Quest: { screen: QuestScreen },
-    QuestQuestions: { screen: QuestQuestionsScreen },
-  }, {
+    QuestQuestions: { screen: QuestQuestionsScreen }
+  },
+  {
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: PRIMARY_COLOR
       },
-      headerTintColor: HEADER_TEXT_COLOR
+      headerTintColor: HEADER_TEXT_COLOR,
+      extraProps
     }
   }
 );
 
-export default createAppContainer(AppNavigator);
+export const makeNavigationAppContainer =
+  (extraNavOptions) => createAppContainer(buildStackNavigator(extraNavOptions));
