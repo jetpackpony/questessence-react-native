@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 import { LoginManager } from 'react-native-fbsdk';
 import { connect } from 'react-redux';
 import { loginFacebook, logout, loginStart } from '../actions';
 import PrimaryButton from './PrimaryButton';
+import I18n from '../locales/i18n';
 
 const mapStateToProps = (state) => {
   return {
@@ -32,7 +33,7 @@ const FBLoginButton = ({ isLoggedIn, onLogin, onLogout }) => {
                 LoginManager.logOut();
                 onLogout();
               }
-            }>Logout</PrimaryButton>
+            }>{I18n.t("logout")}</PrimaryButton>
           )
           : (
             <PrimaryButton onPress={
@@ -41,7 +42,7 @@ const FBLoginButton = ({ isLoggedIn, onLogin, onLogout }) => {
                   (result) => onLogin(null, result),
                   (error) => onLogin(error)
                 )
-            }>Login with Facebook</PrimaryButton>
+            }>{I18n.t("loginWithFacebook")}</PrimaryButton>
           )
       }
     </View>

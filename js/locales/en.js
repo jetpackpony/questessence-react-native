@@ -23,4 +23,7 @@ export default {
 
   progressBarOutOf: "out of",
   questCompleteText: "Yay! You've completed the quest!",
+
+  loginWithFacebook: "Login with Facebook",
+  logout: "Logout"
 };
