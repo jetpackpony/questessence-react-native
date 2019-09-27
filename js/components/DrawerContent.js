@@ -26,7 +26,7 @@ const DrawerContent = () => {
   return (
     <List>
       <ListItem noIndent first style={styles.header}>
-        <Text style={styles.headerText}>Questessence</Text>
+        <Text style={styles.headerText}>QuestEssence</Text>
       </ListItem>
       <ListItem button onPress={() => {
         Linking.openURL(privacyPolicyURL)
