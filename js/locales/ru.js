@@ -23,4 +23,9 @@ export default {
 
   progressBarOutOf: "из",
   questCompleteText: "Ура! Вы прошли квест!",
+
+  loginWithFacebook: "Войти через Facebook",
+  logout: "Выйти",
+
+  privacyPolicyLink: "Политика конфиденциальности"
 };

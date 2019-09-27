@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 import BaseText from './BaseText';
 
 const QuestImageWithTitle = ({ img, title }) => {
   return (
-    <Image
+    <ImageBackground
       resizeMode='cover'
       style={styles.cardImage}
       source={{ uri: img }}
@@ -16,7 +16,7 @@ const QuestImageWithTitle = ({ img, title }) => {
           <Text style={styles.cardHeader}>{title}</Text>
         </BaseText>
       </View>
-    </Image>
+    </ImageBackground>
   );
 };
 

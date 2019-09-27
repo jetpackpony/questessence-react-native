@@ -1,29 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View } from 'react-native';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
-import { connect } from 'react-redux';
-import { loginFacebook, logout, loginStart } from '../actions';
+import PrimaryButton from './PrimaryButton';
+import I18n from '../locales/i18n';
+import withLogin from '../withLogin';
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    loginFacebook: (error, result) => {
-      dispatch(loginStart());
-      dispatch(loginFacebook(error, result));
-    },
-    logout: () => dispatch(logout())
-  };
-};
-
-const FBLoginButton = ({ loginFacebook, logout }) => {
+export const FBLoginButton = ({ isLoggedIn, onLogin, onLogout }) => {
   return (
     <View>
-      <LoginButton
-        readPermissions={["email"]}
-        onLoginFinished={loginFacebook}
-        onLogoutFinished={logout}
-      />
+      {
+        (isLoggedIn)
+          ? (
+            <PrimaryButton onPress={onLogout}>
+              {I18n.t("logout")}
+            </PrimaryButton>
+          )
+          : (
+            <PrimaryButton onPress={onLogin}>
+              {I18n.t("loginWithFacebook")}
+            </PrimaryButton>
+          )
+      }
     </View>
   );
 };
 
-export default connect(undefined, mapDispatchToProps)(FBLoginButton);
+export default withLogin(FBLoginButton);

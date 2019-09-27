@@ -40,6 +40,7 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
+!debug.keystore
 
 # fastlane
 #
@@ -52,6 +53,11 @@ buck-out/
 */fastlane/Preview.html
 */fastlane/screenshots
 
-# Some api keys and such
-config.js
-.env
+# Bundle artifact
+*.jsbundle
+
+# CocoaPods
+/ios/Pods/
+
+# Config file for JS code
+/js/config.js

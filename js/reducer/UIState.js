@@ -26,7 +26,8 @@ export default (state = initialUIState, action, fullState) => {
     case ActionTypes.HIDE_LOGIN_MODAL:
       return {
         ...state,
-        isLoginModalShown: false
+        isLoginModalShown: false,
+        isLoggingInSpinnerShown: false
       };
     default:
       return state;

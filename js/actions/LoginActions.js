@@ -8,9 +8,12 @@ export function loginFacebook(error, result) {
   return (dispatch) => {
     if (error) {
       console.log("login has error: ", error);
+      dispatch(hideLoginModal());
     } else if (result.isCancelled) {
       console.log("login is cancelled.", result);
+      dispatch(hideLoginModal());
     } else {
+      console.log("login is result: ", result);
       dispatch(loginFirebaseFacebook());
     }
   };

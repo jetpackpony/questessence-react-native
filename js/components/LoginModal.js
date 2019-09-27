@@ -27,7 +27,7 @@ export default ({
               </Text>
             </View>
             <View>
-              <View>
+              <View style={{ width: 250 }}>
                 <FBLoginButton />
                 <PrimaryButton onPress={hideLoginModal}>
                   {notNowButtonText}
