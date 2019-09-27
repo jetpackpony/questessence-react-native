@@ -7,3 +7,5 @@ export const firebaseConfig = {
 };
 
 export const useDummyGoogleProductID = true;
+
+export const privacyPolicyURL = "";

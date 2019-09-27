@@ -25,5 +25,7 @@ export default {
   questCompleteText: "Ура! Вы прошли квест!",
 
   loginWithFacebook: "Войти через Facebook",
-  logout: "Выйти"
+  logout: "Выйти",
+
+  privacyPolicyLink: "Политика конфиденциальности"
 };

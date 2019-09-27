@@ -1,9 +1,10 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Linking } from 'react-native';
 import { PRIMARY_COLOR } from '../Colors';
 import { List, ListItem, Text } from 'native-base';
 import withLogin from '../withLogin';
 import I18n from '../locales/i18n';
+import { privacyPolicyURL } from '../config';
 
 const LoginListItem = withLogin(
   ({ isLoggedIn, onLogin, onLogout }) => (
@@ -27,8 +28,11 @@ const DrawerContent = () => {
       <ListItem noIndent first style={styles.header}>
         <Text style={styles.headerText}>Questessence</Text>
       </ListItem>
-      <ListItem button onPress={() => console.log("PP")}>
-        <Text>Privacy Policy</Text>
+      <ListItem button onPress={() => {
+        Linking.openURL(privacyPolicyURL)
+          .catch((err) => console.error('An error occurred', err));
+      }}>
+        <Text>{I18n.t("privacyPolicyLink")}</Text>
       </ListItem>
       <LoginListItem/>
     </List>
