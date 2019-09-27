@@ -2,6 +2,24 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { PRIMARY_COLOR } from '../Colors';
 import { List, ListItem, Text } from 'native-base';
+import withLogin from '../withLogin';
+import I18n from '../locales/i18n';
+
+const LoginListItem = withLogin(
+  ({ isLoggedIn, onLogin, onLogout }) => (
+    (isLoggedIn)
+      ? (
+        <ListItem button onPress={onLogout}>
+          <Text>{I18n.t("logout")}</Text>
+        </ListItem>
+      )
+      : (
+        <ListItem button onPress={onLogin}>
+          <Text>{I18n.t("loginWithFacebook")}</Text>
+        </ListItem>
+      )
+  )
+);
 
 const DrawerContent = () => {
   return (
@@ -12,14 +30,10 @@ const DrawerContent = () => {
       <ListItem button onPress={() => console.log("PP")}>
         <Text>Privacy Policy</Text>
       </ListItem>
-      <ListItem button onPress={() => console.log("Logout")}>
-        <Text>Logout</Text>
-      </ListItem>
+      <LoginListItem/>
     </List>
-
   );
 };
-
 
 const styles = StyleSheet.create({
   header: {
