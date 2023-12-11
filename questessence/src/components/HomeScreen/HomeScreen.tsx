@@ -1,12 +1,12 @@
-import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, View } from "react-native";
+import { chooseTranslation, translate } from "../../i18n";
 
 export default function HomeScreen({ getOnQuestPress }) {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Text>{translate("homeTitle")}</Text>
       <Button
-        title="Go to Quest"
+        title={chooseTranslation({ en: "Go to Quest", ru: "Го ту квест" })}
         onPress={getOnQuestPress({ id: "kdjfsk", title: "Test Quest" })}
       />
     </View>
