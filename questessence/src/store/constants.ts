@@ -1,0 +1,18 @@
+export const QuestStates = {
+  NOT_STARTED: "NOT_STARTED",
+  IN_PROGRESS: "IN_PROGRESS",
+  COMPLETED: "COMPLETED",
+};
+
+export const DownloadStates = {
+  NOT_DOWNLOADED: "NOT_DOWNLOADED",
+  DOWNLOADING: "DOWNLOADING",
+  DOWNLOADED: "DOWNLOADED",
+};
+
+export const QuestionStates = {
+  UNANSWERED: "UNANSWERED",
+  CORRECT: "CORRECT",
+  INCORRECT: "INCORRECT",
+  SHOW_ANSWER: "SHOW_ANSWER",
+};
