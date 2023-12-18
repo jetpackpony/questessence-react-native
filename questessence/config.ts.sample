@@ -1,0 +1,11 @@
+export const firebaseConfig = {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  storageBucket: "",
+  messagingSenderId: ""
+};
+
+export const useDummyGoogleProductID = true;
+
+export const privacyPolicyURL = "";
