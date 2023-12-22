@@ -5,38 +5,42 @@ import QuestScreen from "./components/QuestScreen";
 import QuestQuestionsScreen from "./components/QuestQuestionsScreen";
 import LeftDrawer from "./components/Drawer";
 import { HEADER_TEXT_COLOR, PRIMARY_COLOR } from "./Colors";
+import { Provider } from "react-redux";
+import initStore from "./store/initStore";
 
 const Stack = createNativeStackNavigator();
 
 export default function AppContainer() {
   return (
-    <LeftDrawer>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: PRIMARY_COLOR,
-            },
-            headerTintColor: HEADER_TEXT_COLOR,
-          }}
-        >
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{ title: "Home" }}
-          />
-          <Stack.Screen
-            name="Quest"
-            component={QuestScreen}
-            options={{ title: "Quest" }}
-          />
-          <Stack.Screen
-            name="QuestQuestions"
-            component={QuestQuestionsScreen}
-            options={{ title: "QuestQuestions" }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </LeftDrawer>
+    <Provider store={initStore()}>
+      <LeftDrawer>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: PRIMARY_COLOR,
+              },
+              headerTintColor: HEADER_TEXT_COLOR,
+            }}
+          >
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{ title: "Home" }}
+            />
+            <Stack.Screen
+              name="Quest"
+              component={QuestScreen}
+              options={{ title: "Quest" }}
+            />
+            <Stack.Screen
+              name="QuestQuestions"
+              component={QuestQuestionsScreen}
+              options={{ title: "QuestQuestions" }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </LeftDrawer>
+    </Provider>
   );
 }

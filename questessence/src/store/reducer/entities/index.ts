@@ -4,7 +4,7 @@ import deleteQuest from "./deleteQuest";
 import downloadingQuestStart from "./downloadingQuestStart";
 import downloadingQuestSuccess from "./downloadingQuestSuccess";
 import updateQuestList from "./updateQuestList";
-import { chooseTranslation, getLocales } from "../../locales";
+import { chooseTranslation } from "../../../i18n";
 
 const initialEntities = {
   quests: {
@@ -62,5 +62,5 @@ export const getNextQuestionId = (quest, newProgress) => {
 };
 
 export const isAnswerCorrect = (question, answer) => {
-  return chooseTranslation(question.answer, getLocales()) === answer;
+  return chooseTranslation(question.answer) === answer;
 };
