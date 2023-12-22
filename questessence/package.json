@@ -10,7 +10,9 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "prettier:check": "prettier --check .",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.9",

@@ -2,3 +2,6 @@
 build
 node_modules
 package-lock.json
+
+# Ignore app file which gets onverwritten all the time
+app.json

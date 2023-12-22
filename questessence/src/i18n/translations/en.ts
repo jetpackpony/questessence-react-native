@@ -19,7 +19,8 @@ export default {
 
   loginModalNotNowButton: "Not Now",
   loginModalHoldOnButton: "Hold on...",
-  loginModalRegisterText: "Sing up to sync progress in your quests across devices",
+  loginModalRegisterText:
+    "Sing up to sync progress in your quests across devices",
 
   progressBarOutOf: "out of",
   questCompleteText: "Yay! You've completed the quest!",
@@ -27,5 +28,5 @@ export default {
   loginWithFacebook: "Login with Facebook",
   logout: "Logout",
 
-  privacyPolicyLink: "Privacy Policy"
+  privacyPolicyLink: "Privacy Policy",
 };

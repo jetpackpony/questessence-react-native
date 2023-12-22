@@ -19,7 +19,8 @@ export default {
 
   loginModalNotNowButton: "Не сейчас",
   loginModalHoldOnButton: "Подождите...",
-  loginModalRegisterText: "Зарегистрируйтесь, чтобы сохранять купленные квесты и прогресс в ваших квестах.",
+  loginModalRegisterText:
+    "Зарегистрируйтесь, чтобы сохранять купленные квесты и прогресс в ваших квестах.",
 
   progressBarOutOf: "из",
   questCompleteText: "Ура! Вы прошли квест!",
@@ -27,5 +28,5 @@ export default {
   loginWithFacebook: "Войти через Facebook",
   logout: "Выйти",
 
-  privacyPolicyLink: "Политика конфиденциальности"
+  privacyPolicyLink: "Политика конфиденциальности",
 };
