@@ -1,4 +1,4 @@
-import { downloadQuestions } from "../database";
+import { downloadQuestions } from "../../database";
 import types from "./ActionTypes";
 import { showLoginModal } from "./LoginActions";
 

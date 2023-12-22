@@ -1,6 +1,6 @@
 import types from "./ActionTypes";
-import { AccessToken } from "react-native-fbsdk";
-import firebase from "../database/firebase";
+// import { AccessToken } from "react-native-fbsdk";
+// import firebase from "../../database/firebase";
 
 import { syncProgress } from "./SyncActions";
 

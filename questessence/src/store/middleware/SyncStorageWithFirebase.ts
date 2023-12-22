@@ -1,4 +1,4 @@
-import { uploadUserProgress } from "../database";
+import { uploadUserProgress } from "../../database";
 
 export default ({ getState }) =>
   (next) =>

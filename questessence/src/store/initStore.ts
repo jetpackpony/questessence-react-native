@@ -6,7 +6,7 @@ import thunk from "redux-thunk";
 import addTimeStamp from "./middleware/AddTimeStamp";
 import reducer, { dontHydrateKeys } from "./reducer";
 import { updateQuestList, syncProgress } from "./actions";
-import { listenToQuests } from "./database";
+import { listenToQuests } from "../database";
 import syncStorageWithFirebase from "./middleware/SyncStorageWithFirebase";
 
 export default () => {

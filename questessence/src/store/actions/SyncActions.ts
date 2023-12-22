@@ -1,5 +1,5 @@
 import R from "ramda";
-import { listenToProgress, uploadUserProgress } from "../database";
+import { listenToProgress, uploadUserProgress } from "../../database";
 import types from "./ActionTypes";
 import { getQuestionIndex } from "../reducer";
 
