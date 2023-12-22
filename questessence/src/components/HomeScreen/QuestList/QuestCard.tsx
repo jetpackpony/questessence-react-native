@@ -2,7 +2,7 @@ import { StyleSheet, View, TouchableNativeFeedback } from "react-native";
 import { Card, CardItem } from "native-base";
 
 import QuestImageWithTitle from "./QuestImageWithTitle";
-import { chooseTranslation } from "../../i18n";
+import { chooseTranslation } from "../../../i18n";
 
 const QuestCard = ({ quest, onPress }) => (
   <Card>

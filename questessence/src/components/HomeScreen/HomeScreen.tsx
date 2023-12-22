@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import QuestListContainer from "../QuestList";
+import QuestListContainer from "./QuestList";
 import { View } from "react-native";
 import { Icon } from "native-base";
 import { DrawerContext } from "../Drawer";
