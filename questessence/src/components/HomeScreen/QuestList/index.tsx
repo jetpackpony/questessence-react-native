@@ -7,11 +7,7 @@ const mapStateToProps = (state, { navigate }) => {
 
   return {
     quests,
-    getOnQuestPress: (quest) => () =>
-      navigate("Quest", {
-        questId: quest.id,
-        title: quest.title,
-      }),
+    getOnQuestPress: (quest) => () => navigate("Quest", { questId: quest.id }),
   };
 };
 
