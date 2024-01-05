@@ -1,20 +1,13 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { Container } from "native-base";
+import QuestQuestionsContainer from "./QuestQuestion";
+import ProgressBarContainer from "./ProgressBar";
 
-export default function QuestQuestionsScreen() {
+export default function QuestQuestionsScreen({ navigation, route }) {
+  const questId = route.params.questId;
   return (
-    <View style={styles.container}>
-      <Text>Quest Question Screen</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Container>
+      <QuestQuestionsContainer navigation={navigation} questId={questId} />
+      <ProgressBarContainer navigation={navigation} questId={questId} />
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
