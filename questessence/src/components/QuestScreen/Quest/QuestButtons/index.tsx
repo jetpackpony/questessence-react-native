@@ -7,6 +7,7 @@ import {
 } from "../../../../store/actions";
 import { DownloadStates } from "../../../../store/constants";
 import QuestButtons from "./QuestButtons";
+import { chooseTranslation } from "../../../../i18n";
 
 const mapStateToProps = (state, ownProps) => {
   const questId = ownProps.quest.id;
@@ -23,7 +24,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const navigateToQuestions = () => {
     ownProps.navigation.navigate("QuestQuestions", {
       questId,
-      title: ownProps.quest.title,
+      title: chooseTranslation(ownProps.quest.title),
     });
   };
   return {

@@ -31,12 +31,12 @@ export default function AppContainer() {
             <Stack.Screen
               name="Quest"
               component={QuestScreen}
-              options={{ title: "Quest" }}
+              options={({ route }) => ({ title: route.params.title })}
             />
             <Stack.Screen
               name="QuestQuestions"
               component={QuestQuestionsScreen}
-              options={{ title: "QuestQuestions" }}
+              options={({ route }) => ({ title: route.params.title })}
             />
           </Stack.Navigator>
         </NavigationContainer>
