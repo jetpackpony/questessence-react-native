@@ -10,9 +10,9 @@ class AnswerFormInput extends Component {
     this.state = { answer: undefined };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ answer: undefined });
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({ answer: undefined });
+  // }
 
   render() {
     const { onActionSubmitAnswer } = this.props;
