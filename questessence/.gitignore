@@ -36,3 +36,7 @@ yarn-error.*
 
 # App's config
 config.ts
+
+# Keystores
+*.keystore
+!debug.keystore
