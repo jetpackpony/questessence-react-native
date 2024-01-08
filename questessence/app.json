@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Questessence",
+    "name": "QuestEssence",
     "slug": "questessence",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#3f51b5"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,8 +20,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#3f51b5"
+      },
+      "package": "com.questessence"
     },
     "web": {
       "favicon": "./assets/favicon.png"
