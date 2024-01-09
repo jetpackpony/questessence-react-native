@@ -1,3 +1,0 @@
-#!/bin/sh
-cd $ANDROID_HOME/tools
-emulator @Nexus5X_24
